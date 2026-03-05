@@ -1,18 +1,18 @@
 <template>
   <div class="flex flex-col justify-center items-center gap-4 mt-4">
-    <div class="relative flex items-center justify-between w-full max-w-[400px] mt-10 px-2">
+    <div class="relative flex items-center justify-between w-full max-w-[280px] sm:max-w-[350px] md:max-w-[400px] mt-4 sm:mt-6 md:mt-10 px-2">
       <div
-        class="ml-4 absolute top-1/2 left-0 w-[90%] border-t-1 border-dashed border-orange-900/50 -translate-y-1/2 z-0"
+        class="ml-2 sm:ml-3 md:ml-4 absolute top-1/2 left-0 w-[90%] border-t-1 border-dashed border-orange-900/50 -translate-y-1/2 z-0"
       ></div>
       <div
         v-for="(step, index) in mockQA.length"
         :key="index"
-        class="relative z-10 w-10 h-10 rounded-full border-2 border-white/80 bg-transparent flex items-center justify-center"
+        class="relative z-10 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 rounded-full border-2 border-white/80 bg-transparent flex items-center justify-center"
       >
-        <div v-if="index === ruoteId - 1" class="w-6 h-6 bg-orange-500 rounded-full"></div>
+        <div v-if="index === answer.length" class="w-5 h-5 sm:w-5.5 sm:h-5.5 md:w-6 md:h-6 bg-orange-500 rounded-full"></div>
         <div
           v-else
-          class="w-6 h-6 border-1 bg-white border-orange-900/50 rounded-full"
+          class="w-5 h-5 sm:w-5.5 sm:h-5.5 md:w-6 md:h-6 border-1 bg-white border-orange-900/50 rounded-full"
         ></div>
       </div>
     </div>
@@ -20,11 +20,11 @@
       <div class="text-2xl font-bold"></div>
     </div>
     <div class="text-xl font-bold p-4">
-      <h1>{{ "Q" + ruoteId + "：" }}</h1>
-      <h1>{{ mockQA[ruoteId-1].question }}</h1>
+      <h1>{{ "Q" + (answer.length + 1) + "：" }}</h1>
+      <h1>{{ mockQA[answer.length]?.question }}</h1>
     </div>
     <div class="flex justify-center flex-col gap-6 p-4">
-      <template v-for="(m, index) in mockQA[ruoteId-1].options" :key="index">
+      <template v-for="(m, index) in mockQA[answer.length]?.options" :key="index">
         <UiButton variant="secondary" @click="goNext(m.value)">
           <span>
             <span class="font-bold" v-if="m.title">{{ m.title }}</span>
@@ -36,15 +36,11 @@
   </div>
 </template>
 <script setup>
-const ruoteId = useRoute().params.id;
 const answer = ref([]);
 const goNext = (value) => {
-  answer.value.push(value);
-  if (ruoteId < mockQA.length) {
-    console.log("選擇的答案是：", value);
-    console.log("目前的答案列表：", answer.value);
-    navigateTo(`/question/${Number(ruoteId) + 1}`);
-  } else {
+  answer.value.push({question: `Q${answer.value.length + 1}`, answer: value});
+  if (answer.value.length === mockQA.length) {
+    // TODO save ans API
     navigateTo("/result");
   }
 };

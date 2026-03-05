@@ -39,7 +39,7 @@
     </UiDialog>
     <div class="flex gap-2">
       <UiButton variant="secondary">
-        <NuxtLink :to="'/question/1'"> 再玩一次 </NuxtLink>
+        <NuxtLink :to="'/question'"> 再玩一次 </NuxtLink>
       </UiButton>
       <div
         class="flex items-center gap-1 cursor-pointer border-1 solid border-gray-300 rounded-md px-2 py-1"
