@@ -1,6 +1,24 @@
 <template>
   <div>
     <NuxtPage />
+    <Teleport to="body">
+      <UiSonner 
+        position="top-center"
+        :style="{ zIndex: '99999', position: 'fixed', left: '50%', transform: 'translateX(-50%)' }"
+        :toast-options="{ 
+          style: { 
+            background: 'white',
+            color: 'black',
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px',
+            padding: '12px 16px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          } 
+        }"
+      />
+    </Teleport>
   </div>
 </template>
 <script setup>

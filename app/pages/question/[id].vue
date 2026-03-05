@@ -19,7 +19,7 @@
     <div>
       <div class="text-2xl font-bold"></div>
     </div>
-    <div class="text-xl font-bold my-10 p-4">
+    <div class="text-xl font-bold p-4">
       <h1>{{ "Q" + ruoteId + "：" }}</h1>
       <h1>{{ mockQA[ruoteId-1].question }}</h1>
     </div>
