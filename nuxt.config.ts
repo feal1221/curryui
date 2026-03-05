@@ -9,7 +9,12 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
   },
-
+  modules: [
+    '@vee-validate/nuxt',
+  ],
+  veeValidate: {
+    autoImports: true,
+  },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true }
 })

@@ -53,7 +53,7 @@
 </template>
 <script setup>
 import shareImageUrl from "@/assets/F.jpg";
-import FB from "@/assets/fb.vue";
+import FB from "@/assets/Fb.vue";
 import Line from "@/assets/LineLogo.vue";
 import Threads from "@/assets/Threads.vue";
 import Ig from "@/assets/Ig.vue";

@@ -19,6 +19,9 @@ const props = withDefaults(defineProps<Props>(), {
 
 <template>
   <Primitive
+    v-if="props.asChild"
+    :as="props.as"
+    :as-child="props.asChild"
     data-slot="button"
     :data-variant="variant"
     :data-size="size"
@@ -26,4 +29,14 @@ const props = withDefaults(defineProps<Props>(), {
   >
     <slot />
   </Primitive>
+  <button
+    v-else
+    v-bind="$attrs"
+    data-slot="button"
+    :data-variant="variant"
+    :data-size="size"
+    :class="cn(buttonVariants({ variant, size }), props.class)"
+  >
+    <slot />
+  </button>
 </template>
