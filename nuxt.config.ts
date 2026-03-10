@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     ],
   },
   modules: [
-    '@vee-validate/nuxt',
+    '@vee-validate/nuxt','@nuxt/icon'
   ],
   veeValidate: {
     autoImports: true,

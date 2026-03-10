@@ -12,7 +12,9 @@
       {{ '立刻將你的測驗結果圖分享至好侍官方FB活動貼文留言處參加抽獎！' }}
     <UiDialog v-model:open="showDialog">
       <UiDialogTrigger>
-        <UiButton variant="destructive" class="font-bold"> 立即至好侍FB參加抽獎 </UiButton>
+        <UiButton variant="destructive" class="font-bold"> 
+          <Icon name="streamline-sharp:gift-2-remix" class="-mr-1" />
+          立即至好侍FB參加抽獎 </UiButton>
       </UiDialogTrigger>
       <UiDialogContent>
         <UiDialogHeader>
@@ -50,7 +52,7 @@
     <div class="flex gap-2 flex-col items-center">
 
       <UiButton variant="destructive" class="font-bold">
-        <Copy :color="'white'" class="-mr-1" />邀請朋友測驗咖哩人格
+          <Icon name="streamline-sharp:share-link-solid" class="-mr-1" />邀請朋友測驗咖哩人格
       </UiButton>
       <!-- <div
         class="flex items-center gap-1 cursor-pointer border-1 solid border-gray-300 rounded-md px-2 py-1"
