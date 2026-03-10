@@ -1,4 +1,5 @@
 <template>
+  <curry-bar />
   <div>
     <NuxtPage />
     <Teleport to="body">

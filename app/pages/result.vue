@@ -1,9 +1,18 @@
 <template>
-  <div class="flex flex-col justify-center items-center gap-4 mt-4">
-    <div>{{ "長按上方圖片儲存結果" }}</div>
+  <div
+    class="bg-[var(--bg-yellow)] min-h-screen flex flex-col items-center gap-4 pt-20"
+  >
+    <h1 class="text-[var(--primary-brown)] text-2xl sm:text-3xl font-bold">
+      {{ "我的咖哩人格結果是：" }}
+    </h1>
+    <div class="text-[var(--primary-brown)]">
+      {{ "長按上方圖片或點選右鍵進行下載" }}
+    </div>
+    <div class="w-full bg-white items-center flex flex-col font-bold gap-6 justify-center p-10">
+      {{ '立刻將你的測驗結果圖分享至好侍官方FB活動貼文留言處參加抽獎！' }}
     <UiDialog v-model:open="showDialog">
       <UiDialogTrigger>
-        <UiButton variant="secondary"> 分享測驗結果給好友 </UiButton>
+        <UiButton variant="destructive" class="font-bold"> 立即至好侍FB參加抽獎 </UiButton>
       </UiDialogTrigger>
       <UiDialogContent>
         <UiDialogHeader>
@@ -37,17 +46,23 @@
         </UiDialogFooter> -->
       </UiDialogContent>
     </UiDialog>
-    <div class="flex gap-2">
-      <UiButton variant="secondary">
-        <NuxtLink :to="'/question'"> 再玩一次 </NuxtLink>
+    </div>
+    <div class="flex gap-2 flex-col items-center">
+
+      <UiButton variant="destructive" class="font-bold">
+        <Copy :color="'white'" class="-mr-1" />邀請朋友測驗咖哩人格
       </UiButton>
-      <div
+      <!-- <div
         class="flex items-center gap-1 cursor-pointer border-1 solid border-gray-300 rounded-md px-2 py-1"
         @click="copyLink"
       >
-        <Copy />
-        <div class="text-sm text-gray-500">複製測驗連結</div>
-      </div>
+        <div class="text-sm text-gray-500">邀請朋友測驗咖哩人格</div>
+      </div> -->
+            <UiButton
+        class="w-full font-bold bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]"
+      >
+        <NuxtLink :to="'/question'"> 返回活動首頁 </NuxtLink>
+      </UiButton>
     </div>
   </div>
 </template>
@@ -76,7 +91,7 @@ const copyText = async (toastM) => {
   toast.success(toastM);
 };
 const copyLink = async () => {
-  const url = window.location.origin
+  const url = window.location.origin;
   await navigator.clipboard.writeText(url);
   toast.success("複製成功！快去分享給朋友吧！");
 };

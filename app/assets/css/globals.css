@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+:root {
+  /* 定義你的顏色變數 */
+  --primary-brown: #53410f;
+  --bg-gray: #f8f8f8;
+  --bar-red: #D61518;
+  --bg-yellow: #F9F0DC;
+}
