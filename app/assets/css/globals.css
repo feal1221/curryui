@@ -7,3 +7,20 @@
   --bar-red: #D61518;
   --bg-yellow: #F9F0DC;
 }
+
+@font-face {
+  font-family: 'Swei Sans CJK JP';
+  /* 注意：放在 public 的檔案在 CSS 中直接用根路徑 / 即可 */
+  src: url('/fonts/SweiSansCJKjp-Regular.woff2') format('woff2');
+  font-weight: 500;
+  font-style: medium;
+  font-display: swap;
+}
+
+:root {
+  --font-main: 'Swei Sans CJK JP', "Noto Sans JP", sans-serif;
+}
+
+body {
+  font-family: var(--font-main);
+}
