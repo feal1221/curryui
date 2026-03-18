@@ -1,40 +1,57 @@
 <template>
-  <div class="bg-[var(--bg-gray)] min-h-screen flex flex-col justify-center items-center gap-4 " v-if="answer.length<6">
-    <div class="flex items-center gap-2">
+  <div class="bg-[var(--bg-gray)] min-h-screen flex flex-col justify-center items-center gap-4 pb-20" v-if="answer.length<6">
+    <div class="flex items-center gap-2 mt-20">
       <div
         v-for="(step, index) in mockQA.length"
         :key="index"
       >
-        <div v-if="index === answer.length" class="w-8 h-1 sm:w-12 md:w-16 bg-red-600 rounded-xl"></div>
+        <div v-if="index === pageIndex" class="w-8 h-2 sm:w-20 md:w-30 bg-[#C81F19] rounded-2xl"></div>
         <div
           v-else
-          class="w-8 h-1 sm:w-12 md:w-16 bg-gray-300 rounded-xl"
+          class="w-8 h-2 sm:w-20 md:w-30 bg-[#D9D9D9] rounded-2xl"
         ></div>
       </div>
     </div>
-    <div class="text-xl font-bold p-4 flex gap-4 flex-col items-center text-[var(--primary-brown)]">
-      <h1>{{ "Q" + (answer.length + 1) }}</h1>
-      <h1 class="bg-[#FAD35C] px-4">{{ mockQA[answer.length]?.question }}</h1>
+    <div class="text-2xl font-medium p-4 flex gap-4 flex-col items-center text-[var(--primary-brown)]">
+      <h1>{{ "Q" + (pageIndex + 1) }}</h1>
+      <h1 class="bg-[#FAD35C] px-8 py-2">{{ mockQA[pageIndex]?.question }}</h1>
     </div>
     <div class="flex justify-center flex-col gap-6 p-4">
-      <template v-for="(m, index) in mockQA[answer.length]?.options" :key="index">
-        <UiButton variant="secondary" class="bg-white text-[var(--primary-brown)] shadow-md" @click="goNext(m.value)">
-          <span>
-            <span class="font-bold" v-if="m.title">{{ m.title }}</span>
+      <template v-for="(m, index) in mockQA[pageIndex]?.options" :key="index">
+        <UiButton variant="secondary" class="px-40 py-2 min-h-[64px] bg-white text-md text-[var(--primary-brown)] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]" :class="{ 'bg-[#FAD35C]': tempAnswer?.answer === m.value || (answer.some(a => a.answer === m.value && a.question === `Q${pageIndex + 1}`)&&!tempAnswer) }" @click="tempAnswer = {question: `Q${pageIndex + 1}`, answer: m.value}">
+          <span class="whitespace-pre-line">
+            <span v-if="m.title">{{ `< ${m.title} >`+'\n' }}</span>
             {{ m.description }}
           </span>
         </UiButton>
       </template>
-      <UiButton  @click="goBack" class="w-40 bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]">
-         <span class="font-bold" >{{ answer.length > 0 ? "上一題" : "返回" }}</span>
-      </UiButton>
+      <div class="flex justify-between mt-4">
+        <UiButton  @click="goBack" class="text-2xl px-20 py-3 font-medium bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]">
+          <span class="font-medium" >{{ pageIndex > 0 ? "上一題" : "返回" }}</span>
+        </UiButton>
+        <UiButton  variant="destructive" @click="goNext" class="text-2xl px-20 py-3 font-medium">
+          <span class="font-medium" >{{ pageIndex < 5 ? "下一題" : "開始分析" }}</span>
+        </UiButton>
+      </div>
     </div>
   </div>
 </template>
 <script setup>
 const answer = ref([]);
-const goNext = (value) => {
-  answer.value.push({question: `Q${answer.value.length + 1}`, answer: value});
+const pageIndex = ref(0);
+const tempAnswer = ref(null);
+const goNext = () => {
+  pageIndex.value += 1;
+  if (tempAnswer.value !== null) {
+    // answer.value.push(tempAnswer.value);
+    const existingIndex = answer.value.findIndex(a => a.question === tempAnswer.value.question);
+    if (existingIndex !== -1) {
+      answer.value[existingIndex] = tempAnswer.value;
+    } else {
+      answer.value.push(tempAnswer.value);
+    }
+    tempAnswer.value = null;
+  }
   if (answer.value.length === mockQA.length) {
     // TODO save ans API
     navigateTo("/result");
@@ -42,7 +59,8 @@ const goNext = (value) => {
 };
 const goBack = () => {
   if (answer.value.length > 0) {
-    answer.value.pop();
+    pageIndex.value -= 1;
+    tempAnswer.value = null
     return
   }
     navigateTo("/about");
@@ -58,22 +76,22 @@ const mockQA = [
         value:'Sweet+Creamy'
       },
       {
-        title: "大略拌過：",
+        title: "大略拌過",
         description: "留下一點白飯，享受味道的波動，給彼此一點空間。",
         value:'Balance'
       },
       {
-        title: "絕對不拌：",
+        title: "絕對不拌",
         description: "白飯與醬汁要有清晰防線，每一口都要自己決定比例。",
         value:'Spicy'
       },
       {
-        title: "醬汁當配角：",
+        title: "醬汁當配角",
         description: "比起拌飯，我更喜歡拿麵包或大塊蔬菜沾著吃。",
         value:'Tart+Creamy'
       },
       {
-        title: "隨心所欲：",
+        title: "隨心所欲",
         description: "看今天的對象或盤子的心情，沒有固定教條。",
         value:'All'
       },
@@ -113,27 +131,27 @@ const mockQA = [
     question: "如果把自己的靈魂比喻為一種「拌料」，你覺得自己最像？",
     options: [
       {
-        title: "溫潤蜂蜜：",
+        title: "溫潤蜂蜜",
         description: "總是能化解周遭的衝突與尷尬。",
         value: "Sweet",
       },
       {
-        title: "深醞肉桂：",
+        title: "深醞肉桂",
         description: "深邃且理性，給人一種沈穩的距離感。",
         value: "Balance",
       },
       {
-        title: "炙熱乾辣椒：",
+        title: "炙熱乾辣椒",
         description: "熱情、直接，有你在的地方就有火花。",
         value: "Spicy",
       },
       {
-        title: "鮮紅蕃茄：",
+        title: "鮮紅蕃茄",
         description: "帶點知性的酸甜，品味與眾不同。",
         value: "Tart",
       },
       {
-        title: "絲滑奶油：",
+        title: "絲滑奶油",
         description: "柔軟但有厚度，能包容各種古怪的想法。",
         value: "Creamy",
       },

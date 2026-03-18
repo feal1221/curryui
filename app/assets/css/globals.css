@@ -11,7 +11,7 @@
 @font-face {
   font-family: 'Swei Sans CJK JP';
   /* 注意：放在 public 的檔案在 CSS 中直接用根路徑 / 即可 */
-  src: url('/fonts/SweiSansCJKjp-Regular.woff2') format('woff2');
+  src: url('/fonts/SweiSansCJKjp-Medium.woff2') format('woff2');
   font-weight: 500;
   font-style: medium;
   font-display: swap;
