@@ -1,28 +1,28 @@
 <template>
   <div
-    class="h-12 bg-[var(--bar-red)] w-full flex items-center fixed top-0 left-0 z-50"
+    class="h-20 bg-[var(--bar-red)] w-full flex items-center fixed top-0 left-0 z-50"
   >
     <!-- Logo -->
     <div
       class="ml-10 text-white text-lg font-bold max-[464px]:absolute max-[464px]:left-1/2 max-[464px]:-translate-x-1/2 max-[464px]:ml-0"
     >
-      LOGO
+      <img src="/assets/images/logo.png" />
+      
     </div>
     <div class="grow"></div>
     <!-- Desktop menu (>= 465px) -->
-    <div class="hidden min-[465px]:flex">
+    <div class="hidden min-[465px]:flex mr-4">
       <template v-for="(item, index) in menu" :key="index">
         <NuxtLink
           :to="item.link"
-          class="ml-auto text-white text-sm lg:text-base px-2"
+          class="ml-auto text-white text-sm lg:text-2xl px-2 border-r-1 solid border-white"
           >{{ item.name }}</NuxtLink
         >
-        <div class="ml-auto text-white" v-if="index < menu.length - 1">｜</div>
+        <!-- <div class="ml-auto text-white" v-if="index < menu.length - 1">｜</div> -->
       </template>
     </div>
-
-    <FB class="ml-auto mr-2 cursor-pointer w-6 h-6 max-[465px]:hidden" />
-    <Ig class="mr-5 cursor-pointer w-6 h-5 max-[465px]:hidden" />
+    <img src="/assets/images/button-fb.png" class="max-[465px]:hidden ml-auto mr-4 cursor-pointer">
+    <img src="/assets/images/button-ig.png" class="max-[465px]:hidden mr-12 cursor-pointer">
     <div class="min-[465px]:hidden">
       <UiSheet v-model:open="mobileMenuOpen" side="right">
         <UiSheetTrigger asChild>

@@ -6,19 +6,32 @@
   --bg-gray: #f8f8f8;
   --bar-red: #D61518;
   --bg-yellow: #F9F0DC;
-}
-
-@font-face {
-  font-family: 'Swei Sans CJK JP';
-  /* 注意：放在 public 的檔案在 CSS 中直接用根路徑 / 即可 */
-  src: url('/fonts/SweiSansCJKjp-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: medium;
-  font-display: swap;
-}
-
-:root {
   --font-main: 'Swei Sans CJK JP', "Noto Sans JP", sans-serif;
+  --text-red:#C81F19;
+}
+
+/* @font-face {
+  font-family: 'Swei Sans CJK JP';
+  src: url("https://cdn.jsdelivr.net/gh/max32002/swei-spring@1.068/WebFont/CJK%20JP/SweiSansCJKjp-Regular.woff2")
+       format("woff2");
+  font-style:normal;
+  font-weight:normal;
+  font-display:block;
+} */
+/* @font-face {
+  font-family: 'Swei Sans CJK JP';
+  src: url(https://cdn.jsdelivr.net/gh/max32002/swei-sans@2.102/WebFont/CJK%20JP/SweiSansCJKjp-Regular.woff2) format("woff2")
+  , url(https://cdn.jsdelivr.net/gh/max32002/swei-sans@2.102/WebFont/CJK%20JP/SweiSansCJKjp-Regular.woff) format("woff");
+  font-weight:normal;
+  font-style: normal;
+font-display:block;
+} */
+@font-face {
+  font-family: 'Swei Sans CJK JPP';
+  src: url('/fonts/SweiSansCJKjp-Medium.woff2') format('woff2');
+  font-style: medium;
+  font-weight:medium;
+  font-display:swap;
 }
 
 body {

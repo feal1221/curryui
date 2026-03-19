@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
     data-slot="button"
     :data-variant="variant"
     :data-size="size"
-    :class="cn(buttonVariants({ variant, size }), props.class)"
+    :class="cn(buttonVariants({ variant, size }), 'btn-text', props.class)"
   >
     <slot />
   </Primitive>
@@ -35,8 +35,16 @@ const props = withDefaults(defineProps<Props>(), {
     data-slot="button"
     :data-variant="variant"
     :data-size="size"
-    :class="cn(buttonVariants({ variant, size }), props.class)"
+    :class="cn(buttonVariants({ variant, size }), 'btn-text', props.class)"
   >
     <slot />
   </button>
 </template>
+
+<style>
+.btn-text {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+</style>

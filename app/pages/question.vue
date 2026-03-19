@@ -41,9 +41,8 @@ const answer = ref([]);
 const pageIndex = ref(0);
 const tempAnswer = ref(null);
 const goNext = () => {
-  pageIndex.value += 1;
   if (tempAnswer.value !== null) {
-    // answer.value.push(tempAnswer.value);
+    pageIndex.value += 1;
     const existingIndex = answer.value.findIndex(a => a.question === tempAnswer.value.question);
     if (existingIndex !== -1) {
       answer.value[existingIndex] = tempAnswer.value;
