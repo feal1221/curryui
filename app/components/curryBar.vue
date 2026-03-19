@@ -84,6 +84,20 @@ onMounted(() => {
   });
 });
 
+const redirectToHome = () => {
+        router.push('/').then(() => {
+            // 等待 DOM 更新後再移動畫面到用戶號碼元素
+            setTimeout(() => {
+                const el = document.getElementById('userNumber');
+                if (el) {
+                    el.scrollIntoView({ behavior: 'auto', block: 'center' });
+                    el.focus();
+                }
+            }, 0);
+        });
+
+};
+
 const menu = [
   {
     name: "活動測驗",

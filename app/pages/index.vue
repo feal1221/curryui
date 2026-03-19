@@ -256,11 +256,12 @@
             <span class="text-[var(--text-red)]">{{ "憑發票再參加" }}</span
             >{{ "【簡訊發票登錄】抽獎活動！" }}
           </div>
-
         </div>
-          <div class="self-start pl-110 text-[var(--primary-brown)] text-2xl my-5 font-medium">
-            {{ "活動門市資訊：" }}
-          </div>
+        <div
+          class="self-start pl-110 text-[var(--primary-brown)] text-2xl my-5 font-medium"
+        >
+          {{ "活動門市資訊：" }}
+        </div>
         <img
           src="/assets/images/com-table.png"
           class="max-w-[1020px] mx-auto"
@@ -302,13 +303,117 @@
             得獎公布
           </text>
         </svg>
-        <div class="text-[var(--text-red)] font-medium text-4xl mx-auto my-3">Coming Soon</div>
-        <div class="text-[var(--primary-brown)] font-medium text-base mx-auto">*公布日期：預計2026年5月8日(五)當天公布。</div>
+        <div class="text-[var(--text-red)] font-medium text-4xl mx-auto my-3">
+          Coming Soon
+        </div>
+        <div class="text-[var(--primary-brown)] font-medium text-base mx-auto">
+          *公布日期：預計2026年5月8日(五)當天公布。
+        </div>
       </div>
 
       <div class="roof" :style="{ backgroundImage: `url(${roofImage})` }"></div>
     </div>
+    <!-- 注意事項 -->
+    <div class="bg-[#F9F0DC] min-h-[1388px] flex flex-col">
+      <div class="flex justify-center">
+        <svg
+          viewBox="0 0 1000 200"
+          preserveAspectRatio="xMidYMid meet"
+          class="h-[160px]"
+        >
+          <text
+            x="500"
+            y="120"
+            text-anchor="middle"
+            dominant-baseline="middle"
+            class="svg-curry-title"
+            stroke-linejoin="round"
+          >
+            注意事項
+          </text>
+        </svg>
+      </div>
+      <div
+        class="flex flex-col font-medium text-[var(--primary-brown)] mx-auto px-36"
+      >
+        <div class="text-base">
+          凡參加者，即視為已充分瞭解本注意事項中各項條款，且願意完全遵守及同意本活動之各項規定辦法：
+        </div>
+        <div
+          class="bg-[var(--primary-brown)] text-white rounded-2xl px-6 py-2 text-2xl w-[216px] text-center my-8"
+        >
+          抽獎注意事項
+        </div>
+        <ul class="list-disc list-outside text-left text-base ml-8">
+          <li>
+            活動採隨機方式抽出參與者，每人限得一個獎項，主辦單位就本活動參加者之資格，保有審查之權利。
+          </li>
+          <li>
+            參加抽獎者於參加本活動之同時，即同意接受本活動所有內容及細則之規範，如有違反本活動注意事項之行為，得取消其中獎資格，並對於任何破壞本活動之行為保留相關權利。
+          </li>
+          <li>
+            本活動如有任何不可歸責於主辦單位之事由（電腦、網路等），而使中獎者所填寫之資料有遺失、錯誤、無法辨識或毀損，導致資料無效之情況，主辦單位不負任何法律責任，參加者或中獎者不得異議。
+          </li>
+          <li>
+            參加抽獎者保證參加之帳號及所有提出之資料均為真實且正確，如有不實或不正確，將被取消得獎資格。如因此損害主辦單位或其他任何第三者，參加者需負一切相關責任。
+          </li>
+        </ul>
+        <div
+          class="bg-[var(--primary-brown)] text-white rounded-2xl px-6 py-2 text-2xl w-[216px] text-center my-8"
+        >
+          兌獎注意事項
+        </div>
+        <ul class="list-disc list-outside text-left text-base ml-8">
+          <li>
+            本活動僅限在台澎金地區進行，活動獎項之寄送地址亦僅限台澎金地區。
+          </li>
+          <li>
+            主辦單位公布得獎者後，中獎者需填妥兌獎通知函，並以掛號方式寄回兌獎領據，經主辦單位核對中獎資訊無誤後，才得以進行兌獎作業。
+          </li>
+          <li>
+            參加者同意填寫或提出之資料均為真實，且未冒用或盜用任何第三人之資料。依規定或資料有誤者，則取消得獎資格。
+          </li>
+          <li>
+            得獎者未於指定之期限前回覆並繳交相關資料，或如未提供正確資訊或未詳細填寫個人基本資料，導致活動中獎時無法通知、逾期及資料缺漏者，或無法正確投遞至寄送地址等影響中獎相關事宜或作業程序，視同放棄得獎資格。資料填寫錯誤、不完整，致獎品無法送達，則視同放棄，不另補發。主辦單位將不再另進行候補中獎者抽選。
+          </li>
+          <li>
+            所有中獎資格之查驗，依本活動辦法及主辦單位之實際審核結果為準，並為唯一之依據。
+          </li>
+          <li>
+            所有得獎者之聯絡資料，僅用於主辦單位通知及活動領獎確認用，不會另作其他用途。
+          </li>
+          <li>
+            獎品金額超過新台幣20,001元以上，依國稅局規定得獎者需依稅法先行自付10%機會中獎稅，由主辦單位或協辦單位或執行單位代扣繳，始得領取活動獎品，不願繳交稅金者視同放棄得獎權利。非中華民國境內居住之個人(即在中華民國境內居未達183天之本國人及外國人)不論中獎所得之金額，須就中獎所得扣繳20%機會中獎稅。主辦單位年底將開立各類所得稅扣繳憑單給中獎者，獎項價值以主辦單位實際購買贈品之統一發票或收據金額為主。(有關「中獎獎金之扣繳稅款」以財政部發佈之條款為準)。
+          </li>
+          <li>
+            中獎者不得要求更改獎項或兌換現金，獎項均以實物為準，恕不得選款式、型號、挑色，亦不得將中獎資格轉讓其他人。
+          </li>
+          <li>
+            違反前述規定之中獎人，主辦單位得取消其中獎項資格。若遇得獎贈品已寄出，則需將得獎贈品寄還活動小組，得獎贈品必須寄還新品。
+          </li>
+          <li>
+            贈品在郵寄過程中，所造成的毀壞、遲遞、錯誤或遺失，主辦單位恕不負責。
+          </li>
+          <li>
+            關於獎項之使用細節，或發生產品瑕疵及相關保固責任，均由該贈品廠商維修與保固，中獎者應逕向獎品製造或銷售公司詢問，台灣好侍食品股份有限公司及其執行單位概不負責。
+          </li>
+        </ul>
+        <div class="mt-10">※ 活動如有未盡事宜將，以官方網站公告為準。</div>
+        <div>※ 以上日期與辦法如有調整，以網站公佈為主</div>
+
+        <div
+          class="bg-[var(--primary-brown)] text-white rounded-2xl px-6 py-2 text-2xl w-[216px] text-center my-8"
+        >
+          活動洽詢
+        </div>
+        <div>好侍你的咖哩人格測驗活動小組 housecurryevents@gmail.com</div>
+      </div>
+    </div>
+    <div @click="scrollToTop" class="bg-white fixed right-5 bottom-5 w-18 h-18 rounded-full z-50 flex items-center justify-center cursor-pointer">
+      <img src="/assets/images/arrow.png" >
+    </div>
   </div>
+
 </template>
 <script setup>
 import watchImage from "~/assets/images/watch.png";
@@ -322,6 +427,10 @@ import curry4 from "~/assets/images/curry104.png";
 import curry5 from "~/assets/images/curry105.png";
 import curry6 from "~/assets/images/curry106.png";
 import curry7 from "~/assets/images/curry107.png";
+
+const scrollToTop = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
 const activity = [
   {
