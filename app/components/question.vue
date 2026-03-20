@@ -5,7 +5,7 @@
         v-for="(step, index) in mockQA.length"
         :key="index"
       >
-        <div v-if="index === pageIndex" class="w-8 h-2 sm:w-20 md:w-30 bg-[#C81F19] rounded-2xl"></div>
+        <div v-if="index === pageIndex - 2" class="w-8 h-2 sm:w-20 md:w-30 bg-[#C81F19] rounded-2xl"></div>
         <div
           v-else
           class="w-8 h-2 sm:w-20 md:w-30 bg-[#D9D9D9] rounded-2xl"
@@ -13,12 +13,12 @@
       </div>
     </div>
     <div class="text-2xl font-medium p-4 flex gap-4 flex-col items-center text-[var(--primary-brown)]">
-      <h1>{{ "Q" + (pageIndex + 1) }}</h1>
-      <h1 class="bg-[#FAD35C] px-8 py-2">{{ mockQA[pageIndex]?.question }}</h1>
+      <h1>{{ "Q" + (pageIndex - 1) }}</h1>
+      <h1 class="bg-[#FAD35C] px-8 py-2">{{ mockQA[pageIndex - 2]?.question }}</h1>
     </div>
     <div class="flex justify-center flex-col gap-6 p-4">
-      <template v-for="(m, index) in mockQA[pageIndex]?.options" :key="index">
-        <UiButton variant="secondary" class="px-40 py-2 min-h-[64px] bg-white text-md text-[var(--primary-brown)] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]" :class="{ 'bg-[#FAD35C]': tempAnswer?.answer === m.value || (answer.some(a => a.answer === m.value && a.question === `Q${pageIndex + 1}`)&&!tempAnswer) }" @click="tempAnswer = {question: `Q${pageIndex + 1}`, answer: m.value}">
+      <template v-for="(m, index) in mockQA[pageIndex - 2]?.options" :key="index">
+        <UiButton variant="secondary" class="px-40 py-2 min-h-[64px] bg-white text-md text-[var(--primary-brown)] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]" :class="{ 'bg-[#FAD35C]': tempAnswer?.answer === m.value || (answer.some(a => a.answer === m.value && a.question === `Q${pageIndex-1}`)&&!tempAnswer) }" @click="tempAnswer = {question: `Q${pageIndex-1}`, answer: m.value}">
           <span class="whitespace-pre-line">
             <span v-if="m.title">{{ `< ${m.title} >`+'\n' }}</span>
             {{ m.description }}
@@ -27,10 +27,10 @@
       </template>
       <div class="flex justify-between mt-4">
         <UiButton  @click="goBack" class="text-2xl px-20 py-3 font-medium bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]">
-          <span class="font-medium" >{{ pageIndex > 0 ? "上一題" : "返回" }}</span>
+          <span class="font-medium" >{{ pageIndex > 2 ? "上一題" : "返回" }}</span>
         </UiButton>
         <UiButton  variant="destructive" @click="goNext" class="text-2xl px-20 py-3 font-medium">
-          <span class="font-medium" >{{ pageIndex < 5 ? "下一題" : "開始分析" }}</span>
+          <span class="font-medium" >{{ pageIndex < 7 ? "下一題" : "開始分析" }}</span>
         </UiButton>
       </div>
     </div>
@@ -38,11 +38,12 @@
 </template>
 <script setup>
 const answer = ref([]);
-const pageIndex = ref(0);
+const pageIndex = inject("pageIndex");
+
 const tempAnswer = ref(null);
 const goNext = () => {
   if (tempAnswer.value !== null) {
-    pageIndex.value += 1;
+    pageIndex.value = pageIndex.value + 1;
     const existingIndex = answer.value.findIndex(a => a.question === tempAnswer.value.question);
     if (existingIndex !== -1) {
       answer.value[existingIndex] = tempAnswer.value;
@@ -58,11 +59,9 @@ const goNext = () => {
 };
 const goBack = () => {
   if (answer.value.length > 0) {
-    pageIndex.value -= 1;
     tempAnswer.value = null
-    return
   }
-    navigateTo("/about");
+    pageIndex.value = pageIndex.value - 1;
 
 };
 const mockQA = [

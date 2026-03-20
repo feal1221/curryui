@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-[var(--bg-gray)] flex flex-col justify-center items-center gap-4 px-4 py-20 min-h-screen"
+    class="flex flex-col justify-center items-center gap-4 f-full p-10"
   >
     <form
       @submit="onSubmit"
@@ -10,7 +10,9 @@
         <UiFieldLabel
           for="name"
           class="text-base sm:text-2xl text-[var(--primary-brown)] font-medium"
-          >您的暱稱是</UiFieldLabel
+          >您的暱稱是        <UiFieldError v-if="errors.name" class="text-xs sm:text-sm">{{
+          errors.name
+        }}</UiFieldError></UiFieldLabel
         >
         <UiInput
           v-model="name"
@@ -19,9 +21,7 @@
           placeholder="請輸入暱稱"
           class="text-base sm:text-2xl border-t-0 border-l-0 border-r-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[var(--primary-brown)] tracking-widest"
         />
-        <UiFieldError v-if="errors.name" class="text-xs sm:text-sm">{{
-          errors.name
-        }}</UiFieldError>
+
       </UiField>
 
       <!-- <UiField :data-invalid="errors.email">
@@ -41,7 +41,9 @@
         <UiFieldLabel
           for="gender"
           class="text-base sm:text-2xl text-[var(--primary-brown)] font-medium"
-          >您的性別</UiFieldLabel
+          >您的性別        <UiFieldError v-if="errors.gender" class="text-xs sm:text-sm">{{
+          errors.gender
+        }}</UiFieldError></UiFieldLabel
         >
         <UiRadioGroup v-model="gender" id="gender" class="text-base sm:text-2xl font-medium text-[var(--primary-brown)]">
           <div class="flex items-center space-x-3 my-1">
@@ -57,16 +59,16 @@
             <Label for="other">多元</Label>
           </div>
         </UiRadioGroup>
-        <UiFieldError v-if="errors.gender" class="text-xs sm:text-sm">{{
-          errors.gender
-        }}</UiFieldError>
+
       </UiField>
 
       <UiField :data-invalid="errors.age">
         <UiFieldLabel
           for="age"
           class="text-base sm:text-2xl text-[var(--primary-brown)] font-medium"
-          >您的年齡</UiFieldLabel
+          >您的年齡        <UiFieldError v-if="errors.age" class="text-xs sm:text-sm">{{
+          errors.age
+        }}</UiFieldError></UiFieldLabel
         >
         <UiRadioGroup v-model="age" id="age" class="text-base sm:text-2xl font-medium text-[var(--primary-brown)]">
           <div class="flex items-center space-x-3 my-1">
@@ -98,9 +100,6 @@
             <Label for="age6">66歲以上</Label>
             </div>
         </UiRadioGroup>
-        <UiFieldError v-if="errors.age" class="text-xs sm:text-sm">{{
-          errors.age
-        }}</UiFieldError>
       </UiField>
 
       <UiButton
@@ -117,15 +116,16 @@
 import { toTypedSchema } from "@vee-validate/zod";
 import * as z from "zod";
 
+const pageIndex = inject("pageIndex");
 const formSchema = toTypedSchema(
   z.object({
     name: z
       .string()
-      .min(1, "暱稱為必填")
-      .max(20, "暱稱不能超過 20 個字"),
+      .min(1, "＊必填")
+      .max(100, "暱稱不能超過 100 個字"),
     //   email: z.string().min(1, '信箱為必填').email('請輸入有效的信箱格式'),
-    gender: z.string().min(1, "請選擇性別"),
-    age: z.string().min(1, "請選擇年齡區間"),
+    gender: z.string().min(1, "＊必填"),
+    age: z.string().min(1, "＊必填"),
   }),
 );
 
@@ -150,7 +150,6 @@ const onInvalidSubmit = ({ errors }) => {
   console.log("驗證失敗", errors); // 看看這裡有沒有跑出來
 };
 const onSubmit = handleSubmit((values) => {
-  console.log("表單提交成功", values);
-  navigateTo("/question");
+  pageIndex.value = 2;
 }, onInvalidSubmit);
 </script>

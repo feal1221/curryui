@@ -1,4 +1,5 @@
 <template>
+  <curry-bar />
   <div
     class="flex flex-col justify-center items-center gap-4 mt-4 bg-[var(--bg-yellow)] min-h-screen pt-16"
   >
@@ -21,7 +22,8 @@
         src="/assets/images/Rectangle.png"
         class="absolute z-20 top-5 right-52"
       />
-      <UiButton
+      <popup />
+      <!-- <UiButton
         variant="destructive"
         class="px-20 py-3 font-bold text-2xl absolute z-20 bottom-36 left-1/2 -translate-x-1/2"
       >
@@ -30,7 +32,7 @@
 
           開始測驗！
         </NuxtLink>
-      </UiButton>
+      </UiButton> -->
     </div>
     <!-- 抽獎獎品資訊 -->
     <div

@@ -13,11 +13,15 @@
     <!-- Desktop menu (>= 465px) -->
     <div class="hidden min-[465px]:flex mr-4">
       <template v-for="(item, index) in menu" :key="index">
-        <NuxtLink
+        <div class="ml-auto text-white text-sm lg:text-2xl px-2" v-if="index < menu.length - 1">
+          {{ item.name }} |
+        </div>
+        <!-- <NuxtLink
           :to="item.link"
           class="ml-auto text-white text-sm lg:text-2xl px-2 border-r-1 solid border-white"
-          >{{ item.name }}</NuxtLink
-        >
+          >
+          {{ item.name }}</NuxtLink
+        > -->
         <!-- <div class="ml-auto text-white" v-if="index < menu.length - 1">｜</div> -->
       </template>
     </div>
@@ -41,13 +45,16 @@
             <UiSheetDescription>
               <div class="flex flex-col gap-4">
                 <template v-for="(item, index) in menu" :key="index">
-                  <NuxtLink
+                  <div class="text-white text-lg font-bold" @click="redirectToHome">
+                    {{ item.name }}
+                  </div>
+                  <!-- <NuxtLink
                     :to="item.link"
                     @click="mobileMenuOpen = false"
                     class="text-white font-bold text-lg"
                   >
                     {{ item.name }}
-                  </NuxtLink>
+                  </NuxtLink> -->
                 </template>
                 <FB
                   class="cursor-pointer w-8 h-8 max-[360px]:w-6 max-[360px]:h-6"
@@ -85,7 +92,7 @@ onMounted(() => {
 });
 
 const redirectToHome = () => {
-        router.push('/').then(() => {
+        // router.push('/').then(() => {
             // 等待 DOM 更新後再移動畫面到用戶號碼元素
             setTimeout(() => {
                 const el = document.getElementById('userNumber');
@@ -94,7 +101,7 @@ const redirectToHome = () => {
                     el.focus();
                 }
             }, 0);
-        });
+        // });
 
 };
 
@@ -105,19 +112,19 @@ const menu = [
   },
   {
     name: "抽獎獎品資訊",
-    link: "/about",
+    link: "/",
   },
   {
     name: "全民咖哩任務",
-    link: "/about",
+    link: "/",
   },
   {
     name: "附近超市",
-    link: "/about",
+    link: "/",
   },
   {
     name: "注意事項",
-    link: "/about",
+    link: "/",
   },
 ];
 </script>

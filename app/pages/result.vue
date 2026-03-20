@@ -63,7 +63,7 @@
             <UiButton
         class="w-full font-bold bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]"
       >
-        <NuxtLink :to="'/question'"> 返回活動首頁 </NuxtLink>
+        <NuxtLink :to="'/'"> 返回活動首頁 </NuxtLink>
       </UiButton>
     </div>
   </div>
