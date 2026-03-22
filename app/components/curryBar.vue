@@ -14,7 +14,8 @@
     <div class="hidden min-[465px]:flex mr-4">
       <template v-for="(item, index) in menu" :key="index">
         <NuxtLink
-          class="ml-auto text-white text-sm lg:text-2xl px-2 border-r-1 solid border-white cursor-pointer"
+          :class="activeId === item.link ? 'text-[#FAD35C]' : 'text-white'"
+          class="ml-auto  text-sm lg:text-2xl px-2 border-r-1 solid border-white cursor-pointer"
           @click="redirectToHome(item.link)"
         >
           {{ item.name }}</NuxtLink
@@ -50,7 +51,8 @@
               >
                 <template v-for="(item, index) in menu" :key="index">
                   <div
-                    class="self-start text-white text-2xl font-medium cursor-pointer"
+                    :class="activeId === item.link ? 'text-[#FAD35C]' : 'text-white'"
+                    class="self-start text-2xl font-medium cursor-pointer"
                     @click="redirectToHome(item.link)"
                   >
                     {{ item.name }}
@@ -74,27 +76,49 @@
 </template>
 <script setup>
 const mobileMenuOpen = ref(false);
+const activeId = ref('');
+const HEADER_HEIGHT = 80;
+let observer;
+const handleResize = () => {
+  if (window.innerWidth >= 465 && mobileMenuOpen.value) {
+    mobileMenuOpen.value = false;
+  }
+};
 
 // 監聽視窗大小變化，當螢幕變大時自動關閉 mobile menu
 onMounted(() => {
-  const handleResize = () => {
-    if (window.innerWidth >= 465 && mobileMenuOpen.value) {
-      mobileMenuOpen.value = false;
-    }
-  };
-
   window.addEventListener("resize", handleResize);
 
-  onUnmounted(() => {
-    window.removeEventListener("resize", handleResize);
+  // 建立觀察器：當區塊標題滑到導覽列下方時，切換 active 狀態
+  observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        activeId.value = entry.target.id;
+      }
+    });
+  }, {
+    rootMargin: `-${HEADER_HEIGHT}px 0px -65% 0px`,
+    threshold: 0
+  });
+
+  // 開始觀察 menu 裡的所有 link 對應的 DOM 元素
+  menu.forEach((item) => {
+    const el = document.getElementById(item.link);
+    if (el) observer.observe(el);
   });
 });
 
+onUnmounted(() => {
+  window.removeEventListener("resize", handleResize);
+  observer?.disconnect();
+});
+
 const redirectToHome = (link) => {
+  activeId.value = link;
   setTimeout(() => {
     const el = document.getElementById(link);
     if (el) {
-      const headerOffset = 80;
+      const headerOffset = HEADER_HEIGHT;
       const top =
         el.getBoundingClientRect().top + window.scrollY - headerOffset;
       window.scrollTo({

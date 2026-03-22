@@ -318,8 +318,9 @@
         <div class="text-[var(--text-red)] font-medium text-4xl mx-auto my-3">
           Coming Soon
         </div>
-        <div class="text-[var(--primary-brown)] font-medium text-base mx-auto">
-          *公布日期：預計2026年5月8日(五)當天公布。
+        <div class="text-[var(--primary-brown)] font-medium text-base mx-auto flex flex-col items-center text-center">
+          *公布日期：2026年5月12日(二)當天於台灣好侍FB官方粉絲團公布。
+          <a href="https://www.facebook.com/house.curry.tw" target="_blank" class="underline">{{ '(https://www.facebook.com/house.curry.tw)' }}</a>
         </div>
       </div>
 
