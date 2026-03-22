@@ -1,163 +1,257 @@
-<template>
-  <div
-    class="bg-[var(--bg-yellow)] min-h-screen flex flex-col items-center gap-4 pt-20"
-  >
-    <h1 class="text-[var(--primary-brown)] text-2xl sm:text-3xl font-bold">
-      {{ "我的咖哩人格結果是：" }}
-    </h1>
-    <div class="text-[var(--primary-brown)]">
-      {{ "長按上方圖片或點選右鍵進行下載" }}
-    </div>
-    <div class="w-full bg-white items-center flex flex-col font-bold gap-6 justify-center p-10">
-      {{ '立刻將你的測驗結果圖分享至好侍官方FB活動貼文留言處參加抽獎！' }}
-    <UiDialog v-model:open="showDialog">
-      <UiDialogTrigger>
-        <UiButton variant="destructive" class="font-bold"> 
-          <Icon name="streamline-sharp:gift-2-remix" class="-mr-1" />
-          立即至好侍FB參加抽獎 </UiButton>
-      </UiDialogTrigger>
-      <UiDialogContent>
-        <UiDialogHeader>
-          <UiDialogTitle>分享結果至</UiDialogTitle>
-          <UiDialogDescription>
-            <div class="flex gap-2 flex-wrap">
-              <Line class="cursor-pointer" @click="shareToLine" />
-              <FB class="cursor-pointer mt-1.5" @click="shareToFB" />
-              <Threads
-                class="cursor-pointer mt-1.5 ml-1"
-                @click="shareToThreads"
-              />
-              <Ig
-                v-if="isMobile"
-                class="cursor-pointer mt-2 ml-2"
-                @click="downloadImage"
-              />
-              <div
-                class="mt-2 p-1 h-8 text-center text-sm text-gray-500 cursor-pointer border-1 solid border-gray-300 rounded-md"
-                @click="copyText('已複製文字，快去貼上分享吧！')"
-              >
-                複製文字
-              </div>
-            </div>
-          </UiDialogDescription>
-        </UiDialogHeader>
-        <!-- <UiDialogFooter>
-          <UiButton variant="secondary" @click="showDialog = false">
-            關閉
-          </UiButton>
-        </UiDialogFooter> -->
-      </UiDialogContent>
-    </UiDialog>
-    </div>
-    <div class="flex gap-2 flex-col items-center">
+  <template>
+    <div
+      class="bg-[var(--bg-yellow)] min-h-screen flex flex-col items-center gap-15 py-20"
+    >
+      <h1 class="text-[var(--primary-brown)] text-5xl sm:text-5xl font-bold">
+        {{ "你的咖哩人格是..." }}
+      </h1>
+      <img src="/assets/images/result1.jpg" class="" />
+      <div
+        class="text-[var(--primary-brown)] text-2xl font-normal flex flex-col items-center leading-[36px]"
+      >
+        {{ "長按上方結果圖片或滑鼠右鍵另存圖片" }}
+        <div class="text-[var(--primary-brown)] text-2xl font-normal">
+          {{ "立刻將你的測驗結果圖分享至好侍官方FB活動貼文留言處參加抽獎" }}
+        </div>
+      </div>
 
-      <UiButton variant="destructive" class="font-bold">
-          <Icon name="streamline-sharp:share-link-solid" class="-mr-1" />邀請朋友測驗咖哩人格
-      </UiButton>
-      <!-- <div
-        class="flex items-center gap-1 cursor-pointer border-1 solid border-gray-300 rounded-md px-2 py-1"
+      <UiButton
+        variant="destructive"
+        class="font-bold text-2xl px-22 py-4"
         @click="copyLink"
       >
-        <div class="text-sm text-gray-500">邀請朋友測驗咖哩人格</div>
-      </div> -->
-            <UiButton
-        class="w-full font-bold bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]"
+        <Icon name="streamline-sharp:gift-2-remix" />
+        立即至好侍FB參加抽獎
+      </UiButton>
+      <UiDialog v-model:open="showDialog">
+        <UiDialogTrigger as-child>
+          <UiButton variant="destructive" class="font-bold text-2xl px-22 py-4">
+            <Icon name="streamline-sharp:share-link-solid" />邀請朋友測驗咖哩人格
+          </UiButton>
+        </UiDialogTrigger>
+        <UiDialogContent
+          :show-close-button="false"
+          class="bg-[var(--bg-gray)] h-[100vh] w-[944px] max-w-[944px] sm:max-w-[944px] overflow-y-auto"
+        >
+          <UiDialogHeader>
+            <UiDialogTitle
+              @click="showDialog = false"
+              class="cursor-pointer text-2xl ml-5"
+              >←</UiDialogTitle
+            >
+            <UiDialogDescription>
+              <div class="flex flex-col p-10 max-w-[500px] mx-auto text-[var(--primary-brown)]">
+                <div class="flex flex-col justify-center items-center w-full">
+                  <img src="/assets/images/share.png" class="w-full h-auto" />
+                  <div
+                    class="bg-white border-[1px] border-solid border-[var(--primary-brown)] text-[var(--primary-brown)] flex flex-col font-medium p-6 gap-2 w-full"
+                  >
+                    <div class="text-2xl text-left font-bold">
+                      本命咖哩大公開！
+                    </div>
+                    <div class="text-base text-left">
+                      測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple
+                      Watch 等大禮！
+                    </div>
+                  </div>
+                </div>
+
+                <div class="flex justify-between items-start mt-6 w-full">
+                  <div
+                    class="flex flex-col items-center flex-1 cursor-pointer"
+                    @click="copyLink"
+                  >
+                    <img src="/assets/images/copy.png" />
+                    <span class="text-xs mt-2 text-[#54310F]">複製連結</span>
+                  </div>
+
+                  <div
+                    class="flex flex-col items-center flex-1 cursor-pointer"
+                    @click="shareToFB"
+                  >
+                    <img src="/assets/images/Facebook.png" />
+                    <span class="text-xs mt-2 text-[#54310F]">Facebook</span>
+                  </div>
+
+                  <div
+                    v-if="isMobile"
+                    class="flex flex-col items-center flex-1 cursor-pointer"
+                    @click="downloadImage"
+                  >
+                    <img src="/assets/images/Instagram.png"  />
+                    <span class="text-xs mt-2 text-[#54310F]">Instagram</span>
+                  </div>
+
+                  <div
+                    class="flex flex-col items-center flex-1 cursor-pointer"
+                    @click="shareToLine"
+                  >
+                    <img src="/assets/images/LINE.png" />
+                    <span class="text-xs mt-2 text-[#54310F]">LINE</span>
+                  </div>
+
+                  <div
+                    class="flex flex-col items-center flex-1 cursor-pointer"
+                    @click="shareToThreads"
+                  >
+                    <img src="/assets/images/threads.png" />
+                    <span class="text-xs mt-2 ]">Threads</span>
+                  </div>
+                </div>
+              </div>
+            </UiDialogDescription>
+          </UiDialogHeader>
+          <!-- <UiDialogFooter>
+            <UiButton variant="secondary" @click="showDialog = false">
+              關閉
+            </UiButton>
+          </UiDialogFooter> -->
+        </UiDialogContent>
+      </UiDialog>
+
+      <!-- <div
+          class="flex items-center gap-1 cursor-pointer border-1 solid border-gray-300 rounded-md px-2 py-1"
+          @click="copyLink"
+        >
+          <div class="text-sm text-gray-500">邀請朋友測驗咖哩人格</div>
+        </div> -->
+      <div class="flex flex-col gap-4">
+        <div class="bg-white rounded-xl w-[632px] h-[221px] relative">
+          <div class="flex justify-between items-center h-full px-10">
+            <!-- <div class="flex flex-col justify-center items-center gap-2 border-r-2 solid border-[var(--primary-brown)] pr-10"> -->
+            <div class="flex flex-col justify-center items-center gap-2">
+              <img src="/assets/images/water.png" class="" />
+              <div class="text-2xl font-normal text-[var(--primary-brown)]">
+                水量指南
+              </div>
+            </div>
+            <div class="w-[2px] h-[121px] bg-[var(--primary-brown)]"></div>
+            <div
+              class="flex flex-col justify-center items-start text-base font-normal text-[var(--primary-brown)] gap-1"
+            >
+              <div>{{ "每1小塊水的用量：" }}</div>
+              <div>{{ "佛蒙特咖哩塊系列 約120ml/1小塊" }}</div>
+              <div>{{ "爪哇咖哩塊系列 約150ml/1小塊" }}</div>
+              <div>{{ "北海道白醬料理塊系列 約150ml/1小塊" }}</div>
+              <div>{{ "完熟蕃茄燴飯料理塊 約110ml/1小塊" }}</div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="flex flex-col font-normal text-base text-[var(--primary-brown)] w-[632px] gap-1"
+        >
+          <div class="self-start">
+            {{ "注意事項：" }}
+          </div>
+          <ul class="list-disc list-outside ml-4">
+            <li>
+              若料理塊的數量太少，烹煮起來會比較困難，建議一次烹煮分量為四小塊以上。
+            </li>
+            <li>
+              烹煮時，因食材的數量和種類、鍋子的大小以及火候會有所不同，請以上述水量為基準，並根據個人喜好進行調整，同時參考包裝上的說明。
+            </li>
+            <li>
+              已開封的咖哩塊建議放入食物保鮮盒或密封容器，或是裝進保鮮夾鏈袋，並盡量將空氣擠出來再封口後，放進冰箱冷藏保存，並儘快使用完畢。
+            </li>
+          </ul>
+        </div>
+      </div>
+      <UiButton
+        class="font-bold text-2xl px-22 py-4 bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]"
       >
         <NuxtLink :to="'/'"> 返回活動首頁 </NuxtLink>
       </UiButton>
     </div>
-  </div>
-</template>
-<script setup>
-import shareImageUrl from "@/assets/F.jpg";
-import FB from "@/assets/Fb.vue";
-import Line from "@/assets/LineLogo.vue";
-import Threads from "@/assets/Threads.vue";
-import Ig from "@/assets/Ig.vue";
-import Copy from "@/assets/Copy.vue";
-import { toast } from "vue-sonner";
-const showDialog = ref(false);
-// useSeoMeta({
-//   title: `我是【絲滑奶油型】靈魂！ - 咖哩靈魂拌測驗結果`,
-//   ogTitle: `測驗結果：我的靈魂是溫潤的絲滑奶油`,
-//   ogImage: `https://example.com/images/result-${resultId}.jpg`, // 動態對應結果圖
-// })
+  </template>
+  <script setup>
+  import shareImageUrl from "~/assets/images/result1.jpg";
+  import { toast } from "vue-sonner";
+  const showDialog = ref(false);
+  // useSeoMeta({
+  //   title: `我是【絲滑奶油型】靈魂！ - 咖哩靈魂拌測驗結果`,
+  //   ogTitle: `測驗結果：我的靈魂是溫潤的絲滑奶油`,
+  //   ogImage: `https://example.com/images/result-${resultId}.jpg`, // 動態對應結果圖
+  // })
 
-// const ngrokUrl = "http://172.20.10.2:8080";
-const ngrokUrl = "https://grilla-estella-noneducationally.ngrok-free.dev/api";
-const textToCopy = "我是月光花，一起來測你是哪種花朵? #心理測驗 #月光花";
-const shareUrl = `${ngrokUrl}/share/${123}`;
-const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-const copyText = async (toastM) => {
-  await navigator.clipboard.writeText(textToCopy);
-  toast.success(toastM);
-};
-const copyLink = async () => {
-  const url = window.location.origin;
-  await navigator.clipboard.writeText(url);
-  toast.success("複製成功！快去分享給朋友吧！");
-};
-const timeout = 500; // 0.5秒後開啟分享視窗，確保複製完成
+  // const ngrokUrl = "http://172.20.10.2:8080";
+  const ngrokUrl = "https://grilla-estella-noneducationally.ngrok-free.dev/api";
+  const textToCopy = "我是月光花，一起來測你是哪種花朵? #心理測驗 #月光花";
+  const shareUrl = `${ngrokUrl}/share/${123}`;
+  // const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  const isMobile = computed(() => {
+    if (typeof navigator === "undefined") return false;
+    return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  });
+  const copyText = async (toastM) => {
+    await navigator.clipboard.writeText(textToCopy);
+    toast.success(toastM);
+  };
+  const copyLink = async () => {
+    const url = window.location.origin;
+    await navigator.clipboard.writeText(url);
+    toast.success("複製成功！快去分享給朋友吧！");
+  };
+  const timeout = 500; // 0.5秒後開啟分享視窗，確保複製完成
 
-const shareToLine = () => {
-  // 將文字與網址組合成一段內容
-  const fullText = `${textToCopy}\n${ngrokUrl}/share/123`;
+  const shareToLine = () => {
+    // 將文字與網址組合成一段內容
+    const fullText = `${textToCopy}\n${ngrokUrl}/share/123`;
 
-  // 使用 R/share 格式，這是目前最能保證「文字」被塞進去的方法
-  const lineUrl = isMobile
-    ? `https://line.me/R/share?text=${encodeURIComponent(fullText)}`
-    : `https://social-plugins.line.me/lineit/share?text=${encodeURIComponent(fullText)}`;
+    // 使用 R/share 格式，這是目前最能保證「文字」被塞進去的方法
+    const lineUrl = isMobile
+      ? `https://line.me/R/share?text=${encodeURIComponent(fullText)}`
+      : `https://social-plugins.line.me/lineit/share?text=${encodeURIComponent(fullText)}`;
 
-  window.open(lineUrl, "_blank");
-};
+    window.open(lineUrl, "_blank");
+  };
 
-const shareToFB = async () => {
-  try {
-    // 1. 自動幫使用者複製文字
-    copyText("已為您複製結果文字！請直接在 FB 貼上即可分享。");
-    // if (navigator.share) {
-    //   await navigator.share({
-    //     title: '分享至 Facebook',
-    //     text: textToCopy,
-    //     url: shareUrl,
-    //   });
-    //   return;
-    // }
-    // 2. 開啟 FB 分享視窗
-    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-    setTimeout(() => {
-      window.open(url, "_blank");
-    }, timeout);
-  } catch (err) {
-    console.error("複製失敗", err);
-  }
-};
-
-const shareToThreads = () => {
-  const text = `${textToCopy}\n\n${shareUrl}`;
-  const url = `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`;
-  window.open(url, "_blank");
-};
-// 4. 下載圖片 (針對 IG 最友善的做法)
-const downloadImage = async () => {
-  copyText("已為您複製結果文字！請直接在 IG 貼上即可分享。");
-  // IG 的限時動態跳轉協議
-  const response = await fetch(shareImageUrl, { method: "GET" });
-  const blob = await response.blob();
-  const file = new File([blob], "result.jpg", { type: "image/jpeg" });
-
-  // 2. 檢查手機是否支援分享檔案
-  setTimeout(async () => {
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({
-        files: [file],
-        title: "我的測驗結果",
-        text: "快來看看我的測驗結果！",
-      });
-    } else {
-      // 3. 不支援時的保底：直接開啟 IG
-      window.location.href = "instagram://story-camera";
+  const shareToFB = async () => {
+    try {
+      // 1. 自動幫使用者複製文字
+      copyText("已為您複製結果文字！請直接在 FB 貼上即可分享。");
+      // if (navigator.share) {
+      //   await navigator.share({
+      //     title: '分享至 Facebook',
+      //     text: textToCopy,
+      //     url: shareUrl,
+      //   });
+      //   return;
+      // }
+      // 2. 開啟 FB 分享視窗
+      const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+      setTimeout(() => {
+        window.open(url, "_blank");
+      }, timeout);
+    } catch (err) {
+      console.error("複製失敗", err);
     }
-  }, timeout);
-};
-</script>
+  };
+
+  const shareToThreads = () => {
+    const text = `${textToCopy}\n\n${shareUrl}`;
+    const url = `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`;
+    window.open(url, "_blank");
+  };
+  // 4. 下載圖片 (針對 IG 最友善的做法)
+  const downloadImage = async () => {
+    copyText("已為您複製結果文字！請直接在 IG 貼上即可分享。");
+    // IG 的限時動態跳轉協議
+    const response = await fetch(shareImageUrl, { method: "GET" });
+    const blob = await response.blob();
+    const file = new File([blob], "result.jpg", { type: "image/jpeg" });
+
+    // 2. 檢查手機是否支援分享檔案
+    setTimeout(async () => {
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: "我的測驗結果",
+          text: "快來看看我的測驗結果！",
+        });
+      } else {
+        // 3. 不支援時的保底：直接開啟 IG
+        window.location.href = "instagram://story-camera";
+      }
+    }, timeout);
+  };
+  </script>

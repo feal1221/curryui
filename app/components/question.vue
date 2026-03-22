@@ -18,13 +18,14 @@
     </div>
     <div class="flex justify-center flex-col gap-6 p-4">
       <template v-for="(m, index) in mockQA[pageIndex - 2]?.options" :key="index">
-        <UiButton variant="secondary" class="px-40 py-2 min-h-[64px] bg-white text-md text-[var(--primary-brown)] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]" :class="{ 'bg-[#FAD35C]': tempAnswer?.answer === m.value || (answer.some(a => a.answer === m.value && a.question === `Q${pageIndex-1}`)&&!tempAnswer) }" @click="tempAnswer = {question: `Q${pageIndex-1}`, answer: m.value}">
+        <UiButton variant="secondary" class="px-40 py-2 min-h-[64px] bg-white text-base text-[var(--primary-brown)] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]" :class="{ 'bg-[#FAD35C]': tempAnswer?.answer === m.value || (answer.some(a => a.answer === m.value && a.question === `Q${pageIndex-1}`)&&!tempAnswer) }" @click="tempAnswer = {question: `Q${pageIndex-1}`, answer: m.value}">
           <span class="whitespace-pre-line">
             <span v-if="m.title">{{ `< ${m.title} >`+'\n' }}</span>
             {{ m.description }}
           </span>
         </UiButton>
       </template>
+      <div v-if="isError" class="flex justify-center text-base text-[var(--text-red)] font-medium">*請擇一選項後，再點擊下一題繼續您的測驗哦！</div>
       <div class="flex justify-between mt-4">
         <UiButton  @click="goBack" class="text-2xl px-20 py-3 font-medium bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]">
           <span class="font-medium" >{{ pageIndex > 2 ? "上一題" : "返回" }}</span>
@@ -39,9 +40,27 @@
 <script setup>
 const answer = ref([]);
 const pageIndex = inject("pageIndex");
-
+const isError = ref(false);
 const tempAnswer = ref(null);
+const props = defineProps({
+  visible: {
+    type: Boolean,
+    default: false,
+  },
+});
+const emits = defineEmits(["update:visible"]);
 const goNext = () => {
+  isError.value = false;
+  // validate answer
+  if (!tempAnswer.value&&!answer.value.some(a => a.question === `Q${pageIndex.value-1}`)) {
+    isError.value = true;
+    return;
+  }
+  if (!tempAnswer.value&&answer.value.length<mockQA.length) {
+    pageIndex.value = pageIndex.value + 1;
+    return;
+  }
+  // 已經有答案但這次選了不同的選項，更新答案
   if (tempAnswer.value !== null) {
     pageIndex.value = pageIndex.value + 1;
     const existingIndex = answer.value.findIndex(a => a.question === tempAnswer.value.question);
@@ -52,12 +71,16 @@ const goNext = () => {
     }
     tempAnswer.value = null;
   }
+  console.log('answer.value', answer.value);
+  console.log('pageIndex.value', pageIndex.value);
   if (answer.value.length === mockQA.length) {
+    // emits("update:visible", false);
     // TODO save ans API
     navigateTo("/result");
   }
 };
 const goBack = () => {
+  isError.value = false;
   if (answer.value.length > 0) {
     tempAnswer.value = null
   }

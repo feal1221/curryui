@@ -4,35 +4,37 @@
   >
     <!-- Logo -->
     <div
-      class="ml-10 text-white text-lg font-bold max-[464px]:absolute max-[464px]:left-1/2 max-[464px]:-translate-x-1/2 max-[464px]:ml-0"
+      @click="redirectToHome('test')"
+      class="cursor-pointer ml-10 text-white text-lg font-bold max-[464px]:absolute max-[464px]:left-1/2 max-[464px]:-translate-x-1/2 max-[464px]:ml-0"
     >
       <img src="/assets/images/logo.png" />
-      
     </div>
     <div class="grow"></div>
     <!-- Desktop menu (>= 465px) -->
     <div class="hidden min-[465px]:flex mr-4">
       <template v-for="(item, index) in menu" :key="index">
-        <div class="ml-auto text-white text-sm lg:text-2xl px-2" v-if="index < menu.length - 1">
-          {{ item.name }} |
-        </div>
-        <!-- <NuxtLink
-          :to="item.link"
-          class="ml-auto text-white text-sm lg:text-2xl px-2 border-r-1 solid border-white"
-          >
+        <NuxtLink
+          class="ml-auto text-white text-sm lg:text-2xl px-2 border-r-1 solid border-white cursor-pointer"
+          @click="redirectToHome(item.link)"
+        >
           {{ item.name }}</NuxtLink
-        > -->
-        <!-- <div class="ml-auto text-white" v-if="index < menu.length - 1">｜</div> -->
+        >
       </template>
     </div>
-    <img src="/assets/images/button-fb.png" class="max-[465px]:hidden ml-auto mr-4 cursor-pointer">
-    <img src="/assets/images/button-ig.png" class="max-[465px]:hidden mr-12 cursor-pointer">
+    <img
+      src="/assets/images/button-fb.png"
+      class="max-[465px]:hidden ml-auto mr-4 cursor-pointer"
+    />
+    <img
+      src="/assets/images/button-ig.png"
+      class="max-[465px]:hidden mr-12 cursor-pointer"
+    />
     <div class="min-[465px]:hidden">
       <UiSheet v-model:open="mobileMenuOpen" side="right">
         <UiSheetTrigger asChild>
           <Icon
             name="mdi:menu"
-            class="mr-4 text-white w-8 h-8 cursor-pointer"
+            class="mr-4 text-white text-3xl cursor-pointer"
             @click="mobileMenuOpen = true"
           />
         </UiSheetTrigger>
@@ -43,24 +45,24 @@
           <UiSheetHeader>
             <UiSheetTitle></UiSheetTitle>
             <UiSheetDescription>
-              <div class="flex flex-col gap-4">
+              <div
+                class="flex flex-col gap-6 pt-15 items-center justify-start text-left pl-2"
+              >
                 <template v-for="(item, index) in menu" :key="index">
-                  <div class="text-white text-lg font-bold" @click="redirectToHome">
-                    {{ item.name }}
-                  </div>
-                  <!-- <NuxtLink
-                    :to="item.link"
-                    @click="mobileMenuOpen = false"
-                    class="text-white font-bold text-lg"
+                  <div
+                    class="self-start text-white text-2xl font-medium cursor-pointer"
+                    @click="redirectToHome(item.link)"
                   >
                     {{ item.name }}
-                  </NuxtLink> -->
+                  </div>
                 </template>
-                <FB
-                  class="cursor-pointer w-8 h-8 max-[360px]:w-6 max-[360px]:h-6"
+                <img
+                  src="/assets/images/button-fb.png"
+                  class="cursor-pointer self-start"
                 />
-                <Ig
-                  class="cursor-pointer w-8 h-7 max-[360px]:w-6 max-[360px]:h-5"
+                <img
+                  src="/assets/images/button-ig.png"
+                  class="cursor-pointer self-start"
                 />
               </div>
             </UiSheetDescription>
@@ -71,9 +73,6 @@
   </div>
 </template>
 <script setup>
-import FB from "@/assets/Fb.vue";
-import Ig from "@/assets/Ig.vue";
-
 const mobileMenuOpen = ref(false);
 
 // 監聽視窗大小變化，當螢幕變大時自動關閉 mobile menu
@@ -91,40 +90,42 @@ onMounted(() => {
   });
 });
 
-const redirectToHome = () => {
-        // router.push('/').then(() => {
-            // 等待 DOM 更新後再移動畫面到用戶號碼元素
-            setTimeout(() => {
-                const el = document.getElementById('userNumber');
-                if (el) {
-                    el.scrollIntoView({ behavior: 'auto', block: 'center' });
-                    el.focus();
-                }
-            }, 0);
-        // });
-
+const redirectToHome = (link) => {
+  setTimeout(() => {
+    const el = document.getElementById(link);
+    if (el) {
+      const headerOffset = 80;
+      const top =
+        el.getBoundingClientRect().top + window.scrollY - headerOffset;
+      window.scrollTo({
+        top: Math.max(top, 0),
+        behavior: "auto",
+      });
+    }
+    mobileMenuOpen.value = false;
+  }, 0);
 };
 
 const menu = [
   {
     name: "活動測驗",
-    link: "/",
+    link: "test",
   },
   {
     name: "抽獎獎品資訊",
-    link: "/",
+    link: "rewards",
   },
   {
     name: "全民咖哩任務",
-    link: "/",
+    link: "tasks",
   },
   {
     name: "附近超市",
-    link: "/",
+    link: "supermarkets",
   },
   {
     name: "注意事項",
-    link: "/",
+    link: "notices",
   },
 ];
 </script>

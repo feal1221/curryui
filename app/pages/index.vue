@@ -4,7 +4,7 @@
     class="flex flex-col justify-center items-center gap-4 mt-4 bg-[var(--bg-yellow)] min-h-screen pt-16"
   >
     <!-- 活動測驗 -->
-    <div class="bg-[#F09020] w-full min-h-[820px] relative overflow-hidden">
+    <div class="bg-[#F09020] w-full min-h-[820px] relative overflow-hidden" id="test">
       <img
         src="/assets/images/bg-yellow.png"
         class="absolute -top-24 left-1/2 -translate-x-1/2 w-[1953px] h-[984px] max-w-none"
@@ -36,6 +36,7 @@
     </div>
     <!-- 抽獎獎品資訊 -->
     <div
+      id="rewards"
       class="my-16 flex text-center whitespace-pre-wrap pr-36 pl-36 flex-col text-[var(--primary-brown)]"
     >
       <h1 class="text-5xl font-bold leading-18 whitespace-pre-wrap break-keep">
@@ -75,10 +76,12 @@
           </ul>
           <div
             class="self-start text-base text-left"
-            v-for="n in a.notices"
-            :key="n"
+            v-for="(n,nIndex) in a.notices"
+            :key="nIndex"
           >
             *{{ n }}
+          <a v-if="a.linkkk&&nIndex===1" :href="'https://www.facebook.com/house.curry.tw'" target="_blank" class="underline">{{ '(https://www.facebook.com/house.curry.tw)' }}</a>
+
           </div>
         </div>
       </template>
@@ -110,7 +113,8 @@
     </div>
     <!-- 全民咖哩任務 -->
     <div
-      class="flex justify-center bg-[#F2E132] w-full min-h-[2978px] relative overflow-hidden"
+      id="tasks"
+      class="flex justify-center bg-[#F2E132] w-full min-h-[3198px] relative overflow-hidden"
     >
       <img
         src="/assets/images/veg2.png"
@@ -121,10 +125,11 @@
         class="absolute -translate-x-1/2 left-1/2 top-36"
       />
       <div class="flex mt-80 flex-col w-full jutify-center">
+        <div class="text-5xl bg-white text-[var(--primary-brown)] font-medium mx-auto px-22 py-2">{{'任務1'}}</div>
         <svg
           viewBox="0 0 1000 200"
           preserveAspectRatio="xMidYMid meet"
-          class="h-[160px] -mt-16"
+          class="h-[160px]"
         >
           <text
             x="500"
@@ -156,11 +161,11 @@
         <div class="flex flex-col gap-4 justify-center">
           <div class="flex gap-4 justify-center">
             <div
-              class="bg-[var(--primary-brown)] rounded-xl w-50 h-87 p-9 text-white text-2xl flex items-center justify-center"
+              class="bg-[var(--primary-brown)] rounded-xl w-50  p-9 text-white text-2xl flex items-center justify-center"
             >
               {{ "活動辦法" }}
             </div>
-            <div class="bg-white rounded-xl w-[864px] h-87 p-9 font-medium">
+            <div class="bg-white rounded-xl w-[864px]  p-9 font-medium">
               <div class="text-[var(--primary-brown)] text-2xl leading-relaxed">
                 {{
                   "Step1. 於活動期間(2026/4/10-2026/5/7)於全台通路(全聯、大全聯、家樂福、家樂福超市、愛買等通路)一次購買「好侍咖哩塊系列」任2盒。"
@@ -178,18 +183,20 @@
                 class="text-[var(--primary-brown)] text-base whitespace-pre-line mt-4"
               >
                 {{
-                  "*活動參加次數可累計，參與活動越多次，得獎機會越高！\n*同一張發票號碼僅限登錄乙次，且僅有乙次得獎機會，重複登錄將取消參加資格。\n*參加本活動如未滿18歲(西元2008年4月10日以後出生)，主辦單位將取消其參加及兌獎資格。"
+                  "*活動參加次數可累計，參與活動越多次，得獎機會越高！\n*同一張發票號碼僅限登錄乙次，且僅有乙次得獎機會，重複登錄將取消參加資格。\n*參加本活動未正確填寫資料，主辦單位將取消其參加及兌獎資格。\n*得獎者未滿18歲需提交法定代理人同意書及檢附證明文件，若無法於兌獎時提交視同放棄兌獎資格。"
+
+
                 }}
               </div>
             </div>
           </div>
           <div class="flex gap-4 justify-center">
             <div
-              class="bg-[var(--primary-brown)] rounded-xl w-50 h-78 p-9 text-white text-2xl flex items-center justify-center text-center whitespace-pre-wrap"
+              class="bg-[var(--primary-brown)] rounded-xl w-50 p-9 text-white text-2xl flex items-center justify-center text-center whitespace-pre-wrap"
             >
               {{ "活動指定\n購買商品" }}
             </div>
-            <div class="bg-white rounded-xl w-[864px] h-78 p-9 font-medium">
+            <div class="bg-white rounded-xl w-[864px] py-5 px-9 font-medium">
               <div
                 class="text-[var(--primary-brown)] text-base leading-relaxed"
               >
@@ -204,12 +211,12 @@
           </div>
           <div class="flex gap-4 justify-center">
             <div
-              class="bg-[var(--primary-brown)] rounded-xl w-50 h-40 p-9 text-white text-2xl flex items-center justify-center text-center whitespace-pre-wrap"
+              class="bg-[var(--primary-brown)] rounded-xl w-50  p-9 text-white text-2xl flex items-center justify-center text-center whitespace-pre-wrap"
             >
               {{ "發票登錄時間" }}
             </div>
             <div
-              class="bg-white rounded-xl w-[864px] h-40 p-9 font-medium text-[var(--primary-brown)] text-2xl leading-relaxed flex items-center"
+              class="bg-white rounded-xl w-[864px] p-9 font-medium text-[var(--primary-brown)] text-2xl leading-relaxed flex items-center"
             >
               {{ "2026年4月10日起至2026年5月7日23:59分止" }}
             </div>
@@ -218,9 +225,10 @@
 
         <UiButton
           variant="destructive"
-          class="px-20 py-3 font-bold text-2xl self-center mt-8"
+          class="px-20 py-3 font-bold text-2xl self-center my-8"
           >{{ "詳細活動資訊" }}
         </UiButton>
+        <div class="text-5xl bg-white text-[var(--primary-brown)] font-medium mx-auto px-22 py-2">{{'任務2'}}</div>
         <svg
           viewBox="0 0 1000 200"
           preserveAspectRatio="xMidYMid meet"
@@ -259,19 +267,21 @@
             >{{ "【簡訊發票登錄】抽獎活動！" }}
           </div>
         </div>
+        <div class="max-w-[1020px] flex justify-center mx-auto flex-col">
         <div
-          class="self-start pl-110 text-[var(--primary-brown)] text-2xl my-5 font-medium"
+          class="self-start text-[var(--primary-brown)] text-2xl my-5 font-medium"
         >
           {{ "活動門市資訊：" }}
         </div>
         <img
           src="/assets/images/com-table.png"
-          class="max-w-[1020px] mx-auto"
         />
+        </div>
         <svg
           viewBox="0 0 1000 200"
           preserveAspectRatio="xMidYMid meet"
           class="h-[160px]"
+          id="supermarkets"
         >
           <text
             x="500"
@@ -316,7 +326,7 @@
       <div class="roof" :style="{ backgroundImage: `url(${roofImage})` }"></div>
     </div>
     <!-- 注意事項 -->
-    <div class="bg-[#F9F0DC] min-h-[1388px] flex flex-col">
+    <div class="bg-[#F9F0DC] min-h-[1388px] flex flex-col" id="notices">
       <div class="flex justify-center">
         <svg
           viewBox="0 0 1000 200"
@@ -408,7 +418,7 @@
         >
           活動洽詢
         </div>
-        <div>好侍你的咖哩人格測驗活動小組 housecurryevents@gmail.com</div>
+        <div>好侍你的咖哩人格測驗活動小組 <a href="mailto:housecurryevents@gmail.com" class="underline">housecurryevents@gmail.com</a></div>
       </div>
     </div>
     <div @click="scrollToTop" class="bg-white fixed right-5 bottom-5 w-18 h-18 rounded-full z-50 flex items-center justify-center cursor-pointer">
@@ -440,8 +450,9 @@ const activity = [
     content: ["測驗時間：2026年4月8日至2026年5月6日(三) 23:59止"],
     notices: [
       " 時間判別以本活動網站系統為準",
-      " 得獎公布日期：預計2026年5月8日(五)當天公布",
+      " 得獎公布日期：2026年5月12日(二)當天於台灣好侍FB官方粉絲團公布"
     ],
+    linkkk:true
   },
   {
     title: "活動辦法",
@@ -451,7 +462,7 @@ const activity = [
     notices: [
       " 活動參加次數不可累計！",
       " 每人僅有乙次得獎機會，以第一個抽中獎品為主。",
-      " 參加本活動這位正確填寫資料，主辦單位將取消其參加及兌獎資格。",
+      " 參加本活動未正確填寫資料，主辦單位將取消其參加及兌獎資格。",
       " 得獎者未滿18歲需提交法定代理人同意書及檢附證明文件，若無法於兌獎時提交視同放棄兌獎資格。",
       " 個人資料僅限台灣好侍食品「2026 測出你的咖哩人格」線上人格測驗活動使用。",
     ],
@@ -481,7 +492,7 @@ const curryList = [
   { name: "佛蒙特咖哩塊/甜味", url: curry1 },
   { name: "佛蒙特咖哩塊/中辣", url: curry2 },
   { name: "佛蒙特咖哩塊/辣味", url: curry3 },
-  { name: "素食料理塊", url: curry4 },
+  { name: "素食咖哩塊", url: curry4 },
   { name: "爪哇咖哩塊/中辣", url: curry5 },
   { name: "爪哇咖哩塊/辣味", url: curry6 },
   { name: "爪哇咖哩塊/香辛辣", url: curry7 },

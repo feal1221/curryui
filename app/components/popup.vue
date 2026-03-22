@@ -1,6 +1,6 @@
 <template>
   <UiDialog v-model:open="showDialog" :modal="true">
-    <UiDialogTrigger>
+    <UiDialogTrigger as-child>
       <UiButton
         variant="destructive"
         class="px-20 py-3 font-bold text-2xl absolute z-20 bottom-36 left-1/2 -translate-x-1/2"
@@ -11,7 +11,7 @@
     </UiDialogTrigger>
     <UiDialogContent
       :show-close-button="false"
-      class="h-[927px] w-[944px] max-w-[944px] sm:max-w-[944px] overflow-y-auto bg-[var(--bg-gray)]"
+      class="h-[100vh] w-[944px] max-w-[944px] sm:max-w-[944px] overflow-y-auto bg-[var(--bg-gray)]"
       @pointer-down-outside.prevent
       @interact-outside.prevent
     >
@@ -52,7 +52,7 @@
             </UiButton>
           </div>
           <about v-if="pageIndex === 1" />
-          <question v-if="pageIndex >= 2" />
+          <question v-if="pageIndex >= 2" v-model:visible="showDialog"/>
         </UiDialogDescription>
       </UiDialogHeader>
     </UiDialogContent>
@@ -62,4 +62,14 @@
 const showDialog = ref(false);
 const pageIndex = ref(0);
 provide("pageIndex", pageIndex);
+watch(pageIndex, (newVal) => {
+  // 滾動到頂部
+  const dialogContent = document.querySelector('[data-slot="dialog-content"]');
+  if (dialogContent) {
+    dialogContent.scrollTop = 0;
+  }
+  if (newVal === 8) {
+    showDialog.value = false;
+  }
+});
 </script>

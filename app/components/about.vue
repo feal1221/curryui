@@ -1,18 +1,17 @@
 <template>
-  <div
-    class="flex flex-col justify-center items-center gap-4 f-full p-10"
-  >
+  <div class="flex flex-col justify-center items-center gap-4 py-20">
     <form
       @submit="onSubmit"
-      class="flex flex-col gap-4 sm:gap-5 w-full max-w-sm sm:max-w-md md:max-w-lg "
+      class="flex flex-col gap-4 sm:gap-5 w-full max-w-sm sm:max-w-md md:max-w-2xl text-2xl font-medium"
     >
       <UiField :data-invalid="errors.name">
         <UiFieldLabel
           for="name"
           class="text-base sm:text-2xl text-[var(--primary-brown)] font-medium"
-          >您的暱稱是        <UiFieldError v-if="errors.name" class="text-xs sm:text-sm">{{
-          errors.name
-        }}</UiFieldError></UiFieldLabel
+          >您的暱稱是
+          <UiFieldError v-if="errors.name" class="text-xs sm:text-sm">{{
+            errors.name
+          }}</UiFieldError></UiFieldLabel
         >
         <UiInput
           v-model="name"
@@ -21,7 +20,6 @@
           placeholder="請輸入暱稱"
           class="text-base sm:text-2xl border-t-0 border-l-0 border-r-0 border-b border-gray-300 rounded-none px-0 focus-visible:ring-0 focus-visible:border-[var(--primary-brown)] tracking-widest"
         />
-
       </UiField>
 
       <!-- <UiField :data-invalid="errors.email">
@@ -41,64 +39,73 @@
         <UiFieldLabel
           for="gender"
           class="text-base sm:text-2xl text-[var(--primary-brown)] font-medium"
-          >您的性別        <UiFieldError v-if="errors.gender" class="text-xs sm:text-sm">{{
-          errors.gender
-        }}</UiFieldError></UiFieldLabel
+          >您的性別
+          <UiFieldError v-if="errors.gender" class="text-xs sm:text-sm">{{
+            errors.gender
+          }}</UiFieldError></UiFieldLabel
         >
-        <UiRadioGroup v-model="gender" id="gender" class="text-base sm:text-2xl font-medium text-[var(--primary-brown)]">
+        <UiRadioGroup
+          v-model="gender"
+          id="gender"
+          class="text-base sm:text-2xl font-medium text-[var(--primary-brown)]"
+        >
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="female" value="female" />
-            <Label for="female">女</Label>
+            <UiLabel for="female" class="text-2xl font-medium">女</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="male" value="male" />
-            <Label for="male">男</Label>
+            <UiLabel for="male" class="text-2xl font-medium">男</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="other" value="other" />
-            <Label for="other">多元</Label>
+            <UiLabel for="other" class="text-2xl font-medium">多元</UiLabel>
           </div>
         </UiRadioGroup>
-
       </UiField>
 
       <UiField :data-invalid="errors.age">
         <UiFieldLabel
           for="age"
           class="text-base sm:text-2xl text-[var(--primary-brown)] font-medium"
-          >您的年齡        <UiFieldError v-if="errors.age" class="text-xs sm:text-sm">{{
-          errors.age
-        }}</UiFieldError></UiFieldLabel
+          >您的年齡
+          <UiFieldError v-if="errors.age" class="text-xs sm:text-sm">{{
+            errors.age
+          }}</UiFieldError></UiFieldLabel
         >
-        <UiRadioGroup v-model="age" id="age" class="text-base sm:text-2xl font-medium text-[var(--primary-brown)]">
+        <UiRadioGroup
+          v-model="age"
+          id="age"
+          class="text-base sm:text-2xl font-medium text-[var(--primary-brown)]"
+        >
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age0" value="17" />
-            <Label for="age0">17歲以下</Label>
-            </div>
+            <UiLabel for="age0" class="text-2xl font-medium">17歲以下</UiLabel>
+          </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age1" value="18-25" />
-            <Label for="age1">18-25歲</Label>
-            </div>
-            <div class="flex items-center space-x-3 my-1">
+            <UiLabel for="age1" class="text-2xl font-medium">18-25歲</UiLabel>
+          </div>
+          <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age2" value="26-35" />
-            <Label for="age2">26-35歲</Label>
-            </div>
-            <div class="flex items-center space-x-3 my-1">
+            <UiLabel for="age2" class="text-2xl font-medium">26-35歲</UiLabel>
+          </div>
+          <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age3" value="36-45" />
-            <Label for="age3">36-45歲</Label>
-            </div>
-            <div class="flex items-center space-x-3 my-1">
+            <UiLabel for="age3" class="text-2xl font-medium">36-45歲</UiLabel>
+          </div>
+          <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age4" value="46-55" />
-            <Label for="age4">46-55歲</Label>
-            </div>
-            <div class="flex items-center space-x-3 my-1">
+            <UiLabel for="age4" class="text-2xl font-medium">46-55歲</UiLabel>
+          </div>
+          <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age5" value="56-65" />
-            <Label for="age5">56-65歲</Label>
-            </div>
-            <div class="flex items-center space-x-3 my-1">
+            <UiLabel for="age5" class="text-2xl font-medium">56-65歲</UiLabel>
+          </div>
+          <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age6" value="66+" />
-            <Label for="age6">66歲以上</Label>
-            </div>
+            <UiLabel for="age6" class="text-2xl font-medium">66歲以上</UiLabel>
+          </div>
         </UiRadioGroup>
       </UiField>
 
@@ -119,10 +126,7 @@ import * as z from "zod";
 const pageIndex = inject("pageIndex");
 const formSchema = toTypedSchema(
   z.object({
-    name: z
-      .string()
-      .min(1, "＊必填")
-      .max(100, "暱稱不能超過 100 個字"),
+    name: z.string().min(1, "＊必填").max(100, "暱稱不能超過 100 個字"),
     //   email: z.string().min(1, '信箱為必填').email('請輸入有效的信箱格式'),
     gender: z.string().min(1, "＊必填"),
     age: z.string().min(1, "＊必填"),
