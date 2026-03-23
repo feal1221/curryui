@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col justify-center items-center gap-4 py-20">
+  <div class="flex flex-col justify-center items-center gap-4 py-2 sm:py-20">
     <form
       @submit="onSubmit"
       class="flex flex-col gap-4 sm:gap-5 w-full max-w-sm sm:max-w-md md:max-w-2xl text-2xl font-medium"
@@ -9,7 +9,7 @@
           for="name"
           class="text-base sm:text-2xl text-[var(--primary-brown)] font-medium"
           >您的暱稱是
-          <UiFieldError v-if="errors.name" class="text-xs sm:text-sm">{{
+          <UiFieldError v-if="errors.name" class="text-base">{{
             errors.name
           }}</UiFieldError></UiFieldLabel
         >
@@ -40,7 +40,7 @@
           for="gender"
           class="text-base sm:text-2xl text-[var(--primary-brown)] font-medium"
           >您的性別
-          <UiFieldError v-if="errors.gender" class="text-xs sm:text-sm">{{
+          <UiFieldError v-if="errors.gender" class="text-base">{{
             errors.gender
           }}</UiFieldError></UiFieldLabel
         >
@@ -51,15 +51,15 @@
         >
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="female" value="female" />
-            <UiLabel for="female" class="text-2xl font-medium">女</UiLabel>
+            <UiLabel for="female" class="text-base sm:text-2xl font-medium">女</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="male" value="male" />
-            <UiLabel for="male" class="text-2xl font-medium">男</UiLabel>
+            <UiLabel for="male" class="text-base sm:text-2xl font-medium">男</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="other" value="other" />
-            <UiLabel for="other" class="text-2xl font-medium">多元</UiLabel>
+            <UiLabel for="other" class="text-base sm:text-2xl font-medium">多元</UiLabel>
           </div>
         </UiRadioGroup>
       </UiField>
@@ -69,7 +69,7 @@
           for="age"
           class="text-base sm:text-2xl text-[var(--primary-brown)] font-medium"
           >您的年齡
-          <UiFieldError v-if="errors.age" class="text-xs sm:text-sm">{{
+          <UiFieldError v-if="errors.age" class="text-base">{{
             errors.age
           }}</UiFieldError></UiFieldLabel
         >
@@ -80,31 +80,31 @@
         >
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age0" value="17" />
-            <UiLabel for="age0" class="text-2xl font-medium">17歲以下</UiLabel>
+            <UiLabel for="age0" class="text-base sm:text-2xl font-medium">17歲以下</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age1" value="18-25" />
-            <UiLabel for="age1" class="text-2xl font-medium">18-25歲</UiLabel>
+            <UiLabel for="age1" class="text-base sm:text-2xl font-medium">18-25歲</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age2" value="26-35" />
-            <UiLabel for="age2" class="text-2xl font-medium">26-35歲</UiLabel>
+            <UiLabel for="age2" class="text-base sm:text-2xl font-medium">26-35歲</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age3" value="36-45" />
-            <UiLabel for="age3" class="text-2xl font-medium">36-45歲</UiLabel>
+            <UiLabel for="age3" class="text-base sm:text-2xl font-medium">36-45歲</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age4" value="46-55" />
-            <UiLabel for="age4" class="text-2xl font-medium">46-55歲</UiLabel>
+            <UiLabel for="age4" class="text-base sm:text-2xl font-medium">46-55歲</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age5" value="56-65" />
-            <UiLabel for="age5" class="text-2xl font-medium">56-65歲</UiLabel>
+            <UiLabel for="age5" class="text-base sm:text-2xl font-medium">56-65歲</UiLabel>
           </div>
           <div class="flex items-center space-x-3 my-1">
             <UiRadioGroupItem id="age6" value="66+" />
-            <UiLabel for="age6" class="text-2xl font-medium">66歲以上</UiLabel>
+            <UiLabel for="age6" class="text-base sm:text-2xl font-medium">66歲以上</UiLabel>
           </div>
         </UiRadioGroup>
       </UiField>
@@ -112,7 +112,7 @@
       <UiButton
         variant="destructive"
         type="submit"
-        class="self-center w-full sm:w-60 sm:self-end text-base sm:text-2xl py-2 sm:py-3 px-12"
+        class="self-center sm:self-end w-[250px] h-[64px] text-2xl py-2 px-4 "
       >
         START
       </UiButton>

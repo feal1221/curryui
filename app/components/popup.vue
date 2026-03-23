@@ -20,9 +20,9 @@
         <UiDialogDescription>
           <div
             v-if="pageIndex === 0"
-            class="flex flex-col justify-center items-center text-base sm:text-2xl font-medium text-[var(--primary-brown)] leading-relaxed sm:leading-[36px] px-5 py-10 sm:p-25 text-center"
+            class="flex flex-col justify-center items-center text-base sm:text-2xl font-medium text-[var(--primary-brown)] leading-relaxed sm:leading-[36px] p-0 sm:p-25 text-center"
           >
-            <h1 class="bg-[#FAD35C] px-5 sm:px-8 py-2 text-lg sm:text-2xl">
+            <h1 class="bg-[#FAD35C] px-4 py-4 sm:px-8 sm:py-2 text-2xl text-left sm:text-center">
               {{ "咖哩拌動靈魂，調配你的命定配方" }}
             </h1>
             <br />
@@ -46,7 +46,7 @@
             <UiButton
               variant="destructive"
               @click="pageIndex = 1"
-              class="w-full sm:w-60 text-base sm:text-2xl py-2 sm:py-3 px-12 mt-2"
+              class="w-[250px] h-[64px] text-2xl py-2 px-4 mt-2"
             >
               繼續
             </UiButton>
