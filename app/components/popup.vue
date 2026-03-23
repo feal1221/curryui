@@ -3,7 +3,7 @@
     <UiDialogTrigger as-child>
       <UiButton
         variant="destructive"
-        class="px-20 py-3 font-bold text-2xl absolute z-20 bottom-36 left-1/2 -translate-x-1/2"
+        class="px-22 py-4 font-bold text-2xl absolute z-20 bottom-12 sm:bottom-36 left-1/2 -translate-x-1/2 whitespace-nowrap"
       >
         <Icon name="material-symbols:touch-app" class="text-3xl" />
         開始測驗！
@@ -11,7 +11,7 @@
     </UiDialogTrigger>
     <UiDialogContent
       :show-close-button="false"
-      class="h-[100vh] w-[944px] max-w-[944px] sm:max-w-[944px] overflow-y-auto bg-[var(--bg-gray)]"
+      class="h-[100vh] w-[calc(100vw-16px)] max-w-[944px] sm:max-w-[944px] overflow-y-auto bg-[var(--bg-gray)]"
       @pointer-down-outside.prevent
       @interact-outside.prevent
     >
@@ -20,9 +20,9 @@
         <UiDialogDescription>
           <div
             v-if="pageIndex === 0"
-            class="flex flex-col justify-center items-center text-2xl font-medium text-[var(--primary-brown)] leading-[36px] p-25"
+            class="flex flex-col justify-center items-center text-base sm:text-2xl font-medium text-[var(--primary-brown)] leading-relaxed sm:leading-[36px] px-5 py-10 sm:p-25 text-center"
           >
-            <h1 class="bg-[#FAD35C] px-8 py-2">
+            <h1 class="bg-[#FAD35C] px-5 sm:px-8 py-2 text-lg sm:text-2xl">
               {{ "咖哩拌動靈魂，調配你的命定配方" }}
             </h1>
             <br />
@@ -46,7 +46,7 @@
             <UiButton
               variant="destructive"
               @click="pageIndex = 1"
-              class="w-full sm:w-60 text-base sm:text-2xl py-2 sm:py-3 px-12"
+              class="w-full sm:w-60 text-base sm:text-2xl py-2 sm:py-3 px-12 mt-2"
             >
               繼續
             </UiButton>

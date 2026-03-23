@@ -5,13 +5,13 @@
     <!-- Logo -->
     <div
       @click="redirectToHome('test')"
-      class="cursor-pointer ml-10 text-white text-lg font-bold max-[464px]:absolute max-[464px]:left-1/2 max-[464px]:-translate-x-1/2 max-[464px]:ml-0"
+      class="cursor-pointer ml-10 text-white text-lg font-bold max-[556px]:absolute max-[556px]:left-1/2 max-[556px]:-translate-x-1/2 max-[556px]:ml-0"
     >
       <img src="/assets/images/logo.png" />
     </div>
     <div class="grow"></div>
-    <!-- Desktop menu (>= 465px) -->
-    <div class="hidden min-[465px]:flex mr-4">
+    <!-- Desktop menu (>= 556px) -->
+    <div class="hidden min-[556px]:flex mr-4">
       <template v-for="(item, index) in menu" :key="index">
         <NuxtLink
           :class="activeId === item.link ? 'text-[#FAD35C]' : 'text-white'"
@@ -24,13 +24,13 @@
     </div>
     <img
       src="/assets/images/button-fb.png"
-      class="max-[465px]:hidden ml-auto mr-4 cursor-pointer"
+      class="max-[556px]:hidden ml-auto mr-4 cursor-pointer"
     />
     <img
       src="/assets/images/button-ig.png"
-      class="max-[465px]:hidden mr-12 cursor-pointer"
+      class="max-[556px]:hidden mr-12 cursor-pointer"
     />
-    <div class="min-[465px]:hidden">
+    <div class="min-[556px]:hidden">
       <UiSheet v-model:open="mobileMenuOpen" side="right">
         <UiSheetTrigger asChild>
           <Icon
@@ -80,7 +80,7 @@ const activeId = ref('');
 const HEADER_HEIGHT = 80;
 let observer;
 const handleResize = () => {
-  if (window.innerWidth >= 465 && mobileMenuOpen.value) {
+  if (window.innerWidth >= 556 && mobileMenuOpen.value) {
     mobileMenuOpen.value = false;
   }
 };

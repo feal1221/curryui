@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-[var(--bg-gray)] min-h-screen flex flex-col justify-center items-center gap-4 pb-20" v-if="answer.length<6">
-    <div class="flex items-center gap-2 mt-20">
+  <div class="bg-[var(--bg-gray)] min-h-screen flex flex-col justify-center items-center gap-4 pb-10 sm:pb-20 px-4" v-if="answer.length<6">
+    <div class="flex items-center gap-2 mt-10 sm:mt-20 flex-wrap justify-center">
       <div
         v-for="(step, index) in mockQA.length"
         :key="index"
@@ -12,25 +12,25 @@
         ></div>
       </div>
     </div>
-    <div class="text-2xl font-medium p-4 flex gap-4 flex-col items-center text-[var(--primary-brown)]">
+    <div class="text-lg sm:text-2xl font-medium p-4 flex gap-4 flex-col items-center text-[var(--primary-brown)] text-center">
       <h1>{{ "Q" + (pageIndex - 1) }}</h1>
-      <h1 class="bg-[#FAD35C] px-8 py-2">{{ mockQA[pageIndex - 2]?.question }}</h1>
+      <h1 class="bg-[#FAD35C] px-4 sm:px-8 py-2">{{ mockQA[pageIndex - 2]?.question }}</h1>
     </div>
-    <div class="flex justify-center flex-col gap-6 p-4">
+    <div class="flex justify-center flex-col gap-4 sm:gap-6 p-0 sm:p-4 w-full max-w-[760px]">
       <template v-for="(m, index) in mockQA[pageIndex - 2]?.options" :key="index">
-        <UiButton variant="secondary" class="px-40 py-2 min-h-[64px] bg-white text-base text-[var(--primary-brown)] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]" :class="{ 'bg-[#FAD35C]': tempAnswer?.answer === m.value || (answer.some(a => a.answer === m.value && a.question === `Q${pageIndex-1}`)&&!tempAnswer) }" @click="tempAnswer = {question: `Q${pageIndex-1}`, answer: m.value}">
+        <UiButton variant="secondary" class="w-full px-4 sm:px-16 lg:px-40 py-3 sm:py-2 min-h-[64px] bg-white text-sm sm:text-base text-[var(--primary-brown)] shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] whitespace-normal" :class="{ 'bg-[#FAD35C]': tempAnswer?.answer === m.value || (answer.some(a => a.answer === m.value && a.question === `Q${pageIndex-1}`)&&!tempAnswer) }" @click="tempAnswer = {question: `Q${pageIndex-1}`, answer: m.value}">
           <span class="whitespace-pre-line">
             <span v-if="m.title">{{ `< ${m.title} >`+'\n' }}</span>
             {{ m.description }}
           </span>
         </UiButton>
       </template>
-      <div v-if="isError" class="flex justify-center text-base text-[var(--text-red)] font-medium">*請擇一選項後，再點擊下一題繼續您的測驗哦！</div>
-      <div class="flex justify-between mt-4">
-        <UiButton  @click="goBack" class="text-2xl px-20 py-3 font-medium bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]">
+      <div v-if="isError" class="flex justify-center text-sm sm:text-base text-[var(--text-red)] font-medium text-center">*請擇一選項後，再點擊下一題繼續您的測驗哦！</div>
+      <div class="flex flex-col sm:flex-row justify-between mt-4 gap-3 sm:gap-4">
+        <UiButton  @click="goBack" class="w-full sm:w-auto text-lg sm:text-2xl px-8 sm:px-20 py-2 sm:py-3 font-medium bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]">
           <span class="font-medium" >{{ pageIndex > 2 ? "上一題" : "返回" }}</span>
         </UiButton>
-        <UiButton  variant="destructive" @click="goNext" class="text-2xl px-20 py-3 font-medium">
+        <UiButton  variant="destructive" @click="goNext" class="w-full sm:w-auto text-lg sm:text-2xl px-8 sm:px-20 py-2 sm:py-3 font-medium">
           <span class="font-medium" >{{ pageIndex < 7 ? "下一題" : "開始分析" }}</span>
         </UiButton>
       </div>
