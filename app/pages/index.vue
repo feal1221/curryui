@@ -134,11 +134,11 @@
     >
       <img
         src="/assets/images/veg2.png"
-        class="hidden lg:block absolute -translate-x-1/2 left-1/2 top-40 z-2"
+        class="hidden lg:block absolute -translate-x-1/2 left-1/2 top-40 z-1"
       />
       <img
         src="/assets/images/title2.png"
-        class="absolute -translate-x-1/2 left-1/2 top-20 sm:top-36 w-[88vw] max-w-[680px]"
+        class="absolute -translate-x-1/2 left-1/2 top-30 sm:top-36 w-[88vw] max-w-[680px]"
       />
       <div class="flex mt-44 sm:mt-80 flex-col w-full justify-center px-4 sm:px-6 lg:px-2">
         <div class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap">{{'任務1'}}</div>
@@ -219,7 +219,7 @@
 
         <UiButton
           variant="destructive"
-          class="px-22 py-4 font-bold text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]"
+          class="px-22 py-4 font-bold text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-4"
           >{{ "詳細活動資訊" }}
         </UiButton>
         <div class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap">{{'任務2'}}</div>
@@ -262,12 +262,19 @@
         />
         </div>
         <svgTitle id="supermarkets" text="附近超市" type="curry" class="h-[160px]" />
-        <UiButton
-          variant="destructive"
-          class="px-22 py-4 font-bold text-2xl self-center shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]"
-          >{{ "立即查看最近超市" }}
-        </UiButton>
-        <svgTitle text="得獎公布" type="curry" class="h-[96px] sm:h-[128px] lg:h-[160px]" />
+<a 
+  href="https://www.google.com/maps/search/?api=1&query=超市" 
+  target="_blank"
+  class="self-center"
+>
+  <UiButton
+    variant="destructive"
+    class="px-22 py-4 font-bold text-2xl shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] relative z-[2]"
+  >
+    {{ "立即查看最近超市" }}
+  </UiButton>
+</a>
+        <svgTitle text="得獎公布" type="curry" class="h-[160px]" />
                 <div class="text-[var(--text-red)] font-medium text-4xl mx-auto my-3">
           Coming Soon
         </div>
@@ -281,9 +288,7 @@
     </div>
     <!-- 注意事項 -->
     <div class="bg-[#F9F0DC] min-h-[1388px] flex flex-col w-full" id="notices">
-      <div class="flex justify-center">
-        <svgTitle text="注意事項" type="curry" class="h-[96px] sm:h-[128px] lg:h-[160px]" />
-      </div>
+        <svgTitle text="注意事項" type="curry" class="h-[120px] mx-auto" />
       <div
         class="break-all white-pre-line flex flex-col font-medium text-[var(--primary-brown)] mx-auto px-4 sm:px-8 lg:px-36 pb-12 w-auto sm:w-full"
       >

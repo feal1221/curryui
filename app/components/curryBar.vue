@@ -25,10 +25,12 @@
     <img
       src="/assets/images/button-fb.png"
       class="max-[556px]:hidden ml-auto mr-4 cursor-pointer"
+      @click="gotoFB"
     />
     <img
       src="/assets/images/button-ig.png"
       class="max-[556px]:hidden mr-12 cursor-pointer"
+      @click="gotoIG"
     />
     <div class="min-[556px]:hidden">
       <UiSheet v-model:open="mobileMenuOpen" side="right">
@@ -61,10 +63,12 @@
                 <img
                   src="/assets/images/button-fb.png"
                   class="cursor-pointer self-start"
+                  @click="gotoFB"
                 />
                 <img
                   src="/assets/images/button-ig.png"
                   class="cursor-pointer self-start"
+                  @click="gotoIG"
                 />
               </div>
             </UiSheetDescription>
@@ -128,6 +132,12 @@ const redirectToHome = (link) => {
     }
     mobileMenuOpen.value = false;
   }, 0);
+};
+const gotoFB = () => {
+  window.open("https://www.facebook.com/house.curry.tw/", "_blank");
+};
+const gotoIG = () => {
+  window.open("https://www.instagram.com/housefoodtw/", "_blank");
 };
 
 const menu = [

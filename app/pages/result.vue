@@ -205,8 +205,8 @@ const showDialog = ref(false);
 const ngrokUrl = "https://grilla-estella-noneducationally.ngrok-free.dev/api";
 // const ngrokUrl = window.location.origin;
 const textToCopy = "測出你的咖哩人格！探索你的命定咖哩，找到最適合你的黃金比例 #心理測驗 #咖哩人格 #好侍咖哩";
-// const shareUrl = `${ngrokUrl}/share/${123}`;
-const shareUrl = window.location.origin;
+const shareUrl = `${ngrokUrl}/share/${123}`;
+// const shareUrl = window.location.origin;
 const isMobile = computed(() => {
   if (typeof navigator === "undefined") return false;
   return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);

@@ -69,7 +69,7 @@ watch(pageIndex, (newVal) => {
     dialogContent.scrollTop = 0;
   }
   if (newVal === 8) {
-    showDialog.value = false;
+    // showDialog.value = false;
   }
 });
 </script>
