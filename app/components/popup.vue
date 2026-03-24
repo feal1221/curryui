@@ -3,7 +3,7 @@
     <UiDialogTrigger as-child>
       <UiButton
         variant="destructive"
-        class="px-22 py-4 font-bold text-2xl absolute z-20 bottom-12 sm:bottom-36 left-1/2 -translate-x-1/2 whitespace-nowrap"
+        class="px-22 py-4 font-bold text-2xl absolute z-20 bottom-14 sm:bottom-36 left-1/2 -translate-x-1/2 whitespace-nowrap shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] max-[350px]:px-16"
       >
         <Icon name="material-symbols:touch-app" class="text-3xl" />
         開始測驗！

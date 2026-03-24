@@ -4,8 +4,42 @@
     class="flex flex-col justify-center items-center gap-4 mt-4 bg-[var(--bg-yellow)] min-h-screen pt-16"
   >
     <!-- 活動測驗 -->
-    <div class="bg-[#F09020] w-full min-h-[730px] sm:min-h-[820px] relative overflow-hidden" id="test">
+    <section class="bg-[#F09020] w-full min-h-[730px] sm:min-h-[820px] relative overflow-hidden" id="test">
       <img
+        src="/assets/images/bg-yellow.png"
+        class="absolute top-24 left-1/2 -translate-x-1/2 w-[933px] sm:-top-24 sm:w-[1953px] h-auto max-w-none"
+      />
+      <img src="/assets/images/veg.png" class="hidden sm:block w-[90vw] absolute z-20 top-6 left-2 w-22 sm:w-auto sm:top-[1%] sm:left-[6%]" />
+      <img src="/assets/images/vegPhone.png" class="block absolute sm:hidden w-[95vw] max-w-[352px] left-1/2 top-[-1%] -translate-x-1/2 z-2 " />
+      
+      <img
+        src="/assets/images/top-title.png"
+        class="left-1/2 -translate-x-1/2 absolute top-58 sm:top-32 w-[95vw] max-w-[680px] md:w-auto z-30"
+      />
+            <img
+        src="/assets/images/Rectangle-1.png"
+        class="absolute z-20 top-[20%] left-[64%] w-29 sm:w-40 lg:w-auto sm:top-[5%] lg:top-[5%] xl:top-[20%] sm:left-[70%] lg:left-[76%] xl:left-[80%] pr-1"
+      />
+      <img
+        src="/assets/images/Rectangle.png"
+        class="absolute z-20 top-[12%] left-[34%] w-29 sm:w-40 lg:w-auto sm:top-[1%] sm:left-[45%] lg:top-[2%] lg:left-[52%] xl:left-[65%]"
+      />
+      
+      <!-- <div class="absolute inset-0 z-0">
+      <img
+        src="/assets/images/bg-yellow.png"
+        class="min-w-[140%] h-full max-w-none -translate-x-[20%] translate-y-[2%] scale-110 object-cover object-center lg:min-w-full lg:translate-x-[-20%] lg:translate-y-[-2%] lg:scale-115 xl:translate-x-[-12%] xl:-translate-y-[3%] xl:scale-120"
+      />
+      </div>
+      <div class="absolute inset-0 z-10 mx-auto max-w-[1440px]">
+      <img src="/assets/images/veg.png" class="hidden md:block translate-x-[4%] inset-0 h-full w-full object-contain object-top" />
+      <img src="/assets/images/vegPhone.png" class="absolute sm:hidden w-[95vw] left-1/2 -translate-x-1/2 z-2 " />
+      
+    </div> -->
+      
+      
+      
+      <!-- <img
         src="/assets/images/bg-yellow.png"
         class="absolute top-24 left-1/2 -translate-x-1/2 w-[933px] sm:-top-24 sm:w-[1953px] h-auto max-w-none"
       />
@@ -14,7 +48,6 @@
         class="left-1/2 -translate-x-1/2 absolute top-58 sm:top-32 w-[95vw] max-w-[680px] sm:w-auto"
       />
       <img src="/assets/images/veg.png" class="hidden md:block absolute z-20 top-6 left-2 w-22 sm:w-auto sm:top-5 sm:left-20" />
-      <img src="/assets/images/vegPhone.png" class="absolute sm:hidden w-[95vw] left-1/2 -translate-x-1/2 z-2 " />
       <img
         src="/assets/images/Rectangle-1.png"
         class="absolute z-20 top-38 right-8 w-28 sm:w-auto sm:top-5 sm:right-2 xl:top-40 xl:right-6"
@@ -22,9 +55,11 @@
       <img
         src="/assets/images/Rectangle.png"
         class="absolute z-20 top-28 right-35 w-28 sm:w-auto sm:top-20 sm:right-60"
-      />
-      <popup />
-    </div>
+      /> -->
+      <div class="">
+        <popup/>
+      </div>
+    </section>
     <!-- 抽獎獎品資訊 -->
     <div
       id="rewards"
@@ -184,7 +219,7 @@
 
         <UiButton
           variant="destructive"
-          class="px-22 py-4 font-bold text-2xl self-center my-8"
+          class="px-22 py-4 font-bold text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]"
           >{{ "詳細活動資訊" }}
         </UiButton>
         <div class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap">{{'任務2'}}</div>
@@ -229,7 +264,7 @@
         <svgTitle id="supermarkets" text="附近超市" type="curry" class="h-[160px]" />
         <UiButton
           variant="destructive"
-          class="px-22 py-4 font-bold text-2xl self-center"
+          class="px-22 py-4 font-bold text-2xl self-center shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]"
           >{{ "立即查看最近超市" }}
         </UiButton>
         <svgTitle text="得獎公布" type="curry" class="h-[96px] sm:h-[128px] lg:h-[160px]" />
@@ -325,7 +360,7 @@
         <div class="text-base break-all">好侍你的咖哩人格測驗活動小組 <a href="mailto:housecurryevents@gmail.com" class="underline">housecurryevents@gmail.com</a></div>
       </div>
     </div>
-    <div @click="scrollToTop" class="bg-white fixed right-5 bottom-5 w-18 h-18 rounded-full z-50 flex items-center justify-center cursor-pointer shadow-md">
+    <div @click="scrollToTop" class="bg-white fixed right-5 bottom-5 w-18 h-18 rounded-full z-50 flex items-center justify-center cursor-pointer shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]">
       <img src="/assets/images/arrow.png" class="w-auto" >
     </div>
   </div>
