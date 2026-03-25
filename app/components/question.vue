@@ -229,7 +229,7 @@ const mockQA = [
       },
       {
         // title: "歐洲的酒莊或美術館",
-        description: "歐洲的酒莊或美術館，沉浸在歷史與美學的層次中.",
+        description: "歐洲的酒莊或美術館，沉浸在歷史與美學的層次中。",
         value: "Tart",
       },
       {

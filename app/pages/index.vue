@@ -263,7 +263,7 @@
         </div>
         <svgTitle id="supermarkets" text="附近超市" type="curry" class="h-[160px]" />
 <a 
-  href="https://www.google.com/maps/search/?api=1&query=超市" 
+  href="https://www.pxmart.com.tw/customer-service/stores/pxmart" 
   target="_blank"
   class="self-center"
 >

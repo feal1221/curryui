@@ -28,5 +28,12 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   devServer: {
     allowedHosts: ['.ngrok-free.app'] 
+  },
+  app: {
+    head: {
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/smallLogo.png' }
+      ]
+    }
   }
 })
