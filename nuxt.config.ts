@@ -32,8 +32,8 @@ export default defineNuxtConfig({
   app: {
     head: {
       link: [
-        { rel: 'icon', type: 'image/png', href: '/smal.png' },
-        { rel: 'apple-touch-icon',type: 'image/png', href: '/smal.png' }
+        { rel: 'icon', type: 'image/png', href: '/smal.png?v=2' },
+        { rel: 'apple-touch-icon',type: 'image/png', href: '/smal.png?v=2' }
       ]
     }
   }
