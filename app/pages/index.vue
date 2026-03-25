@@ -267,6 +267,7 @@
   target="_blank"
   class="self-center"
   rel="noopener noreferrer"
+  :prefetch="false"
 >
   <UiButton
     variant="destructive"

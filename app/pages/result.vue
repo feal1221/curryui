@@ -54,7 +54,7 @@
                 class="flex flex-col p-0 sm:p-10 w-full sm:max-w-[500px] mx-auto text-[var(--primary-brown)]"
               >
                 <div class="flex flex-col justify-center items-center w-full">
-                  <img src="/assets/images/share.png" class="w-full h-auto" />
+                  <img src="/images/share.png" class="w-full h-auto" />
                   <div
                     class="bg-white border-[1px] border-solid border-[var(--primary-brown)] text-[var(--primary-brown)] flex flex-col font-medium p-6 gap-2 w-full"
                   >
@@ -200,6 +200,15 @@ const showDialog = ref(false);
 //   ogTitle: `測驗結果：我的靈魂是溫潤的絲滑奶油`,
 //   ogImage: `https://example.com/images/result-${resultId}.jpg`, // 動態對應結果圖
 // })
+useHead({
+  meta: [
+    // 這是最核心的設定，確保手機抓到這張「本命咖哩」的分享圖
+    { property: 'og:image', content: '/images/share.png' },
+    { property: 'og:title', content: '本命咖哩大公開！測出你的咖哩人格' },
+    { property: 'og:description', content: '解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！' },
+    
+  ]
+})
 
 // const ngrokUrl = "http://172.20.10.2:8080";
 const ngrokUrl = "https://grilla-estella-noneducationally.ngrok-free.dev/api";
