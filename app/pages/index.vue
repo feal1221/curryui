@@ -266,6 +266,7 @@
   href="https://www.pxmart.com.tw/customer-service/stores/pxmart" 
   target="_blank"
   class="self-center"
+  rel="noopener noreferrer"
 >
   <UiButton
     variant="destructive"
