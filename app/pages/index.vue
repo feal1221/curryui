@@ -4,19 +4,28 @@
     class="flex flex-col justify-center items-center gap-4 mt-4 bg-[var(--bg-yellow)] min-h-screen pt-16"
   >
     <!-- 活動測驗 -->
-    <section class="bg-[#F09020] w-full min-h-[730px] sm:min-h-[820px] relative overflow-hidden" id="test">
+    <section
+      class="bg-[#F09020] w-full min-h-[730px] sm:min-h-[820px] relative overflow-hidden"
+      id="test"
+    >
       <img
         src="/assets/images/bg-yellow.png"
         class="absolute top-24 left-1/2 -translate-x-1/2 w-[933px] sm:-top-24 sm:w-[1953px] h-auto max-w-none"
       />
-      <img src="/assets/images/veg.png" class="hidden sm:block w-[90vw] absolute z-20 top-6 left-2 w-22 sm:w-auto sm:top-[1%] sm:left-[6%]" />
-      <img src="/assets/images/vegPhone.png" class="block absolute sm:hidden w-[95vw] max-w-[352px] left-1/2 top-[-1%] -translate-x-1/2 z-2 " />
-      
+      <img
+        src="/assets/images/veg.png"
+        class="hidden sm:block w-[90vw] absolute z-20 top-6 left-2 w-22 sm:w-auto sm:top-[1%] sm:left-[6%]"
+      />
+      <img
+        src="/assets/images/vegPhone.png"
+        class="block absolute sm:hidden w-[95vw] max-w-[352px] left-1/2 top-[-1%] -translate-x-1/2 z-2"
+      />
+
       <img
         src="/assets/images/top-title.png"
         class="left-1/2 -translate-x-1/2 absolute top-58 sm:top-32 w-[95vw] max-w-[680px] md:w-auto z-30"
       />
-            <img
+      <img
         src="/assets/images/Rectangle-1.png"
         class="absolute z-20 top-[20%] left-[64%] w-29 sm:w-40 lg:w-auto sm:top-[5%] lg:top-[5%] xl:top-[20%] sm:left-[70%] lg:left-[76%] xl:left-[80%] pr-1"
       />
@@ -24,7 +33,7 @@
         src="/assets/images/Rectangle.png"
         class="absolute z-20 top-[12%] left-[34%] w-29 sm:w-40 lg:w-auto sm:top-[1%] sm:left-[45%] lg:top-[2%] lg:left-[52%] xl:left-[65%]"
       />
-      
+
       <!-- <div class="absolute inset-0 z-0">
       <img
         src="/assets/images/bg-yellow.png"
@@ -36,9 +45,7 @@
       <img src="/assets/images/vegPhone.png" class="absolute sm:hidden w-[95vw] left-1/2 -translate-x-1/2 z-2 " />
       
     </div> -->
-      
-      
-      
+
       <!-- <img
         src="/assets/images/bg-yellow.png"
         class="absolute top-24 left-1/2 -translate-x-1/2 w-[933px] sm:-top-24 sm:w-[1953px] h-auto max-w-none"
@@ -57,7 +64,7 @@
         class="absolute z-20 top-28 right-35 w-28 sm:w-auto sm:top-20 sm:right-60"
       /> -->
       <div class="">
-        <popup/>
+        <popup />
       </div>
     </section>
     <!-- 抽獎獎品資訊 -->
@@ -65,20 +72,48 @@
       id="rewards"
       class="my-10 sm:my-16 flex text-center whitespace-pre-wrap px-4 sm:px-8 lg:px-36 flex-col text-[var(--primary-brown)] w-full"
     >
-      <h1 class="text-4xl lg:text-5xl font-bold leading-normal sm:leading-16 lg:leading-18 whitespace-pre-wrap break-all">
+      <h1
+        class="text-4xl lg:text-5xl font-bold leading-normal sm:leading-16 lg:leading-18 whitespace-pre-wrap break-all"
+      >
         {{ "分享你的咖哩人格測驗結果至個人FB或IG動態牆\n並截圖上傳到"
         }}<span class="text-[#C81F19]">{{
           "好侍官方FB粉專抽獎活動貼文留言\n"
         }}</span
         >{{ "就有機會獲得\nApple Watch、 AirPods Pro 3、Marshall 藍牙喇叭！" }}
       </h1>
-      <img src="/assets/images/iphone&airpods.png" class="hidden sm:block self-center w-full max-w-[680px]" />
-      <img src="/assets/images/phone-rewards.png" class="block sm:hidden self-center w-full max-w-[286px]" />
-        <svgTitle text="測出你的咖哩人格活動規則" type="curry" class="block max-[600px]:hidden h-[160px]" />
-        <svgTitle text="測出你的咖哩人格" type="curry" class="hidden max-[375px]:hidden max-[600px]:block h-[96px]" />
-        <svgTitle text="活動規則" type="curry" class="hidden max-[375px]:hidden max-[600px]:block h-[96px] -mt-10" />
-        <svgTitle text="測出你的咖哩" type="curry" class="hidden max-[375px]:block h-[96px] -mt-10" />
-        <svgTitle text="人格活動規則" type="curry" class="hidden max-[375px]:block h-[96px] -mt-10" />
+      <img
+        src="/assets/images/iphone&airpods.png"
+        class="hidden sm:block self-center w-full max-w-[680px]"
+      />
+      <img
+        src="/assets/images/phone-rewards.png"
+        class="block sm:hidden self-center w-full max-w-[286px]"
+      />
+      <svgTitle
+        text="測出你的咖哩人格活動規則"
+        type="curry"
+        class="block max-[600px]:hidden h-[160px]"
+      />
+      <svgTitle
+        text="測出你的咖哩人格"
+        type="curry"
+        class="hidden max-[375px]:hidden max-[600px]:block h-[96px]"
+      />
+      <svgTitle
+        text="活動規則"
+        type="curry"
+        class="hidden max-[375px]:hidden max-[600px]:block h-[96px] -mt-10"
+      />
+      <svgTitle
+        text="測出你的咖哩"
+        type="curry"
+        class="hidden max-[375px]:block h-[96px] -mt-10"
+      />
+      <svgTitle
+        text="人格活動規則"
+        type="curry"
+        class="hidden max-[375px]:block h-[96px] -mt-10"
+      />
       <template v-for="a in activity" :key="a.title">
         <div class="font-medium self-start flex flex-col mb-4 w-full">
           <div class="text-4xl self-start my-3 sm:my-4">
@@ -92,22 +127,31 @@
           </ul>
           <div
             class="self-start text-base text-left leading-relaxed break-all"
-            v-for="(n,nIndex) in a.notices"
+            v-for="(n, nIndex) in a.notices"
             :key="nIndex"
           >
             *{{ n }}
-          <a v-if="a.linkkk&&nIndex===1" :href="'https://www.facebook.com/house.curry.tw'" target="_blank" class="underline">{{ '(https://www.facebook.com/house.curry.tw)' }}</a>
-
+            <a
+              v-if="a.linkkk && nIndex === 1"
+              :href="'https://www.facebook.com/house.curry.tw'"
+              target="_blank"
+              class="underline"
+              >{{ "(https://www.facebook.com/house.curry.tw)" }}</a
+            >
           </div>
         </div>
       </template>
-      <div class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-6 mt-2">
+      <div
+        class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-6 mt-2"
+      >
         <template v-for="r in rewards" :key="r.name">
           <div class="w-full max-w-[280px] mx-auto">
             <div
               class="relative bg-white w-full h-[280px] sm:h-70 rounded-2xl overflow-hidden"
             >
-              <div class="text-2xl mt-4 sm:mt-6 font-medium">{{ "分享就抽" }}</div>
+              <div class="text-2xl mt-4 sm:mt-6 font-medium">
+                {{ "分享就抽" }}
+              </div>
               <img
                 :src="r.url"
                 class="absolute -top-4 left-1/2 -translate-x-1/2 translate-y-1/2 max-w-[65%]"
@@ -122,7 +166,11 @@
                 {{ "價值 $" + r.value }}
               </div>
             </div>
-            <div class="text-xl sm:text-2xl font-medium mt-4 whitespace-pre-line text-center">{{ r.name }}</div>
+            <div
+              class="text-xl sm:text-2xl font-medium mt-4 whitespace-pre-line text-center"
+            >
+              {{ r.name }}
+            </div>
           </div>
         </template>
       </div>
@@ -140,26 +188,74 @@
         src="/assets/images/title2.png"
         class="absolute -translate-x-1/2 left-1/2 top-30 sm:top-36 w-[88vw] max-w-[680px]"
       />
-      <div class="flex mt-44 sm:mt-80 flex-col w-full justify-center px-4 sm:px-6 lg:px-2">
-        <div class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap">{{'任務1'}}</div>
-        <svgTitle text="簡訊發票登陸活動" type="curry" class="block max-[375px]:hidden h-[160px]" />
-        <svgTitle text="簡訊發票" type="curry" class="hidden max-[375px]:block h-[96px]" />
-        <svgTitle text="登陸活動" type="curry" class="hidden max-[375px]:block h-[96px] -mt-10" />
-        <svgTitle text="抽iPhone17、東京來回機票等大獎！" type="red" class="md:block hidden h-[96px] -mt-14 mb-10" />
-        <svgTitle text="抽iPhone17、東京" type="red" class="block max-[375px]:hidden md:hidden h-[96px] -mt-14 " />
-        <svgTitle text="來回機票等大獎！" type="red" class="block max-[375px]:hidden  md:hidden h-[96px] -mt-10 mb-10" />
-        <svgTitle text="抽iPhone17、" type="red" class="hidden max-[375px]:block h-[96px] -mt-10" />
-        <svgTitle text="東京來回機票" type="red" class="hidden max-[375px]:block h-[96px] -mt-10" />
-        <svgTitle text="等大獎！" type="red" class="hidden max-[375px]:block h-[96px] -mt-10 mb-10" />
-        
-        <div class="flex flex-col gap-4 justify-center max-w-[1220px] mx-auto w-full">
-          <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 justify-center items-stretch">
+      <div
+        class="flex mt-44 sm:mt-80 flex-col w-full justify-center px-4 sm:px-6 lg:px-2"
+      >
+        <div
+          class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap"
+        >
+          {{ "任務1" }}
+        </div>
+        <svgTitle
+          text="簡訊發票登陸活動"
+          type="curry"
+          class="block max-[375px]:hidden h-[160px]"
+        />
+        <svgTitle
+          text="簡訊發票"
+          type="curry"
+          class="hidden max-[375px]:block h-[96px]"
+        />
+        <svgTitle
+          text="登陸活動"
+          type="curry"
+          class="hidden max-[375px]:block h-[96px] -mt-10"
+        />
+        <svgTitle
+          text="抽iPhone17、東京來回機票等大獎！"
+          type="red"
+          class="md:block hidden h-[96px] -mt-14 mb-10"
+        />
+        <svgTitle
+          text="抽iPhone17、東京"
+          type="red"
+          class="block max-[375px]:hidden md:hidden h-[96px] -mt-14"
+        />
+        <svgTitle
+          text="來回機票等大獎！"
+          type="red"
+          class="block max-[375px]:hidden md:hidden h-[96px] -mt-10 mb-10"
+        />
+        <svgTitle
+          text="抽iPhone17、"
+          type="red"
+          class="hidden max-[375px]:block h-[96px] -mt-10"
+        />
+        <svgTitle
+          text="東京來回機票"
+          type="red"
+          class="hidden max-[375px]:block h-[96px] -mt-10"
+        />
+        <svgTitle
+          text="等大獎！"
+          type="red"
+          class="hidden max-[375px]:block h-[96px] -mt-10 mb-10"
+        />
+
+        <div
+          class="flex flex-col gap-4 justify-center max-w-[1220px] mx-auto w-full"
+        >
+          <div
+            class="flex flex-col lg:flex-row gap-3 sm:gap-4 justify-center items-stretch"
+          >
             <div
               class="bg-[var(--primary-brown)] rounded-xl w-full lg:w-50 p-5 sm:p-9 text-white text-2xl flex items-center justify-center text-center"
             >
               {{ "活動辦法" }}
             </div>
-            <div class="bg-white rounded-xl w-full lg:w-[864px] p-5 sm:p-9 font-medium">
+            <div
+              class="bg-white rounded-xl w-full lg:w-[864px] p-5 sm:p-9 font-medium"
+            >
               <div class="text-[var(--primary-brown)] text-2xl leading-relaxed">
                 {{
                   "Step1. 於活動期間(2026/4/10-2026/5/7)於全台通路(全聯、大全聯、家樂福、家樂福超市、愛買等通路)一次購買「好侍咖哩塊系列」任2盒。"
@@ -178,32 +274,47 @@
               >
                 {{
                   "*活動參加次數可累計，參與活動越多次，得獎機會越高！\n*同一張發票號碼僅限登錄乙次，且僅有乙次得獎機會，重複登錄將取消參加資格。\n*參加本活動未正確填寫資料，主辦單位將取消其參加及兌獎資格。\n*得獎者未滿18歲需提交法定代理人同意書及檢附證明文件，若無法於兌獎時提交視同放棄兌獎資格。"
-
-
                 }}
               </div>
             </div>
           </div>
-          <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 justify-center items-stretch">
+          <div
+            class="flex flex-col lg:flex-row gap-3 sm:gap-4 justify-center items-stretch"
+          >
             <div
               class="bg-[var(--primary-brown)] rounded-xl w-full lg:w-50 p-5 sm:p-9 text-white text-2xl flex items-center justify-center text-center whitespace-pre-wrap"
             >
               {{ "活動指定\n購買商品" }}
             </div>
-            <div class="bg-white rounded-xl w-full lg:w-[864px] py-5 px-5 sm:px-9 font-medium">
+            <div
+              class="bg-white rounded-xl w-full lg:w-[864px] py-5 px-5 sm:px-9 font-medium"
+            >
               <div
                 class="text-[var(--primary-brown)] text-base leading-relaxed"
               >
-                <div class="flex gap-4 flex-wrap mt-4 items-start justify-center sm:justify-start">
-                  <div v-for="c in curryList" :key="c.name" class="w-full sm:w-auto">
-                    <img :src="c.url" class="mx-auto max-h-[140px] object-contain" />
-                    <div class="text-center p-2 text-base whitespace-pre-line">{{ c.name }}</div>
+                <div
+                  class="flex gap-4 flex-wrap mt-4 items-start justify-center sm:justify-start"
+                >
+                  <div
+                    v-for="c in curryList"
+                    :key="c.name"
+                    class="w-full sm:w-auto"
+                  >
+                    <img
+                      :src="c.url"
+                      class="mx-auto max-h-[140px] object-contain"
+                    />
+                    <div class="text-center p-2 text-base whitespace-pre-line">
+                      {{ c.name }}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="flex flex-col lg:flex-row gap-3 sm:gap-4 justify-center items-stretch">
+          <div
+            class="flex flex-col lg:flex-row gap-3 sm:gap-4 justify-center items-stretch"
+          >
             <div
               class="bg-[var(--primary-brown)] rounded-xl w-full lg:w-50 p-5 sm:p-9 text-white text-2xl flex items-center justify-center text-center whitespace-pre-wrap"
             >
@@ -222,9 +333,17 @@
           class="px-22 py-4 font-bold text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-4"
           >{{ "詳細活動資訊" }}
         </UiButton>
-        <div class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap">{{'任務2'}}</div>
-        <svgTitle text="門店巡迴活動" type="curry" class="h-[160px] -mt-2 sm:-mt-5" />
-              <div
+        <div
+          class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap"
+        >
+          {{ "任務2" }}
+        </div>
+        <svgTitle
+          text="門店巡迴活動"
+          type="curry"
+          class="h-[160px] -mt-2 sm:-mt-5"
+        />
+        <div
           class="flex justify-center whitespace-pre-line text-center gap-2 flex-col items-center font-medium px-4"
         >
           <div class="text-[var(--primary-brown)] text-2xl whitespace-pre-line">
@@ -246,43 +365,57 @@
             >{{ "【簡訊發票登錄】抽獎活動！" }}
           </div>
         </div>
-        <div class="max-w-[1020px] w-full flex justify-center mx-auto flex-col px-4 sm:px-6">
         <div
-          class="self-start text-[var(--primary-brown)] text-2xl my-5 font-medium"
+          class="max-w-[1020px] w-full flex justify-center mx-auto flex-col px-4 sm:px-6"
         >
-          {{ "活動門店資訊：" }}
+          <div
+            class="self-start text-[var(--primary-brown)] text-2xl my-5 font-medium"
+          >
+            {{ "活動門店資訊：" }}
+          </div>
+          <img
+            src="/assets/images/com-table.png"
+            class="hidden sm:block w-full"
+          />
+          <img
+            src="/assets/images/phone-table.jpg"
+            class="block sm:hidden w-full"
+          />
         </div>
-        <img
-          src="/assets/images/com-table.png"
-          class="hidden sm:block w-full"
+        <svgTitle
+          id="supermarkets"
+          text="附近超市"
+          type="curry"
+          class="h-[160px]"
         />
-        <img
-          src="/assets/images/phone-table.jpg"
-          class="block sm:hidden w-full"
-        />
-        </div>
-        <svgTitle id="supermarkets" text="附近超市" type="curry" class="h-[160px]" />
-<a 
-  href="https://www.pxmart.com.tw/customer-service/stores/pxmart" 
-  target="_blank"
-  class="self-center"
-  rel="noopener noreferrer"
-  :prefetch="false"
->
-  <UiButton
-    variant="destructive"
-    class="px-22 py-4 font-bold text-2xl shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] relative z-[2]"
-  >
-    {{ "立即查看最近超市" }}
-  </UiButton>
-</a>
+        <a
+          href="https://www.pxmart.com.tw/customer-service/stores/pxmart"
+          target="_blank"
+          class="self-center"
+          rel="noopener noreferrer"
+          :prefetch="false"
+        >
+          <UiButton
+            variant="destructive"
+            class="px-22 py-4 font-bold text-2xl shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] relative z-[2]"
+          >
+            {{ "立即查看最近超市" }}
+          </UiButton>
+        </a>
         <svgTitle text="得獎公布" type="curry" class="h-[160px]" />
-                <div class="text-[var(--text-red)] font-medium text-4xl mx-auto my-3">
+        <div class="text-[var(--text-red)] font-medium text-4xl mx-auto my-3">
           Coming Soon
         </div>
-        <div class="text-[var(--primary-brown)] font-medium text-base mx-auto flex flex-col items-center text-center px-4 break-all">
+        <div
+          class="text-[var(--primary-brown)] font-medium text-base mx-auto flex flex-col items-center text-center px-4 break-all"
+        >
           *公布日期：2026年5月12日(二)當天於台灣好侍FB官方粉絲團公布。
-          <a href="https://www.facebook.com/house.curry.tw" target="_blank" class="underline">{{ '(https://www.facebook.com/house.curry.tw)' }}</a>
+          <a
+            href="https://www.facebook.com/house.curry.tw"
+            target="_blank"
+            class="underline"
+            >{{ "(https://www.facebook.com/house.curry.tw)" }}</a
+          >
         </div>
       </div>
 
@@ -290,7 +423,7 @@
     </div>
     <!-- 注意事項 -->
     <div class="bg-[#F9F0DC] min-h-[1388px] flex flex-col w-full" id="notices">
-        <svgTitle text="注意事項" type="curry" class="h-[120px] mx-auto" />
+      <svgTitle text="注意事項" type="curry" class="h-[120px] mx-auto" />
       <div
         class="break-all white-pre-line flex flex-col font-medium text-[var(--primary-brown)] mx-auto px-4 sm:px-8 lg:px-36 pb-12 w-auto sm:w-full"
       >
@@ -302,7 +435,9 @@
         >
           抽獎注意事項
         </div>
-        <ul class="list-disc list-outside text-left text-base ml-5 sm:ml-8 leading-relaxed">
+        <ul
+          class="list-disc list-outside text-left text-base ml-5 sm:ml-8 leading-relaxed"
+        >
           <li>
             活動採隨機方式抽出參與者，每人限得一個獎項，主辦單位就本活動參加者之資格，保有審查之權利。
           </li>
@@ -321,7 +456,9 @@
         >
           兌獎注意事項
         </div>
-        <ul class="list-disc list-outside text-left text-base ml-5 sm:ml-8 leading-relaxed">
+        <ul
+          class="list-disc list-outside text-left text-base ml-5 sm:ml-8 leading-relaxed"
+        >
           <li>
             本活動僅限在台澎金地區進行，活動獎項之寄送地址亦僅限台澎金地區。
           </li>
@@ -356,7 +493,9 @@
             關於獎項之使用細節，或發生產品瑕疵及相關保固責任，均由該贈品廠商維修與保固，中獎者應逕向獎品製造或銷售公司詢問，台灣好侍食品股份有限公司及其執行單位概不負責。
           </li>
         </ul>
-        <div class="mt-10 text-base">※ 活動如有未盡事宜將，以官方網站公告為準。</div>
+        <div class="mt-10 text-base">
+          ※ 活動如有未盡事宜將，以官方網站公告為準。
+        </div>
         <div class="text-base">※ 以上日期與辦法如有調整，以網站公佈為主</div>
 
         <div
@@ -364,14 +503,21 @@
         >
           活動洽詢
         </div>
-        <div class="text-base break-all">好侍你的咖哩人格測驗活動小組 <a href="mailto:housecurryevents@gmail.com" class="underline">housecurryevents@gmail.com</a></div>
+        <div class="text-base break-all">
+          好侍你的咖哩人格測驗活動小組
+          <a href="mailto:housecurryevents@gmail.com" class="underline"
+            >housecurryevents@gmail.com</a
+          >
+        </div>
       </div>
     </div>
-    <div @click="scrollToTop" class="bg-white fixed right-5 bottom-5 w-18 h-18 rounded-full z-50 flex items-center justify-center cursor-pointer shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]">
-      <img src="/assets/images/arrow.png" class="w-auto" >
+    <div
+      @click="scrollToTop"
+      class="bg-white fixed right-5 bottom-5 w-18 h-18 rounded-full z-50 flex items-center justify-center cursor-pointer shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)]"
+    >
+      <img src="/assets/images/arrow.png" class="w-auto" />
     </div>
   </div>
-
 </template>
 <script setup>
 import watchImage from "~/assets/images/watch.png";
@@ -396,9 +542,9 @@ const activity = [
     content: ["測驗時間：2026年4月8日至2026年5月6日(三) 23:59止"],
     notices: [
       " 時間判別以本活動網站系統為準",
-      " 得獎公布日期：2026年5月12日(二)當天於台灣好侍FB官方粉絲團公布"
+      " 得獎公布日期：2026年5月12日(二)當天於台灣好侍FB官方粉絲團公布",
     ],
-    linkkk:true
+    linkkk: true,
   },
   {
     title: "活動辦法",
@@ -450,9 +596,9 @@ const curryList = [
   top: 0;
   left: 0;
   background-repeat: repeat-x;
-  background-size: auto ;
+  background-size: auto;
   background-position: top left;
-  width:100%;
+  width: 100%;
   height: 79px;
 }
 </style>
