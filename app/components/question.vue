@@ -1,7 +1,7 @@
 <template>
   <div
     class="bg-[var(--bg-gray)] min-h-screen flex flex-col justify-center items-center gap-8 pb-10 sm:pb-20"
-    v-if="answer.length < 6"
+    v-if="answer.length <= 6"
   >
     <div class="flex items-center gap-2 mt-4 sm:mt-20 flex-wrap justify-center">
       <div v-for="(step, index) in mockQA.length" :key="index">
@@ -66,9 +66,20 @@
         <UiButton
           variant="destructive"
           @click="goNext"
+          :disabled="isSubmitting && pageIndex >= 7"
           class="w-full h-[64px] sm:w-auto text-2xl px-8 sm:px-20 py-2 sm:py-3 font-medium"
         >
-          <span class="font-medium">{{
+          <span
+            v-if="isSubmitting && pageIndex >= 7"
+            class="font-medium inline-flex items-center gap-2"
+          >
+            <span
+              class="inline-block h-5 w-5 animate-spin rounded-full border-2 border-white/50 border-t-white"
+              aria-hidden="true"
+            ></span>
+            分析中...
+          </span>
+          <span v-else class="font-medium">{{
             pageIndex < 7 ? "下一題" : "開始分析"
           }}</span>
         </UiButton>
@@ -83,24 +94,17 @@
       </div>
     </div>
   </div>
-  <div
-    v-else
-    class="flex items-center gap-2 mt-4 sm:mt-20 flex-wrap justify-center"
-  >
-    <h1
-      class="text-2xl font-medium flex gap-4 flex-col items-center text-[var(--primary-brown)] text-center"
-    >
-      {{ "正在分析你的咖哩人格..." }}
-    </h1>
-  </div>
 </template>
 <script setup>
 import { useAnswerStore } from "~/stores/answer";
+import { toast } from "vue-sonner";
 
 const answer = ref([]);
 const pageIndex = inject("pageIndex");
 const isError = ref(false);
+const apiError = ref(false);
 const tempAnswer = ref(null);
+const isSubmitting = ref(false);
 const answerStore = useAnswerStore();
 const props = defineProps({
   visible: {
@@ -159,6 +163,7 @@ const culculateResult = () => {
   return topCategories[0];
 };
 const goNext = async () => {
+  if (isSubmitting.value) return;
   isError.value = false;
   // validate answer
   if (
@@ -174,7 +179,6 @@ const goNext = async () => {
   }
   // 已經有答案但這次選了不同的選項，更新答案
   if (tempAnswer.value !== null) {
-    pageIndex.value = pageIndex.value + 1;
     const existingIndex = answer.value.findIndex(
       (a) => a.question === tempAnswer.value.question,
     );
@@ -184,6 +188,10 @@ const goNext = async () => {
       answer.value.push(tempAnswer.value);
     }
     tempAnswer.value = null;
+    if (answer.value.length < mockQA.length) {
+      pageIndex.value = pageIndex.value + 1;
+      return;
+    }
   }
   console.log("pageIndex.value", pageIndex.value);
   if (answer.value.length === mockQA.length) {
@@ -197,8 +205,6 @@ const goNext = async () => {
       ans6: answer.value[5]?.answer || "",
       resultName: result,
     });
-    console.log("answerStore.answer", answerStore.answer);
-    // emits("update:visible", false);
     await saveResult(result);
   }
 };
@@ -211,8 +217,9 @@ const goBack = () => {
 };
 
 const saveResult = async (result) => {
+  isSubmitting.value = true;
   try {
-    await useApi("/results/create", {
+    const { data, error } = await useApi("/results/create", {
       method: "POST",
       body: {
         userName: answerStore.answer.userName,
@@ -223,17 +230,38 @@ const saveResult = async (result) => {
         ans3: answerStore.answer.ans3 || "",
         ans4: answerStore.answer.ans4 || "",
         ans5: answerStore.answer.ans5 || "",
-        ans6: answerStore.answer.ans6 || "",
+        // ans6: answerStore.answer.ans6 || "",
         resultName: answerStore.answer.resultName || "",
       },
     });
-    answerStore.clearAnswer();
-    await navigateTo({
-      path: "/result",
-      query: { result: resulrImageMap[result] },
-    });
+
+    if (!error.value) {
+      answerStore.clearAnswer();
+      await navigateTo({
+        path: "/result",
+        query: { result: resulrImageMap[result] },
+      });
+    } else {
+      isSubmitting.value = false;
+      toast.error("系統錯誤：儲存結果失敗，請稍後再試", {
+        style: {
+          background: "#FEF2F2",
+          color: "#B91C1C",
+          border: "1px solid #FCA5A5",
+        },
+      });
+    }
+
   } catch (error) {
+    isSubmitting.value = false;
     console.error("Failed to save result:", error);
+    toast.error("系統錯誤：儲存結果失敗，請稍後再試", {
+      style: {
+        background: "#FEF2F2",
+        color: "#B91C1C",
+        border: "1px solid #FCA5A5",
+      },
+    });
   }
 };
 const mockQA = [

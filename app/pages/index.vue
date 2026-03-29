@@ -70,12 +70,12 @@
     <!-- 抽獎獎品資訊 -->
     <div
       id="rewards"
-      class="my-10 sm:my-16 flex text-center whitespace-pre-wrap px-4 sm:px-8 lg:px-36 flex-col text-[var(--primary-brown)] w-full"
+      class="my-10 sm:my-16 flex text-center whitespace-pre-wrap px-4 sm:px-4 lg:px-10 flex-col text-[var(--primary-brown)] w-full"
     >
       <h1
         class="text-4xl lg:text-5xl font-bold leading-normal sm:leading-16 lg:leading-18 whitespace-pre-wrap break-all"
       >
-        {{ "分享你的咖哩人格測驗結果至個人FB或IG動態牆\n並截圖上傳到"
+        {{ "分享你的咖哩人格測驗結果至個人FB、IG、Threads動態牆\n並截圖上傳到"
         }}<span class="text-[#C81F19]">{{
           "好侍官方FB粉專抽獎活動貼文留言\n"
         }}</span
@@ -115,7 +115,9 @@
         class="hidden max-[375px]:block h-[96px] -mt-10"
       />
       <template v-for="a in activity" :key="a.title">
-        <div class="font-medium self-start flex flex-col mb-4 w-full">
+        <div
+          class="font-medium self-start flex flex-col mb-4 w-full px-0 lg:px-26"
+        >
           <div class="text-4xl self-start my-3 sm:my-4">
             {{ a.title }}
           </div>
@@ -142,7 +144,7 @@
         </div>
       </template>
       <div
-        class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-6 mt-2"
+        class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-6 mt-2 px-0 lg:px-26"
       >
         <template v-for="r in rewards" :key="r.name">
           <div class="w-full max-w-[280px] mx-auto">
@@ -173,6 +175,24 @@
             </div>
           </div>
         </template>
+      </div>
+      <svgTitle text="得獎公布" type="curry" class="h-[160px]" />
+      <div
+        class="font-medium self-start flex flex-col mb-4 w-full px-0 lg:px-26"
+      >
+        <ul
+          class="list-disc list-outside text-left text-2xl self-start ml-5 sm:ml-8 my-3 sm:my-4"
+        >
+          <li class="whitespace-normal break-all">
+            {{ "公布日期：2026年5月12日(二)當天於台灣好侍FB官方粉絲團公布"
+            }}<a
+              :href="'https://www.facebook.com/house.curry.tw'"
+              target="_blank"
+              class="underline"
+              >{{ "(https://www.facebook.com/house.curry.tw)" }}</a
+            >
+          </li>
+        </ul>
       </div>
     </div>
     <!-- 全民咖哩任務 -->
@@ -212,34 +232,34 @@
           class="hidden max-[375px]:block h-[96px] -mt-10"
         />
         <svgTitle
-          text="抽iPhone17、東京來回機票等大獎！"
+          text="抽iPhone17、日本東京萬元旅遊金等大獎！"
           type="red"
-          class="md:block hidden h-[96px] -mt-14 mb-10"
+          class="lg:block hidden h-[96px] -mt-14 mb-10"
         />
         <svgTitle
-          text="抽iPhone17、東京"
+          text="抽iPhone17、日本"
           type="red"
-          class="block max-[375px]:hidden md:hidden h-[96px] -mt-14"
+          class="block max-[550px]:hidden lg:hidden h-[96px] -mt-14"
         />
         <svgTitle
-          text="來回機票等大獎！"
+          text="東京萬元旅遊金等大獎！"
           type="red"
-          class="block max-[375px]:hidden md:hidden h-[96px] -mt-10 mb-10"
+          class="block max-[550px]:hidden lg:hidden h-[96px] -mt-8 mb-10"
         />
         <svgTitle
           text="抽iPhone17、"
           type="red"
-          class="hidden max-[375px]:block h-[96px] -mt-10"
+          class="hidden max-[550px]:block h-[96px] -mt-10"
         />
         <svgTitle
-          text="東京來回機票"
+          text="日本東京萬元"
           type="red"
-          class="hidden max-[375px]:block h-[96px] -mt-10"
+          class="hidden max-[550px]:block h-[96px] -mt-10"
         />
         <svgTitle
-          text="等大獎！"
+          text="旅遊金等大獎！"
           type="red"
-          class="hidden max-[375px]:block h-[96px] -mt-10 mb-10"
+          class="hidden max-[550px]:block h-[96px] -mt-10 mb-10"
         />
 
         <div
@@ -258,7 +278,7 @@
             >
               <div class="text-[var(--primary-brown)] text-2xl leading-relaxed">
                 {{
-                  "Step1. 於活動期間(2026/4/10-2026/5/7)於全台通路(全聯、大全聯、家樂福、家樂福超市、愛買等通路)一次購買「好侍咖哩塊系列」任2盒。"
+                  "Step1. 於活動期間(2026/4/10-2026/5/7)於全台通路(全聯、大全聯、家樂福、家樂福超市、愛買等通路)一次購買「好侍咖哩塊/醬系列」任2盒。"
                 }}
               </div>
               <div class="text-[var(--text-red)] text-2xl leading-relaxed">
@@ -296,11 +316,23 @@
                   class="flex gap-4 flex-wrap mt-4 items-start justify-center sm:justify-start"
                 >
                   <div
-                    v-for="c in curryList"
+                    v-for="(c, cIndex) in curryList"
                     :key="c.name"
                     class="w-full sm:w-auto"
                   >
+                    <div v-if="cIndex === 5" class="flex w-20 justify-center mx-auto">
+                                            <img
+                        :src="curry7"
+                        class="mx-auto max-h-[140px] object-contain max-w-[60px]"
+                      />
+                      <img
+                        :src="c.url"
+                        class="mx-auto max-h-[140px] object-contain"
+                      />
+
+                    </div>
                     <img
+                      v-else
                       :src="c.url"
                       class="mx-auto max-h-[140px] object-contain"
                     />
@@ -309,7 +341,9 @@
                     </div>
                   </div>
                 </div>
+
               </div>
+              <div class="text-[var(--primary-brown)] text-base whitespace-pre-line mt-2 leading-relaxed">{{ '*詳細品項請至好侍FB活動貼文查詢' }}</div>
             </div>
           </div>
           <div
@@ -402,21 +436,6 @@
             {{ "立即查看最近超市" }}
           </UiButton>
         </a>
-        <svgTitle text="得獎公布" type="curry" class="h-[160px]" />
-        <div class="text-[var(--text-red)] font-medium text-4xl mx-auto my-3">
-          Coming Soon
-        </div>
-        <div
-          class="text-[var(--primary-brown)] font-medium text-base mx-auto flex flex-col items-center text-center px-4 break-all"
-        >
-          *公布日期：2026年5月12日(二)當天於台灣好侍FB官方粉絲團公布。
-          <a
-            href="https://www.facebook.com/house.curry.tw"
-            target="_blank"
-            class="underline"
-            >{{ "(https://www.facebook.com/house.curry.tw)" }}</a
-          >
-        </div>
       </div>
 
       <div class="roof" :style="{ backgroundImage: `url(${roofImage})` }"></div>
@@ -539,17 +558,14 @@ const scrollToTop = () => {
 const activity = [
   {
     title: "活動期間",
-    content: ["測驗時間：2026年4月8日至2026年5月6日(三) 23:59止"],
-    notices: [
-      " 時間判別以本活動網站系統為準",
-      " 得獎公布日期：2026年5月12日(二)當天於台灣好侍FB官方粉絲團公布",
-    ],
+    content: ["測驗時間：2026年4月10日(五)至2026年5月7日(四) 23:59止"],
+    notices: [" 時間判別以本活動網站系統為準"],
     linkkk: true,
   },
   {
     title: "活動辦法",
     content: [
-      "活動期間於此活動網站完成咖哩人格測驗，並將測驗結果圖分享至個人Facebook或IG(不限貼文或限時動態)，截圖分享畫面上傳至台灣好侍FB粉專指定貼文下方，即可參加抽獎！",
+      "活動期間於此活動網站完成咖哩人格測驗，並將測驗結果圖分享至個人FB、IG或Threads(不限貼文或限時動態)，截圖分享畫面上傳至台灣好侍FB粉專指定貼文下方，即可參加抽獎！",
     ],
     notices: [
       " 活動參加次數不可累計！",
@@ -581,13 +597,13 @@ const rewards = [
   },
 ];
 const curryList = [
-  { name: "佛蒙特咖哩塊/甜味", url: curry1 },
-  { name: "佛蒙特咖哩塊/中辣", url: curry2 },
-  { name: "佛蒙特咖哩塊/辣味", url: curry3 },
+  { name: "佛蒙特咖哩塊系列\n(甜味/中辣/辣味)", url: curry1 },
+  { name: "爪哇咖哩塊系列\n(中辣/辣味/香辛辣)", url: curry5 },
   { name: "素食咖哩塊", url: curry4 },
-  { name: "爪哇咖哩塊/中辣", url: curry5 },
-  { name: "爪哇咖哩塊/辣味", url: curry6 },
-  { name: "爪哇咖哩塊/香辛辣", url: curry7 },
+  { name: "完熟蕃茄燴飯料理塊", url: curry2 },
+  { name: "北海道白醬系列\n(白醬/奶油玉米)", url: curry3 },
+  { name: "好侍調理包系列", url: curry6 },
+  // { name: "爪哇咖哩塊/香辛辣", url: curry7 },
 ];
 </script>
 <style scoped>
