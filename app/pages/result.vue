@@ -7,7 +7,7 @@
     >
       {{ "你的咖哩人格是..." }}
     </h1>
-    <img src="/assets/images/result1.jpg" class="" />
+    <img :src="shareImageUrlMap[result]" class="" />
     <div
       class="text-[var(--primary-brown)] text-2xl font-normal flex flex-col items-center leading-[36px] px-6"
     >
@@ -21,13 +21,15 @@
       </div>
     </div>
     <div class="flex flex-col px-6 gap-10">
-      <UiButton
-        variant="destructive"
-        class="font-bold text-2xl px-4 py-4 sm:px-22 sm:py-4"
-      >
-        <Icon name="streamline-sharp:gift-2-remix" />
-        立即至好侍FB參加抽獎
-      </UiButton>
+      <a href="https://www.facebook.com/house.curry.tw" target="_blank">
+         <UiButton
+          variant="destructive"
+          class="font-bold text-2xl px-4 py-4 sm:px-22 sm:py-4"
+        >
+          <Icon name="streamline-sharp:gift-2-remix" />
+          立即至好侍FB參加抽獎
+        </UiButton>
+      </a>
       <UiDialog v-model:open="showDialog">
         <UiDialogTrigger as-child>
           <UiButton
@@ -79,6 +81,7 @@
 
                   <div
                     class="flex flex-col items-center flex-1 cursor-pointer"
+                    @click="shareToFB"
                   >
                     <img src="/assets/images/Facebook.png" />
                     <span class="text-xs mt-2 text-[#54310F]">Facebook</span>
@@ -92,15 +95,16 @@
                     <span class="text-xs mt-2 text-[#54310F]">Instagram</span>
                   </div>
 
-                  <div
+                  <!-- <div
                     class="flex flex-col items-center flex-1 cursor-pointer"
                   >
                     <img src="/assets/images/LINE.png" />
                     <span class="text-xs mt-2 text-[#54310F]">LINE</span>
-                  </div>
+                  </div> -->
 
                   <div
                     class="flex flex-col items-center flex-1 cursor-pointer"
+                    @click="shareToThreads"
                   >
                     <img src="/assets/images/threads.png" />
                     <span class="text-xs mt-2 ]">Threads</span>
@@ -192,29 +196,35 @@
   </div>
 </template>
 <script setup>
-import shareImageUrl from "~/assets/images/result1.jpg";
+import Sweet from "~/assets/images/result5.jpg";
+import Balance from "~/assets/images/result1.jpg";
+import Spicy from "~/assets/images/result2.jpg";
+import Tart from "~/assets/images/result3.jpg";
+import Creamy from "~/assets/images/result4.jpg";
 import { toast } from "vue-sonner";
 const showDialog = ref(false);
-// useSeoMeta({
-//   title: `我是【絲滑奶油型】靈魂！ - 咖哩靈魂拌測驗結果`,
-//   ogTitle: `測驗結果：我的靈魂是溫潤的絲滑奶油`,
-//   ogImage: `https://example.com/images/result-${resultId}.jpg`, // 動態對應結果圖
-// })
+const result = useRoute().query.result;
+const shareImageUrlMap = {
+  1: Balance,
+  2: Spicy,
+  3: Tart,
+  4: Creamy,
+  5: Sweet,
+}
 useHead({
   meta: [
     // 這是最核心的設定，確保手機抓到這張「本命咖哩」的分享圖
     { property: 'og:image', content: '/images/share.png' },
-    { property: 'og:title', content: '本命咖哩大公開！測出你的咖哩人格' },
+    { property: 'og:title', content: '咖哩靈魂拌測驗！測出你的咖哩人格' },
     { property: 'og:description', content: '解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！' },
     
   ]
 })
 
-// const ngrokUrl = "http://172.20.10.2:8080";
-const ngrokUrl = "https://grilla-estella-noneducationally.ngrok-free.dev/api";
+const ngrokUrl = "https://curryui.vercel.app/";
 // const ngrokUrl = window.location.origin;
 const textToCopy = "測出你的咖哩人格！探索你的命定咖哩，找到最適合你的黃金比例 #心理測驗 #咖哩人格 #好侍咖哩";
-const shareUrl = `${ngrokUrl}/share/${123}`;
+const shareUrl = `${ngrokUrl}`;
 // const shareUrl = window.location.origin;
 const isMobile = computed(() => {
   if (typeof navigator === "undefined") return false;
@@ -225,15 +235,14 @@ const copyText = async (toastM) => {
   toast.success(toastM);
 };
 const copyLink = async () => {
-  const url = window.location.origin;
-  await navigator.clipboard.writeText(url);
+  await navigator.clipboard.writeText(shareUrl);
   toast.success("複製成功！快去分享給朋友吧！");
 };
 const timeout = 500; // 0.5秒後開啟分享視窗，確保複製完成
 
 const shareToLine = () => {
   // 將文字與網址組合成一段內容
-  const fullText = `${textToCopy}\n${ngrokUrl}/share/123`;
+  const fullText = `${textToCopy}\n${ngrokUrl}`;
 
   // 使用 R/share 格式，這是目前最能保證「文字」被塞進去的方法
   const lineUrl = isMobile
@@ -283,8 +292,8 @@ const downloadImage = async () => {
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share({
         files: [file],
-        title: "我的測驗結果",
-        text: "快來看看我的測驗結果！",
+        title: "咖哩靈魂拌測驗：測出你的咖哩人格！",
+        text: "透過 6 題性格直覺測驗，找出最能代表你生活態度的咖哩風味。",
       });
     } else {
       // 3. 不支援時的保底：直接開啟 IG

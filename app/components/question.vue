@@ -39,10 +39,13 @@
   </div>
 </template>
 <script setup>
+import { useAnswerStore } from "~/stores/answer";
+
 const answer = ref([]);
 const pageIndex = inject("pageIndex");
 const isError = ref(false);
 const tempAnswer = ref(null);
+const answerStore = useAnswerStore();
 const props = defineProps({
   visible: {
     type: Boolean,
@@ -50,7 +53,54 @@ const props = defineProps({
   },
 });
 const emits = defineEmits(["update:visible"]);
-const goNext = () => {
+const resulrImageMap = {
+  Sweet: 5,
+  Balance: 1,
+  Spicy: 2,
+  Tart: 3,
+  Creamy: 4,
+}
+const culculateResult = () => {
+  const result = {
+    Sweet: 0,
+    Spicy: 0,
+    Tart: 0,
+    Creamy: 0,
+    Balance: 0,
+    "Sweet+Creamy": 0,
+    "Tart+Creamy": 0,
+    All: 0,
+  };
+  answer.value.forEach((a) => {
+    if (a.answer.includes("+")) {
+      if (a.answer === "All") {
+        result["Sweet"] += 1;
+        result["Spicy"] += 1;
+        result["Tart"] += 1;
+        result["Creamy"] += 1;
+        result["Balance"] += 1;
+      } else {
+        const categories = a.answer.split("+");
+        categories.forEach((c) => {
+          result[c] += 1;
+        });
+      }
+    } else {
+      result[a.answer] += 1;
+    }
+  });
+  // 找出最高分，如果同分用Q3的答案決勝負
+  const q3Answer = answer.value.find(a => a.question === 'Q3')?.answer;
+  const maxScore = Math.max(...Object.values(result));
+  const topCategories = Object.keys(result).filter(key => result[key] === maxScore);
+  if (topCategories.length > 1 && q3Answer) {
+    if (topCategories.includes(q3Answer)) {
+      return q3Answer;
+    }
+  }
+  return topCategories[0];
+};
+const goNext = async () => {
   isError.value = false;
   // validate answer
   if (!tempAnswer.value&&!answer.value.some(a => a.question === `Q${pageIndex.value-1}`)) {
@@ -72,12 +122,21 @@ const goNext = () => {
     }
     tempAnswer.value = null;
   }
-  console.log('answer.value', answer.value);
   console.log('pageIndex.value', pageIndex.value);
   if (answer.value.length === mockQA.length) {
+    const result = culculateResult();
+    answerStore.setUserInfo({
+      ans1: answer.value[0]?.answer || "",
+      ans2: answer.value[1]?.answer || "",
+      ans3: answer.value[2]?.answer || "",
+      ans4: answer.value[3]?.answer || "",
+      ans5: answer.value[4]?.answer || "",
+      ans6: answer.value[5]?.answer || "",
+      resultName: result,
+    });
+    console.log("answerStore.answer", answerStore.answer);
     // emits("update:visible", false);
-    // TODO save ans API
-    navigateTo("/result");
+    await saveResult(result); 
   }
 };
 const goBack = () => {
@@ -87,6 +146,30 @@ const goBack = () => {
   }
     pageIndex.value = pageIndex.value - 1;
 
+};
+
+const saveResult = async (result) => {
+  try {
+    await useApi("/results/create", {
+      method: "POST",
+      body: {
+        userName: answerStore.answer.userName,
+        gender: answerStore.answer.gender,
+        age: answerStore.answer.age,
+        ans1: answerStore.answer.ans1 || "",
+        ans2: answerStore.answer.ans2 || "",
+        ans3: answerStore.answer.ans3 || "",
+        ans4: answerStore.answer.ans4 || "",
+        ans5: answerStore.answer.ans5 || "",
+        ans6: answerStore.answer.ans6 || "",
+        resultName: answerStore.answer.resultName || "",
+      },
+    });
+    answerStore.clearAnswer();
+    await navigateTo({path:'/result', query: { result: resulrImageMap[result] } });
+  } catch (error) {
+    console.error("Failed to save result:", error);
+  }
 };
 const mockQA = [
   {
@@ -123,27 +206,22 @@ const mockQA = [
     question: "忙碌了一整天，你想用什麼方式「拌」走疲勞？",
     options: [
       {
-        // title: "吃一碗熱熱甜甜的食物",
         description: "吃一碗熱熱甜甜的食物，找回最熟悉安全感。",
         value: "Sweet",
       },
       {
-        // title: "約朋友去居酒屋",
         description: "約朋友去居酒屋，來點重口味與辛辣食物，大口抒壓。",
         value: "Spicy",
       },
       {
-        // title: "點一份精緻的歐式燉菜",
         description: "點一份精緻的歐式燉菜，配上一杯微酸的紅酒或飲品。",
         value: "Tart",
       },
       {
-        // title: "泡個熱水澡",
         description: "泡個熱水澡，喝杯濃郁的熱牛奶或濃湯，徹底放鬆。",
         value: "Creamy",
       },
       {
-        // title: "吃一碗清爽的蔬菜湯",
         description: "煮一鍋簡單的清爽蔬菜料理，讓身體恢復自然平衡。",
         value: "Balance",
       },
@@ -183,27 +261,22 @@ const mockQA = [
     question: "當你與靈魂「拌」侶吵架時，你通常如何化解僵局？",
     options: [
       {
-        // title: "先釋放善意",
         description: "先釋放善意，準備對方愛吃的甜食或禮物來求和。",
         value: "Sweet",
       },
       {
-        // title: "講求效率",
         description: "講求效率，攤開問題邏輯，找出雙方都能接受的比例。",
         value: "Balance",
       },
       {
-        // title: "直接把心裡的情緒釋放出來後",
         description: "直接把心裡的情緒釋放出來後，不要吵隔夜。",
         value: "Spicy",
       },
       {
-        // title: "保持冷靜",
         description: "保持冷靜，給彼此一點空間，用質感和時間淡化酸楚。",
         value: "Tart",
       },
       {
-        // title: "溫暖的擁抱",
         description: "溫暖的擁抱，不說話也能感受到彼此的溫度。",
         value: "Creamy",
       },
@@ -213,27 +286,22 @@ const mockQA = [
     question: "下一趟旅行，哪種情境是最吸引你的靈魂「拌」遊？",
     options: [
       {
-        // title: "溫馨的日本鄉間民宿",
         description: "溫馨的日本鄉間民宿，圍在爐邊吃在地風味料理。",
         value: "Sweet",
       },
       {
-        // title: "繁忙的都市商圈",
         description: "繁忙的都市商圈，探索高效率與現代感的職人精神。",
         value: "Balance",
       },
       {
-        // title: "東南亞的香料市集",
         description: "東南亞的香料市集，體驗從未感受過的感官衝擊。",
         value: "Spicy",
       },
       {
-        // title: "歐洲的酒莊或美術館",
         description: "歐洲的酒莊或美術館，沉浸在歷史與美學的層次中。",
         value: "Tart",
       },
       {
-        // title: "漫步在北歐森林",
         description: "漫步在北歐森林，享受純淨、濃郁且寧靜的時光。",
         value: "Creamy",
       },
@@ -243,27 +311,22 @@ const mockQA = [
     question: "想像你要做一道「人生料理」，你最想加入什麼秘密食材？",
     options: [
       {
-        // title: "一匙蘋果果醬",
         description: "一匙蘋果果醬，充滿回憶的甘甜味。",
         value: "Sweet",
       },
       {
-        // title: "磨碎的黑胡椒與香料",
         description: "磨碎的黑胡椒與香料，增強生命力。",
         value: "Spicy",
       },
       {
-        // title: "幾瓣完熟蕃茄",
         description: "幾瓣完熟蕃茄，帶出豐富的層次感。",
         value: "Tart",
       },
       {
-        // title: "讓質感升級的起司與鮮奶",
         description: "讓質感升級的起司與鮮奶，讓生活更圓潤。",
         value: "Creamy",
       },
       {
-        // title: "什麼都不加",
         description: "什麼都不加，追求純粹的平衡和諧。",
         value: "Balance",
       },

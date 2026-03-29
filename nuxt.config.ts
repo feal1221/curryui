@@ -9,25 +9,30 @@ export default defineNuxtConfig({
       tailwindcss(),
     ],
     server: {
-    hmr: {
-      protocol: 'wss',
-      clientPort: 443
-    },
+    hmr: false,
     allowedHosts: [
-        'grilla-estella-noneducationally.ngrok-free.dev' // 報錯訊息中的那個網址
+        'grilla-estella-noneducationally.ngrok-free.dev'
       ]
   }
   },
   modules: [
-    '@vee-validate/nuxt','@nuxt/icon'
+    '@vee-validate/nuxt','@nuxt/icon','@pinia/nuxt'
   ],
   veeValidate: {
     autoImports: true,
+  },
+  pinia: {
+    storesDirs: ['./app/stores/**'],
   },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
   devServer: {
     allowedHosts: ['.ngrok-free.app'] 
+  },
+  runtimeConfig: {
+    public: {
+      apiBase: 'http://localhost:8080',
+    }
   },
   app: {
     head: {
