@@ -284,7 +284,7 @@ const shareToThreads = () => {
   const url = `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`;
   if (isMobile.value) {
     // 嘗試開啟 Threads App
-    window.location.href = "threads://post?text=" + encodeURIComponent(text);
+    window.location.href = url
     // 如果 2 秒後還在原地，表示沒有成功開啟 App，改開網頁版
     setTimeout(() => {
       window.open(url, "_blank");
@@ -308,15 +308,14 @@ const shareIg = async () => {
   const response = await fetch(shareImageUrl, { method: "GET" });
   const blob = await response.blob();
   const file = new File([blob], "share.jpg", { type: "image/jpeg" });
-  toast.success("複製成功！快去分享給朋友吧！");
   // 2. 檢查手機是否支援分享檔案
   setTimeout(async () => {
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share({
         files: [file],
-        title: "咖哩靈魂拌測驗：測出你的咖哩人格！",
-        text: "測出你的咖哩人格，解鎖你命定的咖哩配方。",
-        url: shareUrl,  
+        // title: "咖哩靈魂拌測驗：測出你的咖哩人格！",
+        // text: "測出你的咖哩人格，解鎖你命定的咖哩配方。",
+        // url: shareUrl,  
       });
     } else {
       // 3. 不支援時的保底：直接開啟 IG
