@@ -239,7 +239,7 @@ const copyLink = async () => {
   await navigator.clipboard.writeText(shareUrl);
   toast.success("複製成功！快去分享給朋友吧！");
 };
-const timeout = 500; // 0.5秒後開啟分享視窗，確保複製完成
+const timeout = 1000; // 0.5秒後開啟分享視窗，確保複製完成
 
 const shareToLine = () => {
   // 將文字與網址組合成一段內容
@@ -276,22 +276,26 @@ const shareToFB = async () => {
 };
 
 const shareToThreads = () => {
-  const text = `${textToCopy}\n\n${shareUrl}`;
+  const text = `${textToCopy}\n${shareUrl}`;
   const url = `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`;
   window.open(url, "_blank");
 };
 // 4. 下載圖片 (針對 IG 最友善的做法)
 const downloadImage = async () => {
-  // copyText("已為您複製結果文字！請直接在 IG 貼上即可分享。");
-  // IG 的限時動態跳轉協議
-
   if (!isMobile.value) {
-    window.open('https://www.instagram.com/', '_blank','noopener,noreferrer');
+    copyLink();
+    setTimeout(() => {
+      // window.open("instagram://story-camera", "_blank");
+      window.open('https://www.instagram.com/direct/inbox/', '_blank', 'noopener,noreferrer');
+
+    }, timeout);
+    // window.open('https://www.instagram.com/', '_blank','noopener,noreferrer');
     return;
   }
   const response = await fetch(shareImageUrl, { method: "GET" });
   const blob = await response.blob();
   const file = new File([blob], "share.jpg", { type: "image/jpeg" });
+  toast.success("複製成功！快去分享給朋友吧！");
   // 2. 檢查手機是否支援分享檔案
   setTimeout(async () => {
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
