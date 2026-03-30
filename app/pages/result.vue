@@ -51,7 +51,7 @@
               class="cursor-pointer text-2xl ml-5 text-left font-bold sm:mb-0 mb-4"
               >←</UiDialogTitle
             >
-            <UiDialogDescription>
+            <UiDialogDescription as-child>
               <div
                 class="flex flex-col p-0 sm:p-10 w-full sm:max-w-[500px] mx-auto text-[var(--primary-brown)]"
               >
@@ -88,8 +88,8 @@
                   </div>
 
                   <div
-                    v-if="isMobile"
                     class="flex flex-col items-center flex-1 cursor-pointer"
+                    @click="downloadImage"
                   >
                     <img src="/assets/images/Instagram.png" />
                     <span class="text-xs mt-2 text-[#54310F]">Instagram</span>
@@ -201,6 +201,7 @@ import Balance from "~/assets/images/result1.jpg";
 import Spicy from "~/assets/images/result2.jpg";
 import Tart from "~/assets/images/result3.jpg";
 import Creamy from "~/assets/images/result4.jpg";
+import shareImageUrl from "/images/share.png";
 import { toast } from "vue-sonner";
 const showDialog = ref(false);
 const result = useRoute().query.result;
@@ -214,7 +215,7 @@ const shareImageUrlMap = {
 useHead({
   meta: [
     // 這是最核心的設定，確保手機抓到這張「本命咖哩」的分享圖
-    { property: 'og:image', content: '/images/share.png' },
+    { property: 'og:image', content: shareImageUrl },
     { property: 'og:title', content: '咖哩靈魂拌測驗！測出你的咖哩人格' },
     { property: 'og:description', content: '解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！' },
     
@@ -283,17 +284,22 @@ const shareToThreads = () => {
 const downloadImage = async () => {
   // copyText("已為您複製結果文字！請直接在 IG 貼上即可分享。");
   // IG 的限時動態跳轉協議
+
+  if (!isMobile.value) {
+    window.open('https://www.instagram.com/', '_blank','noopener,noreferrer');
+    return;
+  }
   const response = await fetch(shareImageUrl, { method: "GET" });
   const blob = await response.blob();
-  const file = new File([blob], "result.jpg", { type: "image/jpeg" });
-
+  const file = new File([blob], "share.jpg", { type: "image/jpeg" });
   // 2. 檢查手機是否支援分享檔案
   setTimeout(async () => {
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share({
         files: [file],
         title: "咖哩靈魂拌測驗：測出你的咖哩人格！",
-        text: "透過 6 題性格直覺測驗，找出最能代表你生活態度的咖哩風味。",
+        text: "測出你的咖哩人格，解鎖你命定的咖哩配方。",
+        url: shareUrl,  
       });
     } else {
       // 3. 不支援時的保底：直接開啟 IG

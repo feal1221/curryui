@@ -113,7 +113,7 @@ const props = defineProps({
   },
 });
 const emits = defineEmits(["update:visible"]);
-const resulrImageMap = {
+const resultImageMap = {
   Sweet: 5,
   Balance: 1,
   Spicy: 2,
@@ -219,7 +219,7 @@ const goBack = () => {
 const saveResult = async (result) => {
   isSubmitting.value = true;
   try {
-    const { data, error } = await useApi("/results/create", {
+    const response = await useApi("/results/create", {
       method: "POST",
       body: {
         userName: answerStore.answer.userName,
@@ -230,20 +230,19 @@ const saveResult = async (result) => {
         ans3: answerStore.answer.ans3 || "",
         ans4: answerStore.answer.ans4 || "",
         ans5: answerStore.answer.ans5 || "",
-        // ans6: answerStore.answer.ans6 || "",
+        ans6: answerStore.answer.ans6 || "",
         resultName: answerStore.answer.resultName || "",
       },
     });
-
-    if (!error.value) {
+    if (response === 'Success') {
       answerStore.clearAnswer();
       await navigateTo({
         path: "/result",
-        query: { result: resulrImageMap[result] },
+        query: { result: resultImageMap[result] },
       });
     } else {
       isSubmitting.value = false;
-      toast.error("系統錯誤：儲存結果失敗，請稍後再試", {
+      toast.error("系統錯誤，請稍後再試哦！", {
         style: {
           background: "#FEF2F2",
           color: "#B91C1C",
@@ -255,7 +254,7 @@ const saveResult = async (result) => {
   } catch (error) {
     isSubmitting.value = false;
     console.error("Failed to save result:", error);
-    toast.error("系統錯誤：儲存結果失敗，請稍後再試", {
+    toast.error("系統錯誤，請稍後再試哦！", {
       style: {
         background: "#FEF2F2",
         color: "#B91C1C",

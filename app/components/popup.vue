@@ -18,41 +18,43 @@
       <UiDialogHeader>
         <UiDialogTitle></UiDialogTitle>
         <UiDialogDescription>
-          <div
-            v-if="pageIndex === 0"
-            class="flex flex-col justify-center items-center text-base sm:text-2xl font-medium text-[var(--primary-brown)] leading-relaxed sm:leading-[36px] p-0 sm:p-25 text-center"
-          >
-            <h1 class="bg-[#FAD35C] px-4 py-4 sm:px-8 sm:py-2 text-2xl text-left sm:text-center">
-              {{ "咖哩拌動靈魂，調配你的命定配方" }}
-            </h1>
-            <br />
-            <div>形形色色的咖哩，就像不同樣貌的靈魂。</div>
-            <br />
-            <div>有人喜歡探索香料的層次…</div>
-            <div>有人偏愛醇厚濃郁的口感…</div>
-            <div>有人習慣拌著飯吃，也有人選擇不拌</div>
-            <br />
-
-            <div>但不論偏好什麼風味</div>
-            <div>每個人心裡，都有一種屬於自己的完美比例</div>
-            <div>正是象徵你的處世哲學。</div>
-            <br />
-
-            <div>六個問題</div>
-            <div>測出你靈魂中的「拌哩」哲學</div>
-            <div>揭開你的咖哩混搭黃金比例。</div>
-            <br />
-
-            <UiButton
-              variant="destructive"
-              @click="pageIndex = 1"
-              class="w-[250px] h-[64px] text-2xl py-2 px-4 mt-2"
+          <div>
+            <div
+              v-if="pageIndex === 0"
+              class="flex flex-col justify-center items-center text-base sm:text-2xl font-medium text-[var(--primary-brown)] leading-relaxed sm:leading-[36px] p-0 sm:p-25 text-center"
             >
-              繼續
-            </UiButton>
+              <h1 class="bg-[#FAD35C] px-4 py-4 sm:px-8 sm:py-2 text-2xl text-left sm:text-center">
+                {{ "咖哩拌動靈魂，調配你的命定配方" }}
+              </h1>
+              <br />
+              <div>形形色色的咖哩，就像不同樣貌的靈魂。</div>
+              <br />
+              <div>有人喜歡探索香料的層次…</div>
+              <div>有人偏愛醇厚濃郁的口感…</div>
+              <div>有人習慣拌著飯吃，也有人選擇不拌</div>
+              <br />
+
+              <div>但不論偏好什麼風味</div>
+              <div>每個人心裡，都有一種屬於自己的完美比例</div>
+              <div>正是象徵你的處世哲學。</div>
+              <br />
+
+              <div>六個問題</div>
+              <div>測出你靈魂中的「拌哩」哲學</div>
+              <div>揭開你的咖哩混搭黃金比例。</div>
+              <br />
+
+              <UiButton
+                variant="destructive"
+                @click="pageIndex = 1"
+                class="w-[250px] h-[64px] text-2xl py-2 px-4 mt-2"
+              >
+                繼續
+              </UiButton>
+            </div>
+            <about v-if="pageIndex === 1" />
+            <question v-if="pageIndex >= 2" v-model:visible="showDialog" />
           </div>
-          <about v-if="pageIndex === 1" />
-          <question v-if="pageIndex >= 2" v-model:visible="showDialog"/>
         </UiDialogDescription>
       </UiDialogHeader>
     </UiDialogContent>

@@ -317,11 +317,11 @@
                 >
                   <div
                     v-for="(c, cIndex) in curryList"
-                    :key="c.name"
+                    :key="cIndex"
                     class="w-full sm:w-auto"
                   >
                     <div v-if="cIndex === 5" class="flex w-20 justify-center mx-auto">
-                                            <img
+                      <img
                         :src="curry7"
                         class="mx-auto max-h-[140px] object-contain max-w-[60px]"
                       />

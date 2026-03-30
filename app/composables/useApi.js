@@ -19,5 +19,5 @@ export const useApi = (
     }
   }
 
-  return useFetch(url, { ...defaults, ...options })
+  return $fetch(url, { ...defaults, ...options })
 }
