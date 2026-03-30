@@ -89,7 +89,7 @@
 
                   <div
                     class="flex flex-col items-center flex-1 cursor-pointer"
-                    @click="downloadImage"
+                    @click="shareIg"
                   >
                     <img src="/assets/images/Instagram.png" />
                     <span class="text-xs mt-2 text-[#54310F]">Instagram</span>
@@ -239,6 +239,10 @@ const copyLink = async () => {
   await navigator.clipboard.writeText(shareUrl);
   toast.success("複製成功！快去分享給朋友吧！");
 };
+const copyLinkandText = async () => {
+  await navigator.clipboard.writeText(`${textToCopy}\n\n${shareUrl}`);
+  toast.success("複製成功！快去分享給朋友吧！");
+};
 const timeout = 1000; // 0.5秒後開啟分享視窗，確保複製完成
 
 const shareToLine = () => {
@@ -276,20 +280,29 @@ const shareToFB = async () => {
 };
 
 const shareToThreads = () => {
-  const text = `${textToCopy}\n${shareUrl}`;
+  const text = `${textToCopy}\n\n${shareUrl}`;
   const url = `https://www.threads.net/intent/post?text=${encodeURIComponent(text)}`;
+  if (isMobile.value) {
+    // 嘗試開啟 Threads App
+    window.location.href = "threads://post?text=" + encodeURIComponent(text);
+    // 如果 2 秒後還在原地，表示沒有成功開啟 App，改開網頁版
+    setTimeout(() => {
+      window.open(url, "_blank");
+    }, timeout);
+  } else {
   window.open(url, "_blank");
+  }
 };
 // 4. 下載圖片 (針對 IG 最友善的做法)
-const downloadImage = async () => {
+const shareIg = async () => {
+  copyLinkandText();
   if (!isMobile.value) {
-    copyLink();
     setTimeout(() => {
       // window.open("instagram://story-camera", "_blank");
-      window.open('https://www.instagram.com/direct/inbox/', '_blank', 'noopener,noreferrer');
+      window.open('https://www.instagram.com/', '_blank','noopener,noreferrer');
+      // window.open('https://www.instagram.com/direct/inbox/', '_blank', 'noopener,noreferrer');
 
     }, timeout);
-    // window.open('https://www.instagram.com/', '_blank','noopener,noreferrer');
     return;
   }
   const response = await fetch(shareImageUrl, { method: "GET" });
