@@ -224,7 +224,8 @@ useHead({
 
 const ngrokUrl = "https://curryui.vercel.app/";
 // const ngrokUrl = window.location.origin;
-const textToCopy = "測出你的咖哩人格！探索你的命定咖哩，找到最適合你的黃金比例 #心理測驗 #咖哩人格 #好侍咖哩";
+// const textToCopy = "測出你的咖哩人格！探索你的命定咖哩，找到最適合你的黃金比例 #心理測驗 #咖哩人格 #好侍咖哩";
+const textToCopy = "咖哩靈魂拌測驗！測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！快來測測看你的咖哩人格是什麼吧！";
 const shareUrl = `${ngrokUrl}`;
 // const shareUrl = window.location.origin;
 const isMobile = computed(() => {
