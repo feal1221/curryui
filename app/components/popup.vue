@@ -64,6 +64,8 @@
 const showDialog = ref(false);
 const pageIndex = ref(0);
 provide("pageIndex", pageIndex);
+const tempResult = ref([]);
+provide("tempResult", tempResult);
 watch(pageIndex, (newVal) => {
   // 滾動到頂部
   const dialogContent = document.querySelector('[data-slot="dialog-content"]');

@@ -104,6 +104,7 @@ const pageIndex = inject("pageIndex");
 const isError = ref(false);
 const apiError = ref(false);
 const tempAnswer = ref(null);
+const tempResult = inject("tempResult");
 const isSubmitting = ref(false);
 const answerStore = useAnswerStore();
 const props = defineProps({
@@ -193,7 +194,6 @@ const goNext = async () => {
       return;
     }
   }
-  console.log("pageIndex.value", pageIndex.value);
   if (answer.value.length === mockQA.length) {
     const result = culculateResult();
     answerStore.setUserInfo({
@@ -263,6 +263,23 @@ const saveResult = async (result) => {
     });
   }
 };
+onMounted(() => {
+  if (tempResult.value.length > 0) {
+    answer.value = JSON.parse(JSON.stringify(tempResult.value)); // 深拷貝，確保 answer 是 tempResult 的獨立副本
+  }
+});
+
+watch(
+  () => answer.value,
+  (newVal) => {
+    if (newVal.length > 0) {
+      tempResult.value = JSON.parse(JSON.stringify(newVal)); // 深拷貝，確保 tempResult 是 answer 的獨立副本
+    }
+  },
+  { deep: true },
+);
+
+
 const mockQA = [
   {
     question: "面對咖哩的世紀爭議，你的「拌哩」哲學是什麼？",

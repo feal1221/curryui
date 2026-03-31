@@ -361,12 +361,23 @@
             </div>
           </div>
         </div>
-
-        <UiButton
-          variant="destructive"
-          class="px-22 py-4 font-bold text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-4"
-          >{{ "詳細活動資訊" }}
-        </UiButton>
+        <a
+          href="https://pse.is/8vyevz"
+          target="_blank"
+          class="self-center"
+          >
+          <UiButton
+            variant="destructive"
+            class="px-22 mx-auto py-4 font-bold text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-4"
+            >{{ "詳細活動資訊" }}
+          </UiButton>
+        </a>
+          <!-- <UiButton
+          @click="download"
+            variant="destructive"
+            class="px-22 py-4 font-bold mx-auto text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-4"
+            >{{ "詳細活動資訊" }}
+          </UiButton> -->
         <div
           class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap"
         >
@@ -554,6 +565,24 @@ import curry7 from "~/assets/images/curry107.png";
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
+
+const download = async () =>{
+  const excel = await useApi("/results/exportExcel", {
+      method: "GET",
+        responseType: "blob"
+    });
+    const blob = excel; //
+    let fileName = 'results.xlsx'; // 預設檔名
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+
+    link.setAttribute('download', fileName);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+}
 
 const activity = [
   {

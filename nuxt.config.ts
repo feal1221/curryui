@@ -10,9 +10,6 @@ export default defineNuxtConfig({
     ],
     server: {
     hmr: false,
-    allowedHosts: [
-        'grilla-estella-noneducationally.ngrok-free.dev'
-      ]
   }
   },
   modules: [
@@ -26,12 +23,9 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
-  devServer: {
-    allowedHosts: ['.ngrok-free.app'] 
-  },
   runtimeConfig: {
     public: {
-      apiBase: 'http://localhost:8080',
+      apiBase: 'https://api.housefindyourcurry.tw',
     }
   },
   app: {

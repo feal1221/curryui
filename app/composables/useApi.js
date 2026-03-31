@@ -11,7 +11,7 @@ export const useApi = (
     baseURL: baseURL, 
     
     onResponse({ response }) {
-        console.log('Response:', response.status, response._data)
+        // console.log('Response:', response.status, response._data)
     },
 
     onResponseError({ response }) {
