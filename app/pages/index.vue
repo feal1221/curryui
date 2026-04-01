@@ -145,10 +145,10 @@
       </template>
       <div class="">
       <div
-        class="flex flex-col sm:flex-row sm:flex-wrap mt-2 justify-start px-26 gap-4"
+        class="flex flex-col sm:flex-row sm:flex-wrap mt-2 justify-start px-0 sm:px-26 gap-4"
       >
         <template v-for="r in rewards" :key="r.name">
-          <div class="w-full max-w-[280px] self-start mx-auto sm:mx-0">
+          <div class="w-full max-w-[280px] min-w-[280px] self-start mx-auto sm:mx-0">
             <div
               class="relative bg-white w-full h-[280px] sm:h-70 rounded-2xl overflow-hidden"
             >
