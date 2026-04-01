@@ -295,6 +295,16 @@ const shareToFB = async () => {
     //   });
     //   return;
     // }
+    if (isMobile.value) {
+      // 嘗試開啟 Facebook App
+      window.location.href = `fb://facewebmodal/f?href=${encodeURIComponent(shareUrl)}`;
+      // 如果 2 秒後還在原地，表示沒有成功開啟 App，改開網頁版
+      setTimeout(() => {
+        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+        window.open(url, "_blank");
+      }, timeout);
+      return;
+    }
     // 2. 開啟 FB 分享視窗
     const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
     setTimeout(() => {
@@ -335,19 +345,17 @@ const shareIg = async () => {
   const blob = await response.blob();
   const file = new File([blob], "share.jpg", { type: "image/jpeg" });
   // 2. 檢查手機是否支援分享檔案
-  setTimeout(async () => {
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({
-        files: [file],
-        // title: "咖哩靈魂拌測驗：測出你的咖哩人格！",
-        // text: "測出你的咖哩人格，解鎖你命定的咖哩配方。",
-        // url: shareUrl,  
-      });
-    } else {
-      // 3. 不支援時的保底：直接開啟 IG
-      window.location.href = "instagram://story-camera";
-    }
-  }, timeout);
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    await navigator.share({
+      files: [file],
+      // title: "咖哩靈魂拌測驗：測出你的咖哩人格！",
+      // text: "測出你的咖哩人格，解鎖你命定的咖哩配方。",
+      // url: shareUrl,  
+    });
+  } else {
+    // 3. 不支援時的保底：直接開啟 IG
+    window.location.href = "instagram://story-camera";
+  }
 };
 </script>
 <style scoped></style>

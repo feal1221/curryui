@@ -14,7 +14,7 @@
       />
       <img
         src="/assets/images/veg.png"
-        class="hidden sm:block w-[90vw] absolute z-20 top-6 left-2 w-22 sm:w-auto sm:top-[1%] sm:left-[6%]"
+        class="hidden sm:block w-[90vw] 2xl:w-[85vw] absolute z-20 top-6 left-2 w-22 sm:w-auto sm:top-[1%] sm:left-[6%]"
       />
       <img
         src="/assets/images/vegPhone.png"
@@ -27,11 +27,11 @@
       />
       <img
         src="/assets/images/Rectangle-1.png"
-        class="absolute z-20 top-[20%] left-[64%] w-29 sm:w-40 lg:w-auto sm:top-[5%] lg:top-[5%] xl:top-[20%] sm:left-[70%] lg:left-[76%] xl:left-[80%] pr-1"
+        class="absolute z-20 top-[20%] left-[64%] w-29 sm:w-40 lg:w-auto sm:top-[5%] lg:top-[5%] xl:top-[20%] sm:left-[70%] lg:left-[76%] xl:left-[80%] pr-1 2xl:left-[76%]"
       />
       <img
         src="/assets/images/Rectangle.png"
-        class="absolute z-20 top-[12%] left-[34%] w-29 sm:w-40 lg:w-auto sm:top-[1%] sm:left-[45%] lg:top-[2%] lg:left-[52%] xl:left-[65%]"
+        class="absolute z-20 top-[12%] left-[34%] w-29 sm:w-40 lg:w-auto sm:top-[1%] sm:left-[45%] lg:top-[2%] lg:left-[52%] xl:left-[65%] 2xl:left-[66%] "
       />
 
       <!-- <div class="absolute inset-0 z-0">
@@ -92,12 +92,12 @@
       <svgTitle
         text="測出你的咖哩人格活動規則"
         type="curry"
-        class="block max-[600px]:hidden h-[160px]"
+        class="block max-[600px]:hidden h-[96px] mt-6"
       />
       <svgTitle
         text="測出你的咖哩人格"
         type="curry"
-        class="hidden max-[375px]:hidden max-[600px]:block h-[96px]"
+        class="hidden max-[375px]:hidden max-[600px]:block h-[96px] mt-6"
       />
       <svgTitle
         text="活動規則"
@@ -118,7 +118,7 @@
         <div
           class="font-medium self-start flex flex-col mb-4 w-full px-0 lg:px-26"
         >
-          <div class="text-4xl self-start my-3 sm:my-4">
+          <div class="text-4xl self-start my-3 ">
             {{ a.title }}
           </div>
           <ul
@@ -143,13 +143,14 @@
           </div>
         </div>
       </template>
+      <div class="">
       <div
-        class="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-6 mt-2 px-0 lg:px-26"
+        class="flex flex-col sm:flex-row sm:flex-wrap mt-2 justify-start px-26 gap-4"
       >
         <template v-for="r in rewards" :key="r.name">
-          <div class="w-full max-w-[280px] mx-auto">
+          <div class="w-full max-w-[280px] self-start">
             <div
-              class="relative bg-white w-full h-[280px] sm:h-70 rounded-2xl overflow-hidden"
+              class="relative bg-white  h-[280px] sm:h-70 rounded-2xl overflow-hidden"
             >
               <div class="text-2xl mt-4 sm:mt-6 font-medium">
                 {{ "分享就抽" }}
@@ -175,6 +176,7 @@
             </div>
           </div>
         </template>
+      </div>
       </div>
       <svgTitle text="得獎公布" type="curry" class="h-[160px]" />
       <div
@@ -209,7 +211,7 @@
         class="absolute -translate-x-1/2 left-1/2 top-30 sm:top-36 w-[88vw] max-w-[680px]"
       />
       <div
-        class="flex mt-44 sm:mt-80 flex-col w-full justify-center px-4 sm:px-6 lg:px-2"
+        class="flex mt-44 sm:mt-52 flex-col w-full justify-center px-4 sm:px-6 lg:px-2"
       >
         <div
           class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap"
@@ -263,7 +265,7 @@
         />
 
         <div
-          class="flex flex-col gap-4 justify-center max-w-[1220px] mx-auto w-full"
+          class="flex flex-col gap-4 justify-center max-w-[1220px] mx-auto w-full -mt-4"
         >
           <div
             class="flex flex-col lg:flex-row gap-3 sm:gap-4 justify-center items-stretch"
@@ -320,11 +322,11 @@
                     :key="cIndex"
                     class="w-full sm:w-auto"
                   >
-                    <div v-if="cIndex === 5" class="flex w-20 justify-center mx-auto">
-                      <img
+                    <div v-if="cIndex === 5" class="flex max-w-[128px] justify-center mx-auto">
+                      <!-- <img
                         :src="curry7"
                         class="mx-auto max-h-[140px] object-contain max-w-[60px]"
-                      />
+                      /> -->
                       <img
                         :src="c.url"
                         class="mx-auto max-h-[140px] object-contain"
@@ -334,7 +336,7 @@
                     <img
                       v-else
                       :src="c.url"
-                      class="mx-auto max-h-[140px] object-contain"
+                      class="mx-auto max-h-[140px] object-contain max-w-[150px]"
                     />
                     <div class="text-center p-2 text-base whitespace-pre-line">
                       {{ c.name }}
@@ -379,17 +381,17 @@
             >{{ "詳細活動資訊" }}
           </UiButton> -->
         <div
-          class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap"
+          class="text-5xl mt-7 bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap"
         >
           {{ "任務2" }}
         </div>
         <svgTitle
           text="門店巡迴活動"
           type="curry"
-          class="h-[160px] -mt-2 sm:-mt-5"
+          class="h-[160px] -mt-2 sm:-mt-3"
         />
         <div
-          class="flex justify-center whitespace-pre-line text-center gap-2 flex-col items-center font-medium px-4"
+          class="-mt-5 flex justify-center whitespace-pre-line text-center gap-2 flex-col items-center font-medium px-4"
         >
           <div class="text-[var(--primary-brown)] text-2xl whitespace-pre-line">
             {{ "好侍x全聯 春之咖哩季 門市限定活動" }}
@@ -431,7 +433,7 @@
           id="supermarkets"
           text="附近超市"
           type="curry"
-          class="h-[160px]"
+          class="h-[120px] mt-6"
         />
         <a
           href="https://www.pxmart.com.tw/customer-service/stores/pxmart"
@@ -453,9 +455,9 @@
     </div>
     <!-- 注意事項 -->
     <div class="bg-[#F9F0DC] min-h-[1388px] flex flex-col w-full" id="notices">
-      <svgTitle text="注意事項" type="curry" class="h-[120px] mx-auto" />
+      <svgTitle text="注意事項" type="curry" class="h-[160px] mx-auto" />
       <div
-        class="break-all white-pre-line flex flex-col font-medium text-[var(--primary-brown)] mx-auto px-4 sm:px-8 lg:px-36 pb-12 w-auto sm:w-full"
+        class="-mt-6 break-all white-pre-line flex flex-col font-medium text-[var(--primary-brown)] mx-auto px-4 sm:px-8 lg:px-36 pb-12 w-auto sm:w-full"
       >
         <div class="text-base leading-relaxed">
           凡參加者，即視為已充分瞭解本注意事項中各項條款，且願意完全遵守及同意本活動之各項規定辦法：
@@ -554,12 +556,12 @@ import watchImage from "~/assets/images/watch.png";
 import airpodImage from "~/assets/images/airpod.png";
 import speakerImage from "~/assets/images/speaker.png";
 import roofImage from "~/assets/images/roof.png";
-import curry1 from "~/assets/images/curry101.png";
-import curry2 from "~/assets/images/curry102.png";
-import curry3 from "~/assets/images/curry103.png";
-import curry4 from "~/assets/images/curry104.png";
-import curry5 from "~/assets/images/curry105.png";
-import curry6 from "~/assets/images/curry106.png";
+import curry1 from "~/assets/images/curry101.jpg";
+import curry2 from "~/assets/images/curry102.jpg";
+import curry3 from "~/assets/images/curry103.jpg";
+import curry4 from "~/assets/images/curry104.jpg";
+import curry5 from "~/assets/images/curry105.jpg";
+import curry6 from "~/assets/images/curry108.png";
 import curry7 from "~/assets/images/curry107.png";
 
 onMounted(() => {
