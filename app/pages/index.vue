@@ -562,6 +562,9 @@ import curry5 from "~/assets/images/curry105.png";
 import curry6 from "~/assets/images/curry106.png";
 import curry7 from "~/assets/images/curry107.png";
 
+onMounted(() => {
+  sessionStorage.clear();
+});
 const scrollToTop = () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 };

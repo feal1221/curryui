@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="isAllowed"
     class="bg-[var(--bg-yellow)] min-h-screen flex flex-col items-center gap-15 py-20"
   >
     <h1
@@ -7,7 +8,7 @@
     >
       {{ "你的咖哩人格是..." }}
     </h1>
-    <img :src="shareImageUrlMap[result]" class="" />
+    <img :src="shareImageUrlMap[completedFlag]" class="" />
     <div
       class="text-[var(--primary-brown)] text-2xl font-normal flex flex-col items-center leading-[36px] px-6"
     >
@@ -194,6 +195,10 @@
     </div>
 
   </div>
+  <div
+    v-else
+    class="bg-[var(--bg-yellow)] min-h-screen flex flex-col items-center gap-15 py-20"
+  ></div>
 </template>
 <script setup>
 import Sweet from "~/assets/images/result5.jpg";
@@ -203,14 +208,34 @@ import Tart from "~/assets/images/result3.jpg";
 import Creamy from "~/assets/images/result4.jpg";
 import shareImageUrl from "/images/share.png";
 import { toast } from "vue-sonner";
+const completedFlag = ref(null);
+const isAllowed = computed(() => (completedFlag.value ? true : false));
+
+onMounted(() => {
+  completedFlag.value = sessionStorage.getItem("quiz_completed");
+  if (!isAllowed.value) {
+    // 如果沒有完成測驗，導回首頁
+    navigateTo("/");
+  }
+});
+onBeforeRouteLeave(() => {
+  // 離開頁面前清除完成標記，防止用戶返回後看到結果頁
+  if (completedFlag.value) {
+  sessionStorage.removeItem("quiz_completed");
+  }
+});
+onUnmounted(() => {
+  if (completedFlag.value) {
+    sessionStorage.removeItem('quiz_passed')
+  }
+})
 const showDialog = ref(false);
-const result = useRoute().query.result;
 const shareImageUrlMap = {
-  1: Balance,
-  2: Spicy,
-  3: Tart,
-  4: Creamy,
-  5: Sweet,
+  'c8eee529-6362-4727-aec2-1b6aad9cabbb': Balance,
+  '20dc7e05-042e-4850-897b-4a1e4427260b': Spicy,
+  '5a2a5d3c-efcb-43d0-9ff6-38c1086e5cfc': Tart,
+  '2ce14ad5-2b20-4cca-9c88-1aa1c44618b5': Creamy,
+  '1f09e28c-b0b9-4e18-9d1d-c98c69199682': Sweet,
 }
 useHead({
   meta: [
@@ -222,7 +247,7 @@ useHead({
   ]
 })
 
-const ngrokUrl = "https://curryui.vercel.app/";
+const ngrokUrl = "https://test.housefindyourcurry.tw/";
 // const ngrokUrl = window.location.origin;
 // const textToCopy = "測出你的咖哩人格！探索你的命定咖哩，找到最適合你的黃金比例 #心理測驗 #咖哩人格 #好侍咖哩";
 const textToCopy = "咖哩靈魂拌測驗！測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！快來測測看你的咖哩人格是什麼吧！";

@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     head: {
       link: [
         { rel: 'icon', type: 'image/png', href: '/smal.png?v=2' },
-        { rel: 'apple-touch-icon',type: 'image/png', href: 'https://curryui.vercel.app/smal.png?v=2' }
+        { rel: 'apple-touch-icon',type: 'image/png', href: 'https://test.housefindyourcurry.tw/smal.png?v=2' }
       ]
     }
   }

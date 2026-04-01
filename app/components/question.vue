@@ -115,11 +115,11 @@ const props = defineProps({
 });
 const emits = defineEmits(["update:visible"]);
 const resultImageMap = {
-  Sweet: 5,
-  Balance: 1,
-  Spicy: 2,
-  Tart: 3,
-  Creamy: 4,
+  Sweet: '1f09e28c-b0b9-4e18-9d1d-c98c69199682',
+  Balance: 'c8eee529-6362-4727-aec2-1b6aad9cabbb',
+  Spicy: '20dc7e05-042e-4850-897b-4a1e4427260b',
+  Tart: '5a2a5d3c-efcb-43d0-9ff6-38c1086e5cfc',
+  Creamy: '2ce14ad5-2b20-4cca-9c88-1aa1c44618b5',
 };
 const culculateResult = () => {
   const result = {
@@ -236,9 +236,9 @@ const saveResult = async (result) => {
     });
     if (response === 'Success') {
       answerStore.clearAnswer();
+      sessionStorage.setItem('quiz_completed', resultImageMap[result]);
       await navigateTo({
-        path: "/result",
-        query: { result: resultImageMap[result] },
+        path: "/result"
       });
     } else {
       isSubmitting.value = false;
