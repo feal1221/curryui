@@ -157,7 +157,7 @@
               </div>
               <img
                 :src="r.url"
-                class="absolute -top-4 left-1/2 -translate-x-1/2 translate-y-1/2 max-w-[65%]"
+                class="absolute -top-6 left-1/2 -translate-x-1/2 translate-y-1/2 max-w-[65%]"
               />
               <div
                 class="absolute bottom-0 right-0 w-18 h-16 sm:w-22 sm:h-18 bg-[#C81F19] text-white text-xl sm:text-2xl flex items-end justify-end p-2"

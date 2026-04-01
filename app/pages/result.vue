@@ -301,21 +301,12 @@ const shareToFB = async () => {
     // 第三次的寫法↓
     const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
     if (isMobile.value) {
-        if (navigator.canShare && navigator.canShare({ url: shareUrl })) {
-          await navigator.share({
-            // files: [file],
-            // title: "咖哩靈魂拌測驗：測出你的咖哩人格！",
-            // text: "測出你的咖哩人格，解鎖你命定的咖哩配方。",
-            url: shareUrl,  
-          });
-        } else {
-          window.location.href = url;
-        }
+        window.location.href = url;
       // 如果 2 秒後還在原地，表示沒有成功開啟 App，改開網頁版
       // setTimeout(() => {
       //   window.open(url, "_blank");
       // }, timeout);
-      // return;
+      return;
     }
     // 第一次的寫法↓
     window.open(url, "_blank");
