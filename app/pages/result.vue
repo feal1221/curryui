@@ -301,7 +301,7 @@ const shareToFB = async () => {
     // 第三次的寫法↓
     const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
     if (isMobile.value) {
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        if (navigator.canShare && navigator.canShare({ url: shareUrl })) {
           await navigator.share({
             // files: [file],
             // title: "咖哩靈魂拌測驗：測出你的咖哩人格！",
