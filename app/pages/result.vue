@@ -295,21 +295,18 @@ const shareToFB = async () => {
     //   });
     //   return;
     // }
+    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
     if (isMobile.value) {
       // 嘗試開啟 Facebook App
-      window.location.href = `fb://facewebmodal/f?href=${encodeURIComponent(shareUrl)}`;
+      window.location.href = url;
       // 如果 2 秒後還在原地，表示沒有成功開啟 App，改開網頁版
       setTimeout(() => {
-        const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
         window.open(url, "_blank");
       }, timeout);
       return;
     }
     // 2. 開啟 FB 分享視窗
-    const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-    setTimeout(() => {
       window.open(url, "_blank");
-    }, timeout);
   } catch (err) {
     console.error("複製失敗", err);
   }
