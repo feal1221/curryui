@@ -107,7 +107,7 @@
       <svgTitle
         text="測出你的咖哩"
         type="curry"
-        class="hidden max-[375px]:block h-[96px] -mt-10"
+        class="hidden max-[375px]:block h-[96px] "
       />
       <svgTitle
         text="人格活動規則"
@@ -123,7 +123,7 @@
           </div>
           <ul
             v-if="a.content"
-            class="list-disc list-outside text-left text-2xl self-start ml-5 sm:ml-8 my-3 sm:my-4"
+            class="list-disc list-outside text-left text-2xl self-start ml-5 sm:ml-8 my-5"
           >
             <li v-for="c in a.content" :key="c">{{ c }}</li>
           </ul>
@@ -160,7 +160,7 @@
                 class="absolute -top-6 left-1/2 -translate-x-1/2 translate-y-1/2 max-w-[65%]"
               />
               <div
-                class="absolute bottom-0 right-0 w-18 h-16 sm:w-22 sm:h-18 bg-[#C81F19] text-white text-xl sm:text-2xl flex items-end justify-end p-2"
+                class="absolute bottom-0 right-0 w-22 h-18 bg-[#C81F19] text-white text-2xl flex items-end justify-end p-2"
                 style="clip-path: polygon(100% 0, 100% 100%, 0 100%)"
               >
                 {{ "1名" }}
@@ -180,7 +180,7 @@
       </div>
       <svgTitle text="得獎公布" type="curry" class="h-[160px]" />
       <div
-        class="font-medium self-start flex flex-col mb-4 w-full px-0 lg:px-26"
+        class="font-medium self-start flex flex-col mb-4 w-full px-0 lg:px-26 -mt-10"
       >
         <ul
           class="list-disc list-outside text-left text-2xl self-start ml-5 sm:ml-8 my-3 sm:my-4"
@@ -208,7 +208,7 @@
       />
       <img
         src="/assets/images/title2.png"
-        class="absolute -translate-x-1/2 left-1/2 top-30 sm:top-36 w-[88vw] max-w-[680px]"
+        class="absolute -translate-x-1/2 left-1/2 top-35 sm:top-36 w-[88vw] max-w-[680px]"
       />
       <div
         class="flex mt-44 sm:mt-52 flex-col w-full justify-center px-4 sm:px-6 lg:px-2"
@@ -226,7 +226,7 @@
         <svgTitle
           text="簡訊發票"
           type="curry"
-          class="hidden max-[375px]:block h-[96px]"
+          class="hidden max-[375px]:block h-[96px] mt-5"
         />
         <svgTitle
           text="登陸活動"
@@ -265,7 +265,7 @@
         />
 
         <div
-          class="flex flex-col gap-4 justify-center max-w-[1220px] mx-auto w-full -mt-4"
+          class="flex flex-col gap-4 justify-center max-w-[1220px] mx-auto w-full -mt-7 sm:-mt-4"
         >
           <div
             class="flex flex-col lg:flex-row gap-3 sm:gap-4 justify-center items-stretch"
@@ -388,10 +388,10 @@
         <svgTitle
           text="門店巡迴活動"
           type="curry"
-          class="h-[160px] -mt-2 sm:-mt-3"
+          class="h-[160px] -mt-3"
         />
         <div
-          class="-mt-5 flex justify-center whitespace-pre-line text-center gap-2 flex-col items-center font-medium px-4"
+          class="-mt-7 sm:-mt-5 flex justify-center whitespace-pre-line text-center gap-2 flex-col items-center font-medium px-4"
         >
           <div class="text-[var(--primary-brown)] text-2xl whitespace-pre-line">
             {{ "好侍x全聯 春之咖哩季 門市限定活動" }}
@@ -444,7 +444,7 @@
         >
           <UiButton
             variant="destructive"
-            class="px-22 py-4 font-bold text-2xl shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] relative z-[2]"
+            class="px-16 py-4 sm:px-22 font-bold text-2xl shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] relative z-[2]"
           >
             {{ "立即查看最近超市" }}
           </UiButton>
@@ -562,7 +562,7 @@ import curry3 from "~/assets/images/curry103.jpg";
 import curry4 from "~/assets/images/curry104.jpg";
 import curry5 from "~/assets/images/curry105.jpg";
 import curry6 from "~/assets/images/curry108.png";
-import curry7 from "~/assets/images/curry107.png";
+// import curry7 from "~/assets/images/curry107.png";
 
 onMounted(() => {
   sessionStorage.clear();
