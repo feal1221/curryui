@@ -152,6 +152,7 @@ const culculateResult = () => {
   });
   // 找出最高分，如果同分用Q3的答案決勝負
   const q3Answer = answer.value.find((a) => a.question === "Q3")?.answer;
+  const q6Answer = answer.value.find((a) => a.question === "Q6")?.answer;
   const maxScore = Math.max(...Object.values(result));
   const topCategories = Object.keys(result).filter(
     (key) => result[key] === maxScore,
@@ -159,6 +160,9 @@ const culculateResult = () => {
   if (topCategories.length > 1 && q3Answer) {
     if (topCategories.includes(q3Answer)) {
       return q3Answer;
+    } else {
+      // 如果Q3的答案不在最高分的類別中，則看Q6
+      return q6Answer
     }
   }
   return topCategories[0];
@@ -378,11 +382,11 @@ const mockQA = [
         value: "Balance",
       },
       {
-        description: "直接把心裡的情緒釋放出來後，不要吵隔夜。",
+        description: "直接把心裡的情緒釋放出來，不要吵隔夜。",
         value: "Spicy",
       },
       {
-        description: "保持冷靜，給彼此一點空間，用質感和時間淡化酸楚。",
+        description: "保持冷靜，給彼此一點空間。",
         value: "Tart",
       },
       {

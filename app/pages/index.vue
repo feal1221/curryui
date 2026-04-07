@@ -1,11 +1,11 @@
 <template>
   <curry-bar />
   <div
-    class="flex flex-col justify-center items-center gap-4 mt-4 bg-[var(--bg-yellow)] min-h-screen pt-16"
+    class="flex flex-col justify-center items-center gap-4 mt-0 sm:mt-4 bg-[var(--bg-yellow)] min-h-screen pt-12 sm:pt-16"
   >
     <!-- 活動測驗 -->
     <section
-      class="bg-[#F09020] w-full min-h-[730px] sm:min-h-[820px] relative overflow-hidden"
+      class="bg-[#F09020] w-full min-h-[740px] sm:min-h-[820px] relative overflow-hidden"
       id="test"
     >
       <img
@@ -27,11 +27,11 @@
       />
       <img
         src="/assets/images/Rectangle-1.png"
-        class="absolute z-20 top-[20%] left-[64%] w-29 sm:w-40 lg:w-auto sm:top-[5%] lg:top-[5%] xl:top-[20%] sm:left-[70%] lg:left-[76%] xl:left-[80%] pr-1 2xl:left-[76%]"
+        class="absolute z-20 top-[20%] left-[64%] w-29 sm:w-40 lg:w-[214px] rotate-[22.42deg] sm:top-[5%] lg:top-[8%] xl:top-[20%] sm:left-[72%] lg:left-[76%] xl:left-[80%] pr-1 2xl:left-[76%]"
       />
       <img
         src="/assets/images/Rectangle.png"
-        class="absolute z-20 top-[12%] left-[34%] w-29 sm:w-40 lg:w-auto sm:top-[1%] sm:left-[45%] lg:top-[2%] lg:left-[52%] xl:left-[65%] 2xl:left-[66%] "
+        class="absolute z-20 top-[12%] left-[34%] w-29 sm:w-40 lg:w-[214px] -rotate-[16.76deg] sm:top-[3%] sm:left-[45%] lg:top-[5%] lg:left-[54%] xl:left-[66%] 2xl:left-[66%] "
       />
 
       <!-- <div class="absolute inset-0 z-0">
@@ -73,7 +73,7 @@
       class="my-10 sm:my-16 flex text-center whitespace-pre-wrap px-4 sm:px-4 lg:px-10 flex-col text-[var(--primary-brown)] w-full"
     >
       <h1
-        class="text-4xl lg:text-5xl font-bold leading-normal sm:leading-16 lg:leading-18 whitespace-pre-wrap break-all"
+        class="text-4xl font-bold leading-normal leading-16 whitespace-pre-wrap break-all"
       >
         {{ "分享你的咖哩人格測驗結果至個人FB、IG、Threads動態牆\n並截圖上傳到"
         }}<span class="text-[#C81F19]">{{
@@ -214,54 +214,41 @@
         class="flex mt-44 sm:mt-52 flex-col w-full justify-center px-4 sm:px-6 lg:px-2"
       >
         <div
-          class="text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap"
+          class="text-4xl sm:text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-2 sm:px-22 py-2 text-wrap whitespace-pre-line"
         >
-          {{ "任務1" }}
+        {{ "任務1." }}
+        <br class="block sm:hidden" />
+        {{ "簡訊發票登錄活動" }}
         </div>
         <svgTitle
-          text="簡訊發票登陸活動"
-          type="curry"
-          class="block max-[375px]:hidden h-[160px]"
-        />
-        <svgTitle
-          text="簡訊發票"
-          type="curry"
-          class="hidden max-[375px]:block h-[96px] mt-5"
-        />
-        <svgTitle
-          text="登陸活動"
-          type="curry"
-          class="hidden max-[375px]:block h-[96px] -mt-10"
-        />
-        <svgTitle
-          text="抽iPhone17、日本東京萬元旅遊金等大獎！"
+          text="抽iPhone17、日本萬元旅遊金！"
           type="red"
-          class="lg:block hidden h-[96px] -mt-14 mb-10"
+          class="lg:block hidden h-[96px] mt-7 mb-10"
         />
         <svgTitle
           text="抽iPhone17、日本"
           type="red"
-          class="block max-[550px]:hidden lg:hidden h-[96px] -mt-14"
+          class="block max-[400px]:hidden lg:hidden h-[96px] mt-7"
         />
         <svgTitle
-          text="東京萬元旅遊金等大獎！"
+          text="萬元旅遊金！"
           type="red"
-          class="block max-[550px]:hidden lg:hidden h-[96px] -mt-8 mb-10"
+          class="block max-[400px]:hidden lg:hidden h-[96px] -mt-8 mb-10"
         />
         <svgTitle
           text="抽iPhone17、"
           type="red"
-          class="hidden max-[550px]:block h-[96px] -mt-10"
+          class="hidden max-[400px]:block h-[96px] mt-7"
         />
         <svgTitle
-          text="日本東京萬元"
+          text="日本萬元"
           type="red"
-          class="hidden max-[550px]:block h-[96px] -mt-10"
+          class="hidden max-[400px]:block h-[96px] -mt-10"
         />
         <svgTitle
-          text="旅遊金等大獎！"
+          text="旅遊金！"
           type="red"
-          class="hidden max-[550px]:block h-[96px] -mt-10 mb-10"
+          class="hidden max-[400px]:block h-[96px] -mt-10 mb-10"
         />
 
         <div
@@ -280,11 +267,11 @@
             >
               <div class="text-[var(--primary-brown)] text-2xl leading-relaxed">
                 {{
-                  "Step1. 於活動期間(2026/4/10-2026/5/7)於全台通路(全聯、大全聯、家樂福、家樂福超市、愛買等通路)一次購買「好侍咖哩塊/醬系列」任2盒。"
+                  "Step1. 於活動期間(2026/4/10-2026/5/7)於全台通路(全聯、大全聯、家樂福、家樂福超市、愛買等通路)一次購買「好侍系列商品」。"
                 }}
               </div>
               <div class="text-[var(--text-red)] text-2xl leading-relaxed">
-                {{ "※購買下圖示活動指定購買商品。" }}
+                {{ "※請參考「活動指定購買商品」。" }}
               </div>
               <div class="text-[var(--primary-brown)] text-2xl leading-relaxed">
                 {{
@@ -322,21 +309,10 @@
                     :key="cIndex"
                     class="w-full sm:w-auto"
                   >
-                    <div v-if="cIndex === 5" class="flex max-w-[128px] justify-center mx-auto">
-                      <!-- <img
-                        :src="curry7"
-                        class="mx-auto max-h-[140px] object-contain max-w-[60px]"
-                      /> -->
-                      <img
-                        :src="c.url"
-                        class="mx-auto max-h-[140px] object-contain"
-                      />
-
-                    </div>
                     <img
-                      v-else
                       :src="c.url"
                       class="mx-auto max-h-[140px] object-contain max-w-[150px]"
+                      :class="cIndex >=5 ? 'h-[74px]' : 'h-auto'"
                     />
                     <div class="text-center p-2 text-base whitespace-pre-line">
                       {{ c.name }}
@@ -366,11 +342,11 @@
         <a
           href="https://pse.is/8vyevz"
           target="_blank"
-          class="self-center"
+          class="self-center z-10"
           >
           <UiButton
             variant="destructive"
-            class="px-22 mx-auto py-4 font-bold text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-4"
+            class="px-22 mx-auto py-4 font-bold text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-40"
             >{{ "詳細活動資訊" }}
           </UiButton>
         </a>
@@ -381,24 +357,21 @@
             >{{ "詳細活動資訊" }}
           </UiButton> -->
         <div
-          class="text-5xl mt-7 bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-22 py-2 text-nowrap"
+          class="text-4xl sm:text-5xl mt-7 bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-2 sm:px-22 py-2 text-wrap whitespace-pre-line"
         >
-          {{ "任務2" }}
+            {{ "任務2." }}
+          <br class="block sm:hidden" />
+          {{ "門店巡迴活動" }}
         </div>
-        <svgTitle
-          text="門店巡迴活動"
-          type="curry"
-          class="h-[160px] -mt-3"
-        />
         <div
-          class="-mt-7 sm:-mt-5 flex justify-center whitespace-pre-line text-center gap-2 flex-col items-center font-medium px-4"
+          class="mt-9 flex justify-center whitespace-pre-line text-center gap-2 flex-col items-center font-medium px-4"
         >
           <div class="text-[var(--primary-brown)] text-2xl whitespace-pre-line">
             {{ "好侍x全聯 春之咖哩季 門市限定活動" }}
           </div>
           <div class="text-[var(--text-red)] text-2xl">
             {{
-              "凡於限定門市購買「好侍咖哩塊系列」任2盒，現場即贈送多樣好禮，"
+              "凡於限定門市購買「好侍系列商品」滿2盒以上，現場即贈送多樣好禮，"
             }}
           </div>
           <div class="text-[var(--text-red)] text-2xl">
@@ -420,13 +393,13 @@
           >
             {{ "活動門店資訊：" }}
           </div>
-          <img
+          <!-- <img
             src="/assets/images/com-table.png"
             class="hidden sm:block w-full"
-          />
+          /> -->
           <img
             src="/assets/images/phone-table.jpg"
-            class="block sm:hidden w-full"
+            class="w-full"
           />
         </div>
         <svgTitle
@@ -562,7 +535,7 @@ import curry3 from "~/assets/images/curry103.jpg";
 import curry4 from "~/assets/images/curry104.jpg";
 import curry5 from "~/assets/images/curry105.jpg";
 import curry6 from "~/assets/images/curry108.png";
-// import curry7 from "~/assets/images/curry107.png";
+import curry7 from "~/assets/images/curry107.png";
 
 onMounted(() => {
   sessionStorage.clear();
@@ -636,8 +609,8 @@ const curryList = [
   { name: "素食咖哩塊", url: curry4 },
   { name: "完熟蕃茄燴飯料理塊", url: curry2 },
   { name: "北海道白醬系列\n(白醬/奶油玉米)", url: curry3 },
-  { name: "好侍調理包系列", url: curry6 },
-  // { name: "爪哇咖哩塊/香辛辣", url: curry7 },
+  { name: "美味嚴選調理包系列", url: curry6 },
+  { name: "咖哩調理包系列", url: curry7 },
 ];
 </script>
 <style scoped>

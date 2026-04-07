@@ -1,11 +1,11 @@
 <template>
   <div
-    class="h-20 bg-[var(--bar-red)] w-full flex items-center fixed top-0 left-0 z-50"
+    class="max-h-12 h-12 sm:max-h-20 sm:h-20 bg-[var(--bar-red)] w-full flex items-center fixed top-0 left-0 z-50"
   >
     <!-- Logo -->
     <div
       @click="redirectToHome('test')"
-      class="cursor-pointer ml-10 text-white text-lg font-bold max-[556px]:absolute max-[556px]:left-1/2 max-[556px]:-translate-x-1/2 max-[556px]:ml-0"
+      class="cursor-pointer ml-10 w-[120px] sm:w-[172px] text-white text-lg font-bold max-[556px]:absolute max-[556px]:left-1/2 max-[556px]:-translate-x-1/2 max-[556px]:ml-0"
     >
       <img src="/assets/images/logo.png" />
     </div>

@@ -8,7 +8,7 @@
     >
       {{ "你的咖哩人格是..." }}
     </h1>
-    <img :src="shareImageUrlMap[completedFlag]" class="" />
+    <img :src="shareImageUrlMap[completedFlag]" class="max-w-[726px]" />
     <div
       class="text-[var(--primary-brown)] text-2xl font-normal flex flex-col items-center leading-[36px] px-6"
     >
@@ -263,11 +263,11 @@ const copyText = async (toastM) => {
 };
 const copyLink = async () => {
   await navigator.clipboard.writeText(shareUrl);
-  toast.success("複製成功！快去分享給朋友吧！");
+  toast.success("已複製活動網址！快去分享給朋友吧！");
 };
 const copyLinkandText = async () => {
   await navigator.clipboard.writeText(`${textToCopy}\n\n${shareUrl}`);
-  toast.success("複製成功！快去分享給朋友吧！");
+  toast.success("已複製活動網址！快去分享給朋友吧！");
 };
 const timeout = 1000; // 0.5秒後開啟分享視窗，確保複製完成
 

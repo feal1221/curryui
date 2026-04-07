@@ -26,6 +26,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: 'https://api.housefindyourcurry.tw',
+      // apiBase: 'https://hello-world-1-xm5omx4rva-de.a.run.app',
     }
   },
   app: {

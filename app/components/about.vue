@@ -174,6 +174,6 @@ const onSubmit = handleSubmit((values) => {
     gender: values.gender,
     age: values.age,
   });
-  pageIndex.value = 2;
+  pageIndex.value = 1;
 }, onInvalidSubmit);
 </script>

@@ -16,14 +16,20 @@
       @interact-outside.prevent
     >
       <UiDialogHeader>
-        <UiDialogTitle></UiDialogTitle>
+        <UiDialogTitle
+          @click="showDialog = false"
+          class="cursor-pointer text-2xl ml-5 text-right font-medium"
+          >x</UiDialogTitle
+        >
         <UiDialogDescription>
           <div>
             <div
-              v-if="pageIndex === 0"
+              v-if="pageIndex === 1"
               class="flex flex-col justify-center items-center text-base sm:text-2xl font-medium text-[var(--primary-brown)] leading-relaxed sm:leading-[36px] p-0 sm:p-25 text-center"
             >
-              <h1 class="bg-[#FAD35C] px-4 py-4 sm:px-8 sm:py-2 text-2xl text-left sm:text-center">
+              <h1
+                class="bg-[#FAD35C] px-4 py-4 sm:px-8 sm:py-2 text-2xl text-left sm:text-center"
+              >
                 {{ "咖哩拌動靈魂，調配你的命定配方" }}
               </h1>
               <br />
@@ -43,16 +49,27 @@
               <div>測出你靈魂中的「拌哩」哲學</div>
               <div>揭開你的咖哩混搭黃金比例。</div>
               <br />
-
-              <UiButton
-                variant="destructive"
-                @click="pageIndex = 1"
-                class="w-[250px] h-[64px] text-2xl py-2 px-4 mt-2"
+              <div
+                class="flex flex-col lg:flex-row-reverse justify-between mt-4 gap-4 lg:gap-40"
               >
-                繼續
-              </UiButton>
+                <UiButton
+                  variant="destructive"
+                  @click="pageIndex = 2"
+                  class="w-[250px] h-[64px] text-2xl py-2 px-4"
+                >
+                  繼續
+                </UiButton>
+                <UiButton
+                  @click="pageIndex = 0"
+                  class="w-full sm:w-auto h-[64px] text-2xl px-8 sm:px-20 py-2 sm:py-3 font-medium bg-[var(--primary-brown)] border-[var(--primary-brown)] hover:bg-[var(--primary-brown)]"
+                >
+                  <span class="font-medium inline-flex items-center gap-2">
+                  </span>
+                  <span class="font-medium">{{ "上一題" }}</span>
+                </UiButton>
+              </div>
             </div>
-            <about v-if="pageIndex === 1" />
+            <about v-if="pageIndex === 0" />
             <question v-if="pageIndex >= 2" v-model:visible="showDialog" />
           </div>
         </UiDialogDescription>
