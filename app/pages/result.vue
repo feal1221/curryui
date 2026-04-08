@@ -329,7 +329,33 @@ const shareToThreads = () => {
   window.open(url, "_blank");
   }
 };
-// 4. 下載圖片 (針對 IG 最友善的做法)
+const resizeImage = async (imgUrl) => {
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = imgUrl;
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      // 強制設定為 IG 限動標準尺寸
+      canvas.width = 1080;
+      canvas.height = 1920;
+      const ctx = canvas.getContext('2d');
+
+      // 在畫布上置中繪製 (Object-fit: contain 邏輯)
+      const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
+      const x = (canvas.width / 2) - (img.width / 2) * scale;
+      const y = (canvas.height / 2) - (img.height / 2) * scale;
+      
+      // 填充背景色以免黑邊
+      ctx.fillStyle = "#ffffff"; 
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
+
+      canvas.toBlob((blob) => resolve(blob), 'image/jpeg', 0.8); // 壓縮品質 0.8
+    };
+  });
+};
+
 const shareIg = async () => {
   copyLinkandText();
   if (!isMobile.value) {
@@ -341,8 +367,9 @@ const shareIg = async () => {
     }, timeout);
     return;
   }
-  const response = await fetch(shareImageUrl, { method: "GET" });
-  const blob = await response.blob();
+  // const response = await fetch(shareImageUrl, { method: "GET" });
+  // const blob = await response.blob();
+  const blob = await resizeImage(shareImageUrl);
   const file = new File([blob], "share.jpg", { type: "image/jpeg" });
   // 2. 檢查手機是否支援分享檔案
   if (navigator.canShare && navigator.canShare({ files: [file] })) {

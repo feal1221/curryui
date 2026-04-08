@@ -213,22 +213,30 @@
       <div
         class="flex mt-44 sm:mt-52 flex-col w-full justify-center px-4 sm:px-6 lg:px-2"
       >
-        <div
-          class="text-4xl sm:text-5xl bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-2 sm:px-22 py-2 text-wrap whitespace-pre-line"
-        >
-        {{ "任務1." }}
-        <br class="block sm:hidden" />
-        {{ "簡訊發票登錄活動" }}
-        </div>
+        <svgTitle
+          text="任務1.簡訊發票登錄活動"
+          type="curry"
+          class="block max-[540px]:hidden h-[96px] mt-7"
+        />
+        <svgTitle
+          text="任務1."
+          type="curry"
+          class="hidden max-[540px]:block h-[96px] mt-7"
+        />
+        <svgTitle
+          text="簡訊發票登錄活動"
+          type="curry"
+          class="hidden max-[540px]:block h-[96px] -mt-8"
+        />
         <svgTitle
           text="抽iPhone17、日本萬元旅遊金！"
           type="red"
-          class="lg:block hidden h-[96px] mt-7 mb-10"
+          class="lg:block hidden h-[96px] -mt-4 mb-10"
         />
         <svgTitle
           text="抽iPhone17、日本"
           type="red"
-          class="block max-[400px]:hidden lg:hidden h-[96px] mt-7"
+          class="block max-[400px]:hidden lg:hidden h-[96px] -mt-4 "
         />
         <svgTitle
           text="萬元旅遊金！"
@@ -238,7 +246,7 @@
         <svgTitle
           text="抽iPhone17、"
           type="red"
-          class="hidden max-[400px]:block h-[96px] mt-7"
+          class="hidden max-[400px]:block h-[96px] -mt-4 "
         />
         <svgTitle
           text="日本萬元旅遊金！"
@@ -307,7 +315,7 @@
                     <img
                       :src="c.url"
                       class="mx-auto max-h-[140px] object-contain max-w-[150px]"
-                      :class="cIndex >=5 ? 'h-[74px]' : 'h-auto'"
+                      :class="cIndex >=5 ? 'h-[120px]' : 'h-auto'"
                     />
                     <div class="text-center p-2 text-base whitespace-pre-line">
                       {{ c.name }}
@@ -349,15 +357,23 @@
           @click="download"
             variant="destructive"
             class="px-22 py-4 font-bold mx-auto text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-4"
-            >{{ "詳細活動資訊" }}
+            >{{ "下載" }}
           </UiButton> -->
-        <div
-          class="text-4xl sm:text-5xl mt-7 bg-white text-[var(--primary-brown)] font-medium text-center w-full sm:w-auto mx-auto px-2 sm:px-22 py-2 text-wrap whitespace-pre-line"
-        >
-            {{ "任務2." }}
-          <br class="block sm:hidden" />
-          {{ "門店巡迴活動" }}
-        </div>
+        <svgTitle
+          text="任務2.門店巡迴活動"
+          type="curry"
+          class="block max-[415px]:hidden h-[96px] mt-6"
+        />
+        <svgTitle
+          text="任務2."
+          type="curry"
+          class="hidden max-[415px]:block h-[96px] mt-6"
+        />
+        <svgTitle
+          text="門店巡迴活動"
+          type="curry"
+          class="hidden max-[415px]:block h-[96px] -mt-8"
+        />
         <div
           class="mt-9 flex justify-center whitespace-pre-line text-center gap-2 flex-col items-center font-medium px-4"
         >
@@ -542,19 +558,19 @@ const scrollToTop = () => {
 const download = async () =>{
   const excel = await useApi("/results/exportExcel", {
       method: "GET",
-        responseType: "blob"
+        // responseType: "blob"
     });
-    const blob = excel; //
-    let fileName = 'results.xlsx'; // 預設檔名
-    const url = window.URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
+    // const blob = excel; //
+    // let fileName = 'results.xlsx'; // 預設檔名
+    // const url = window.URL.createObjectURL(blob);
+    // const link = document.createElement('a');
+    // link.href = url;
 
-    link.setAttribute('download', fileName);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    window.URL.revokeObjectURL(url);
+    // link.setAttribute('download', fileName);
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
+    // window.URL.revokeObjectURL(url);
 }
 
 const activity = [
