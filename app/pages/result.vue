@@ -305,7 +305,7 @@ const shareToFB = async () => {
         const blob = await resizeImage(shareImageUrl);
         const file = new File([blob], "share.jpg", { type: "image/jpeg" });
       // 2. 檢查手機是否支援分享檔案
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        if (navigator.canShare) {
           await navigator.share({
             // files: [file],
             title: "咖哩靈魂拌測驗！測出你的咖哩人格",
