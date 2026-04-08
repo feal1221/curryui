@@ -25,7 +25,7 @@
           <div>
             <div
               v-if="pageIndex === 1"
-              class="flex flex-col justify-center items-center text-base sm:text-2xl font-medium text-[var(--primary-brown)] leading-relaxed sm:leading-[36px] p-0 sm:p-25 text-center"
+              class="mx-auto flex flex-col justify-center items-center text-base sm:text-2xl font-medium text-[var(--primary-brown)] leading-relaxed sm:leading-[36px] p-0 sm:p-10 text-center"
             >
               <h1
                 class="bg-[#FAD35C] px-4 py-4 sm:px-8 sm:py-2 text-2xl text-left sm:text-center"
@@ -50,12 +50,12 @@
               <div>揭開你的咖哩混搭黃金比例。</div>
               <br />
               <div
-                class="flex flex-col lg:flex-row-reverse justify-between mt-4 gap-4 lg:gap-40"
+                class="flex flex-col sm:flex-row-reverse justify-between mt-4 gap-4 sm:gap-40"
               >
                 <UiButton
                   variant="destructive"
                   @click="pageIndex = 2"
-                  class="w-[250px] h-[64px] text-2xl py-2 px-4"
+                  class="w-[250px] h-[64px] text-2xl py-2 px-4 font-medium"
                 >
                   繼續
                 </UiButton>
@@ -65,7 +65,7 @@
                 >
                   <span class="font-medium inline-flex items-center gap-2">
                   </span>
-                  <span class="font-medium">{{ "上一題" }}</span>
+                  <span class="font-medium text-nowrap">上一題</span>
                 </UiButton>
               </div>
             </div>

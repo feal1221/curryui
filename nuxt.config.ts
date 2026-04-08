@@ -34,6 +34,21 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/png', href: '/smal.png?v=2' },
         { rel: 'apple-touch-icon',type: 'image/png', href: 'https://test.housefindyourcurry.tw/smal.png?v=2' }
+      ],
+      script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-34V28CKHHS',
+          async: true
+        },
+        {
+          children: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-34V28CKHHS');
+          `,
+          type: 'text/javascript'
+        }
       ]
     }
   }

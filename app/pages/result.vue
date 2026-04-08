@@ -8,7 +8,7 @@
     >
       {{ "你的咖哩人格是..." }}
     </h1>
-    <img :src="shareImageUrlMap[completedFlag]" class="max-w-[726px]" />
+    <img :src="shareImageUrlMap[completedFlag]" class="max-w-[calc(100vw-15px)] sm:max-w-[726px]" />
     <div
       class="text-[var(--primary-brown)] text-2xl font-normal flex flex-col items-center leading-[36px] px-6"
     >

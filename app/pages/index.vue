@@ -241,12 +241,7 @@
           class="hidden max-[400px]:block h-[96px] mt-7"
         />
         <svgTitle
-          text="日本萬元"
-          type="red"
-          class="hidden max-[400px]:block h-[96px] -mt-10"
-        />
-        <svgTitle
-          text="旅遊金！"
+          text="日本萬元旅遊金！"
           type="red"
           class="hidden max-[400px]:block h-[96px] -mt-10 mb-10"
         />
