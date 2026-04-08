@@ -307,7 +307,7 @@ const shareToFB = async () => {
       // 2. 檢查手機是否支援分享檔案
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
           await navigator.share({
-            files: [file],
+            // files: [file],
             title: "咖哩靈魂拌測驗！測出你的咖哩人格",
             text: "測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！",
             url: shareUrl,
