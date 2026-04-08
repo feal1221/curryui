@@ -65,7 +65,7 @@
                 >
                   <span class="font-medium inline-flex items-center gap-2">
                   </span>
-                  <span class="font-medium text-nowrap">上一題</span>
+                  <span class="font-medium text-nowrap">上一頁</span>
                 </UiButton>
               </div>
             </div>
