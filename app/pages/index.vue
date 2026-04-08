@@ -312,6 +312,7 @@
                     :key="cIndex"
                     class="w-full sm:w-auto"
                   >
+                  <div :class="cIndex === 4?'mt-2':'mt-0'">
                     <img
                       :src="c.url"
                       class="mx-auto max-h-[140px] object-contain max-w-[150px]"
@@ -319,6 +320,7 @@
                     />
                     <div class="text-center p-2 text-base whitespace-pre-line">
                       {{ c.name }}
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -619,7 +621,7 @@ const curryList = [
   { name: "爪哇咖哩塊系列\n(中辣/辣味/香辛辣)", url: curry5 },
   { name: "素食咖哩塊", url: curry4 },
   { name: "完熟蕃茄燴飯料理塊", url: curry2 },
-  { name: "北海道白醬系列\n(白醬/奶油玉米)", url: curry3 },
+  { name: "北海道白醬系列\n(原味/奶油玉米)", url: curry3 },
   { name: "美味嚴選調理包系列", url: curry6 },
   { name: "咖哩調理包系列", url: curry7 },
 ];

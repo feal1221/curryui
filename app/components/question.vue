@@ -432,7 +432,7 @@ const mockQA = [
         value: "Spicy",
       },
       {
-        description: "幾瓣完熟蕃茄，帶出豐富的層次感。",
+        description: "一顆完熟蕃茄，帶出豐富的層次感。",
         value: "Tart",
       },
       {

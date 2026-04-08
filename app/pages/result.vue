@@ -17,7 +17,7 @@
         <div
           class="text-[var(--primary-brown)] text-2xl font-normal break-all "
         >
-          {{ "立刻將你的測驗結果圖分享至好侍官方FB活動貼文留言處參加抽獎！" }}
+          {{ "立刻將你的測驗結果圖分享至社群，截圖分享畫面上傳至好侍官方FB活動貼文留言處參加抽獎！" }}
         </div>
       </div>
     </div>
@@ -76,7 +76,7 @@
                     class="flex flex-col items-center flex-1 cursor-pointer"
                     @click="copyLink"
                   >
-                    <img src="/assets/images/copy.png" class="w-auto h-auto" />
+                    <img src="/assets/images/copy.png" class="w-[32px] h-auto" />
                     <span class="text-xs mt-2 text-[#54310F]">複製連結</span>
                   </div>
 
@@ -84,7 +84,7 @@
                     class="flex flex-col items-center flex-1 cursor-pointer"
                     @click="shareToFB"
                   >
-                    <img src="/assets/images/Facebook.png" />
+                    <img src="/assets/images/Facebook.png" class="w-[32px]"/>
                     <span class="text-xs mt-2 text-[#54310F]">Facebook</span>
                   </div>
 
@@ -92,7 +92,7 @@
                     class="flex flex-col items-center flex-1 cursor-pointer"
                     @click="shareIg"
                   >
-                    <img src="/assets/images/Instagram.png" />
+                    <img src="/assets/images/Instagram.png" class="w-[32px]"/>
                     <span class="text-xs mt-2 text-[#54310F]">Instagram</span>
                   </div>
 
@@ -107,7 +107,7 @@
                     class="flex flex-col items-center flex-1 cursor-pointer"
                     @click="shareToThreads"
                   >
-                    <img src="/assets/images/threads.png" />
+                    <img src="/assets/images/threads.png" class="w-[32px] h-auto"/>
                     <span class="text-xs mt-2 ]">Threads</span>
                   </div>
                 </div>
