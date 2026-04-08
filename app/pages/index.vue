@@ -357,7 +357,7 @@
           @click="download"
             variant="destructive"
             class="px-22 py-4 font-bold mx-auto text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-4"
-            >{{ "下載" }}
+            >{{ "寄出" }}
           </UiButton> -->
         <svgTitle
           text="任務2.門店巡迴活動"

@@ -301,7 +301,22 @@ const shareToFB = async () => {
     // 第三次的寫法↓
     const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
     if (isMobile.value) {
-        window.location.href = url;
+        copyLinkandText();
+        const blob = await resizeImage(shareImageUrl);
+        const file = new File([blob], "share.jpg", { type: "image/jpeg" });
+      // 2. 檢查手機是否支援分享檔案
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+          await navigator.share({
+            files: [file],
+          });
+        } else {
+          window.location.href = url;
+      }
+
+
+
+
+        // window.location.href = url;
       // 如果 2 秒後還在原地，表示沒有成功開啟 App，改開網頁版
       // setTimeout(() => {
       //   window.open(url, "_blank");
