@@ -305,22 +305,23 @@
                 class="text-[var(--primary-brown)] text-base leading-relaxed"
               >
                 <div
-                  class="flex gap-4 flex-wrap mt-4 items-start justify-center sm:justify-start"
+                  class="flex mt-4 sm:mt-0 gap-4 flex-wrap items-start justify-center sm:justify-start"
                 >
                   <div
                     v-for="(c, cIndex) in curryList"
                     :key="cIndex"
-                    class="w-full sm:w-auto"
+                    class="w-full sm:w-[150px] flex flex-col items-center"
                   >
-                  <div :class="cIndex === 4?'mt-2':'mt-0'">
-                    <img
-                      :src="c.url"
-                      class="mx-auto max-h-[140px] object-contain max-w-[150px]"
-                      :class="cIndex >=5 ? 'h-[120px]' : 'h-auto'"
-                    />
-                    <div class="text-center p-2 text-base whitespace-pre-line">
-                      {{ c.name }}
+                    <div class="h-auto sm:h-[140px] w-[150px] sm:flex sm:items-center sm:justify-center">
+                      <img
+                        :src="c.url"
+                        class="mx-auto max-h-[140px] object-contain max-w-[150px]"
+                        :class="cIndex >= 5 ? 'h-[120px]' : 'h-auto'"
+                      />
                     </div>
+                    <div class="text-center text-base whitespace-pre-line sm:min-h-[56px] pt-2 sm:pt-0 flex sm:items-center justify-center sm:leading-tight "
+                    :class="cIndex >= 5 ? 'sm:-mt-3':'sm:-mt-6'">
+                      {{ c.name }}
                     </div>
                   </div>
                 </div>
@@ -355,12 +356,12 @@
             >{{ "詳細活動資訊" }}
           </UiButton>
         </a>
-          <!-- <UiButton
+          <UiButton
           @click="download"
             variant="destructive"
             class="px-22 py-4 font-bold mx-auto text-2xl self-center my-8 shadow-[4px_4px_4px_0px_rgba(0,0,0,0.25)] z-4"
             >{{ "寄出" }}
-          </UiButton> -->
+          </UiButton>
         <svgTitle
           text="任務2.門店巡迴活動"
           type="curry"
