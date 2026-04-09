@@ -248,9 +248,9 @@ useHead({
 })
 
 const textToCopy = "咖哩靈魂拌測驗！測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！快來測測看你的咖哩人格是什麼吧！";
-const shareUrl = window.location.origin;
+const shareUrl = 'https://www.housefindyourcurry.tw'
 const isMobile = computed(() => {
-  if (typeof navigator === "undefined") return false;
+  if (import.meta.server) return false;
   return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 });
 const copyLink = async () => {
@@ -336,32 +336,30 @@ const shareToThreads = () => {
 };
 const resizeImage = async (imgUrl) => {
   return new Promise((resolve) => {
+    // 只有在客戶端才執行 DOM 操作
+    if (!import.meta.client) return resolve(null);
+    
     const img = new Image();
     img.crossOrigin = "Anonymous";
     img.src = imgUrl;
     img.onload = () => {
       const canvas = document.createElement('canvas');
-      // 強制設定為 IG 限動標準尺寸
       canvas.width = 1080;
       canvas.height = 1920;
       const ctx = canvas.getContext('2d');
-
-      // 在畫布上置中繪製 (Object-fit: contain 邏輯)
       const scale = Math.min(canvas.width / img.width, canvas.height / img.height);
       const x = (canvas.width / 2) - (img.width / 2) * scale;
       const y = (canvas.height / 2) - (img.height / 2) * scale;
-      
-      // 填充背景色以免黑邊
       ctx.fillStyle = "#ffffff"; 
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(img, x, y, img.width * scale, img.height * scale);
-
-      canvas.toBlob((blob) => resolve(blob), 'image/jpeg', 0.8); // 壓縮品質 0.8
+      canvas.toBlob((blob) => resolve(blob), 'image/jpeg', 0.8);
     };
   });
 };
 
 const shareIg = async () => {
+  if (!import.meta.client) return;
   copyLinkandText();
   if (!isMobile.value) {
     setTimeout(() => {
