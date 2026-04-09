@@ -15,9 +15,9 @@
       <div class="text-center">
         {{ "長按上方結果圖片或滑鼠右鍵另存圖片" }}
         <div
-          class="text-[var(--primary-brown)] text-2xl font-normal break-all "
+          class="text-[var(--primary-brown)] text-2xl font-normal break-all whitespace-pre-wrap leading-[36px]"
         >
-          {{ "立刻將你的測驗結果圖分享至社群，截圖分享畫面上傳至好侍官方FB活動貼文留言處參加抽獎！" }}
+          {{ "Step1. 將你的測驗結果分享至社群\nStep2.截圖分享畫面上傳至好侍官方FB活動貼文留言處參加抽獎！" }}
         </div>
       </div>
     </div>
@@ -247,33 +247,25 @@ useHead({
   ]
 })
 
-const ngrokUrl = "https://test.housefindyourcurry.tw/";
-// const ngrokUrl = window.location.origin;
-// const textToCopy = "測出你的咖哩人格！探索你的命定咖哩，找到最適合你的黃金比例 #心理測驗 #咖哩人格 #好侍咖哩";
 const textToCopy = "咖哩靈魂拌測驗！測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！快來測測看你的咖哩人格是什麼吧！";
-const shareUrl = `${ngrokUrl}`;
-// const shareUrl = window.location.origin;
+const shareUrl = window.location.origin;
 const isMobile = computed(() => {
   if (typeof navigator === "undefined") return false;
   return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 });
-const copyText = async (toastM) => {
-  await navigator.clipboard.writeText(textToCopy);
-  toast.success(toastM);
-};
 const copyLink = async () => {
   await navigator.clipboard.writeText(shareUrl);
   toast.success("已複製活動網址！快去分享給朋友吧！");
 };
 const copyLinkandText = async () => {
   await navigator.clipboard.writeText(`${textToCopy}\n\n${shareUrl}`);
-  toast.success("已複製活動網址！快去分享給朋友吧！");
+  toast.success("活動訊息已複製，歡迎直接貼上分享！");
 };
 const timeout = 1000; // 0.5秒後開啟分享視窗，確保複製完成
 
 const shareToLine = () => {
   // 將文字與網址組合成一段內容
-  const fullText = `${textToCopy}\n${ngrokUrl}`;
+  const fullText = `${textToCopy}\n${shareUrl}`;
 
   // 使用 R/share 格式，這是目前最能保證「文字」被塞進去的方法
   const lineUrl = isMobile
@@ -285,8 +277,6 @@ const shareToLine = () => {
 
 const shareToFB = async () => {
   try {
-    // 1. 自動幫使用者複製文字
-    // copyText("已為您複製結果文字！請直接在 FB 貼上即可分享。");
     // if (navigator.share) {
     //   await navigator.share({
     //     title: '分享至 Facebook',
@@ -302,12 +292,9 @@ const shareToFB = async () => {
     const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
     if (isMobile.value) {
         copyLinkandText();
-        const blob = await resizeImage(shareImageUrl);
-        const file = new File([blob], "share.jpg", { type: "image/jpeg" });
       // 2. 檢查手機是否支援分享檔案
         if (navigator.canShare) {
           await navigator.share({
-            // files: [file],
             title: "咖哩靈魂拌測驗！測出你的咖哩人格",
             text: "測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！",
             url: shareUrl,
