@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="flex flex-col px-6 gap-10">
-      <a href="https://www.facebook.com/house.curry.tw" target="_blank">
+      <a href="https://www.facebook.com/share/p/18933ZwJt3/?mibextid=wwXIfr" target="_blank">
          <UiButton
           variant="destructive"
           class="font-bold text-2xl px-4 py-4 sm:px-22 sm:py-4"
