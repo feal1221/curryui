@@ -13,8 +13,11 @@ export default defineNuxtConfig({
   }
   },
   modules: [
-    '@vee-validate/nuxt','@nuxt/icon','@pinia/nuxt'
+    '@vee-validate/nuxt','@nuxt/icon','@pinia/nuxt','nuxt-gtag'
   ],
+  gtag: {
+    id: 'G-34V28CKHHS'
+  },
   veeValidate: {
     autoImports: true,
   },
@@ -35,21 +38,21 @@ export default defineNuxtConfig({
         { rel: 'icon', type: 'image/png', href: '/smal.png?v=2' },
         { rel: 'apple-touch-icon',type: 'image/png', href: 'https://housefindyourcurry.tw/smal.png?v=2' }
       ],
-      script: [
-        {
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-34V28CKHHS',
-          async: true
-        },
-        {
-          children: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-34V28CKHHS');
-          `,
-          type: 'text/javascript'
-        }
-      ]
+      // script: [
+      //   {
+      //     src: 'https://www.googletagmanager.com/gtag/js?id=G-34V28CKHHS',
+      //     async: true
+      //   },
+      //   {
+      //     children: `
+      //       window.dataLayer = window.dataLayer || [];
+      //       function gtag(){dataLayer.push(arguments);}
+      //       gtag('js', new Date());
+      //       gtag('config', 'G-34V28CKHHS');
+      //     `,
+      //     type: 'text/javascript'
+      //   }
+      // ]
     }
   }
 })
