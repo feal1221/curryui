@@ -16,7 +16,10 @@ export default defineNuxtConfig({
     '@vee-validate/nuxt','@nuxt/icon','@pinia/nuxt','nuxt-gtag'
   ],
   gtag: {
-    id: 'G-08EGQD4R05'
+    id: 'G-34V28CKHHS',
+    additionalTransports: [
+      { id: 'G-08EGQD4R05' } 
+    ]
   },
   veeValidate: {
     autoImports: true,
