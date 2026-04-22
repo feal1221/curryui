@@ -19,6 +19,10 @@ export default defineNuxtConfig({
     id: 'G-34V28CKHHS',
     additionalTransports: [
       { id: 'G-08EGQD4R05' } 
+    ],
+    initCommands: [
+      ['config', 'G-34V28CKHHS', { send_page_view: true }],
+      ['config', 'G-08EGQD4R05', { send_page_view: true }]
     ]
   },
   veeValidate: {
