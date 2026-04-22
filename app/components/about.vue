@@ -14,7 +14,7 @@
           }}</UiFieldError></UiFieldLabel
         >
         <UiInput
-          v-model="userName"
+          v-model.trim="userName"
           v-bind="userNameProps"
           id="name"
           placeholder="請輸入暱稱"
