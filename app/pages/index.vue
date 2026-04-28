@@ -21,17 +21,31 @@
         class="block absolute sm:hidden w-[95vw] max-w-[352px] left-1/2 top-[-1%] -translate-x-1/2 z-2"
       />
 
-      <img
-        src="/assets/images/top-title.png"
+      <NuxtImg
+        src="/images/top-title.png"
         class="left-1/2 -translate-x-1/2 absolute top-58 sm:top-32 w-[95vw] max-w-[680px] md:w-auto z-30"
+        format="webp"
+        quality="80"
       />
-      <img
+      <!-- <img
         src="/assets/images/Rectangle-1.png"
         class="absolute z-20 top-[20%] left-[64%] w-29 sm:w-40 lg:w-[214px] rotate-[22.42deg] sm:top-[5%] lg:top-[8%] xl:top-[20%] sm:left-[72%] lg:left-[76%] xl:left-[80%] pr-1 2xl:left-[76%]"
+      /> -->
+      <NuxtImg 
+        src="/images/Rectangle.png"
+        class="absolute z-20 top-[12%] left-[34%] w-29 sm:w-40 lg:w-[214px] -rotate-[16.76deg] sm:top-[3%] sm:left-[45%] lg:top-[5%] lg:left-[54%] xl:left-[66%] 2xl:left-[66%] "
+        format="webp" 
+        quality="80"
       />
-      <img
+      <!-- <img
         src="/assets/images/Rectangle.png"
         class="absolute z-20 top-[12%] left-[34%] w-29 sm:w-40 lg:w-[214px] -rotate-[16.76deg] sm:top-[3%] sm:left-[45%] lg:top-[5%] lg:left-[54%] xl:left-[66%] 2xl:left-[66%] "
+      /> -->
+      <NuxtImg 
+        src="/images/Rectangle-1.png"
+        class="absolute z-20 top-[20%] left-[64%] w-29 sm:w-40 lg:w-[214px] rotate-[22.42deg] sm:top-[5%] lg:top-[8%] xl:top-[20%] sm:left-[72%] lg:left-[76%] xl:left-[80%] pr-1 2xl:left-[76%]"
+        format="webp" 
+        quality="80"
       />
 
       <!-- <div class="absolute inset-0 z-0">
@@ -81,13 +95,21 @@
         }}</span
         >{{ "就有機會獲得\nApple Watch、 AirPods Pro 3、Marshall 藍牙喇叭！" }}
       </h1>
-      <img
-        src="/assets/images/iphone&airpods.png"
+      <!-- <img
+        src="/images/iphone&airpods.png"
         class="hidden sm:block self-center w-full max-w-[680px]"
-      />
-      <img
-        src="/assets/images/phone-rewards.png"
+      /> -->
+      <NuxtImg 
+        src="/images/iphone&airpods.png"
+        class="hidden sm:block self-center w-full max-w-[680px]"
+        format="webp" 
+        quality="80"
+       />
+      <NuxtImg
+        src="/images/phone-rewards.png"
         class="block sm:hidden self-center w-full max-w-[286px]"
+        format="webp" 
+        quality="80"
       />
       <svgTitle
         text="測出你的咖哩人格活動規則"
@@ -313,10 +335,18 @@
                     class="w-full sm:w-[150px] flex flex-col items-center"
                   >
                     <div class="h-auto sm:h-[140px] w-[150px] sm:flex sm:items-center sm:justify-center">
-                      <img
+                      <!-- <img
                         :src="c.url"
                         class="mx-auto max-h-[140px] object-contain max-w-[150px]"
                         :class="cIndex >= 5 ? 'h-[120px]' : 'h-auto'"
+                      /> -->
+                      <NuxtImg 
+                        :src="c.url"
+                        class="mx-auto max-h-[140px] object-contain max-w-[150px]"
+                        :class="cIndex >= 5 ? 'h-[120px]' : 'h-auto'"
+                        format="webp" 
+                        quality="80" 
+                        width="300"
                       />
                     </div>
                     <div class="text-center text-base whitespace-pre-line sm:min-h-[56px] pt-2 sm:pt-0 flex sm:items-center justify-center sm:leading-tight "
@@ -408,13 +438,14 @@
             {{ "活動門店資訊：" }}
           </div>
           <!-- <img
-            src="/assets/images/com-table.png"
-            class="hidden sm:block w-full"
-          /> -->
-          <img
             src="/assets/images/phone-table.jpg"
+          /> -->
+          <NuxtImg 
+            src="/images/phone-table.jpg"
             class="w-full"
-          />
+            format="webp" 
+            quality="80"
+            />
         </div>
         <svgTitle
           id="supermarkets"
@@ -543,13 +574,12 @@ import watchImage from "~/assets/images/watch.png";
 import airpodImage from "~/assets/images/airpod.png";
 import speakerImage from "~/assets/images/speaker.png";
 import roofImage from "~/assets/images/roof.png";
-import curry1 from "~/assets/images/curry101.jpg";
-import curry2 from "~/assets/images/curry102.jpg";
-import curry3 from "~/assets/images/curry103.jpg";
-import curry4 from "~/assets/images/curry104.jpg";
-import curry5 from "~/assets/images/curry105.jpg";
-import curry6 from "~/assets/images/curry108.png";
-import curry7 from "~/assets/images/curry107.png";
+// import curry1 from "~/assets/images/curry101.jpg";
+// import curry2 from "~/assets/images/curry102.jpg";
+// import curry3 from "~/assets/images/curry103.jpg";
+// import curry4 from "~/assets/images/curry104.jpg";
+// import curry5 from "~/assets/images/curry105.jpg";
+// import curry6 from "~/assets/images/curry108.png";
 
 onMounted(() => {
   sessionStorage.clear();
@@ -618,13 +648,13 @@ const rewards = [
   },
 ];
 const curryList = [
-  { name: "佛蒙特咖哩塊系列\n(甜味/中辣/辣味)", url: curry1 },
-  { name: "爪哇咖哩塊系列\n(中辣/辣味/香辛辣)", url: curry5 },
-  { name: "素食咖哩塊", url: curry4 },
-  { name: "完熟蕃茄燴飯料理塊", url: curry2 },
-  { name: "北海道白醬系列\n(原味/奶油玉米)", url: curry3 },
-  { name: "美味嚴選調理包系列", url: curry6 },
-  { name: "咖哩調理包系列", url: curry7 },
+  { name: "佛蒙特咖哩塊系列\n(甜味/中辣/辣味)", url: '/images/curry101.jpg' },
+  { name: "爪哇咖哩塊系列\n(中辣/辣味/香辛辣)", url: '/images/curry105.jpg' },
+  { name: "素食咖哩塊", url: '/images/curry104.jpg' },
+  { name: "完熟蕃茄燴飯料理塊", url: '/images/curry102.jpg' },
+  { name: "北海道白醬系列\n(原味/奶油玉米)", url: '/images/curry103.jpg' },
+  { name: "美味嚴選調理包系列", url: '/images/curry108.png' },
+  { name: "咖哩調理包系列", url: '/images/curry107.png' },
 ];
 </script>
 <style scoped>

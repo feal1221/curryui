@@ -8,7 +8,7 @@
     >
       {{ "你的咖哩人格是..." }}
     </h1>
-    <img :src="shareImageUrlMap[completedFlag]" class="max-w-[calc(100vw-15px)] sm:max-w-[726px]" />
+    <NuxtImg :src="shareImageUrlMap[completedFlag]" class="max-w-[calc(100vw-15px)] sm:max-w-[726px]" format="webp" quality="80" />
     <div
       class="text-[var(--primary-brown)] text-2xl font-normal flex flex-col items-center leading-[36px] px-6"
     >
@@ -201,11 +201,11 @@
   ></div>
 </template>
 <script setup>
-import Sweet from "~/assets/images/result5.jpg";
-import Balance from "~/assets/images/result1.jpg";
-import Spicy from "~/assets/images/result2.jpg";
-import Tart from "~/assets/images/result3.jpg";
-import Creamy from "~/assets/images/result4.jpg";
+// import Sweet from "~/assets/images/result5.jpg";
+// import Balance from "~/assets/images/result1.jpg";
+// import Spicy from "~/assets/images/result2.jpg";
+// import Tart from "~/assets/images/result3.jpg";
+// import Creamy from "~/assets/images/result4.jpg";
 import shareImageUrl from "/images/share.png";
 import { toast } from "vue-sonner";
 const completedFlag = ref(null);
@@ -231,11 +231,11 @@ onUnmounted(() => {
 })
 const showDialog = ref(false);
 const shareImageUrlMap = {
-  'c8eee529-6362-4727-aec2-1b6aad9cabbb': Balance,
-  '20dc7e05-042e-4850-897b-4a1e4427260b': Spicy,
-  '5a2a5d3c-efcb-43d0-9ff6-38c1086e5cfc': Tart,
-  '2ce14ad5-2b20-4cca-9c88-1aa1c44618b5': Creamy,
-  '1f09e28c-b0b9-4e18-9d1d-c98c69199682': Sweet,
+  'c8eee529-6362-4727-aec2-1b6aad9cabbb': '/images/result1.jpg',
+  '20dc7e05-042e-4850-897b-4a1e4427260b': '/images/result2.jpg',
+  '5a2a5d3c-efcb-43d0-9ff6-38c1086e5cfc': '/images/result3.jpg',
+  '2ce14ad5-2b20-4cca-9c88-1aa1c44618b5': '/images/result4.jpg',
+  '1f09e28c-b0b9-4e18-9d1d-c98c69199682': '/images/result5.jpg',
 }
 useHead({
   meta: [

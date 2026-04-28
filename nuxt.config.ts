@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   }
   },
   modules: [
-    '@vee-validate/nuxt','@nuxt/icon','@pinia/nuxt','nuxt-gtag'
+    '@vee-validate/nuxt','@nuxt/icon','@pinia/nuxt','nuxt-gtag','@nuxt/image'
   ],
   gtag: {
     id: 'G-34V28CKHHS',
