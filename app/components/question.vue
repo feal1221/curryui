@@ -115,11 +115,11 @@ const props = defineProps({
 });
 const emits = defineEmits(["update:visible"]);
 const resultImageMap = {
-  Sweet: '1f09e28c-b0b9-4e18-9d1d-c98c69199682',
-  Balance: 'c8eee529-6362-4727-aec2-1b6aad9cabbb',
-  Spicy: '20dc7e05-042e-4850-897b-4a1e4427260b',
-  Tart: '5a2a5d3c-efcb-43d0-9ff6-38c1086e5cfc',
-  Creamy: '2ce14ad5-2b20-4cca-9c88-1aa1c44618b5',
+  Sweet: "1f09e28c-b0b9-4e18-9d1d-c98c69199682",
+  Balance: "c8eee529-6362-4727-aec2-1b6aad9cabbb",
+  Spicy: "20dc7e05-042e-4850-897b-4a1e4427260b",
+  Tart: "5a2a5d3c-efcb-43d0-9ff6-38c1086e5cfc",
+  Creamy: "2ce14ad5-2b20-4cca-9c88-1aa1c44618b5",
 };
 const culculateResult = () => {
   const result = {
@@ -162,7 +162,7 @@ const culculateResult = () => {
       return q3Answer;
     } else {
       // 如果Q3的答案不在最高分的類別中，則看Q6
-      return q6Answer
+      return q6Answer;
     }
   }
   return topCategories[0];
@@ -222,6 +222,13 @@ const goBack = () => {
 
 const saveResult = async (result) => {
   isSubmitting.value = true;
+  answerStore.clearAnswer();
+  sessionStorage.setItem("quiz_completed", resultImageMap[result]);
+  await navigateTo({
+    path: "/result",
+  });
+  isSubmitting.value = false;
+  return;
   try {
     const response = await useApi("/results/create", {
       method: "POST",
@@ -238,11 +245,11 @@ const saveResult = async (result) => {
         resultName: answerStore.answer.resultName || "",
       },
     });
-    if (response === 'Success') {
+    if (response === "Success") {
       answerStore.clearAnswer();
-      sessionStorage.setItem('quiz_completed', resultImageMap[result]);
+      sessionStorage.setItem("quiz_completed", resultImageMap[result]);
       await navigateTo({
-        path: "/result"
+        path: "/result",
       });
     } else {
       isSubmitting.value = false;
@@ -254,7 +261,6 @@ const saveResult = async (result) => {
         },
       });
     }
-
   } catch (error) {
     isSubmitting.value = false;
     console.error("Failed to save result:", error);
@@ -282,7 +288,6 @@ watch(
   },
   { deep: true },
 );
-
 
 const mockQA = [
   {

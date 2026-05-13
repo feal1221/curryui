@@ -14,11 +14,11 @@
     >
       <div class="text-center">
         {{ "長按上方結果圖片或滑鼠右鍵另存圖片" }}
-        <div
+        <!-- <div
           class="text-[var(--primary-brown)] text-2xl font-normal break-all whitespace-pre-wrap leading-[36px]"
         >
           {{ "Step1. 將你的測驗結果分享至社群\nStep2.截圖分享畫面上傳至好侍官方FB活動貼文留言處參加抽獎！" }}
-        </div>
+        </div> -->
       </div>
     </div>
     <div class="flex flex-col px-6 gap-10">
@@ -31,7 +31,7 @@
           立即至好侍FB參加抽獎
         </UiButton>
       </a>
-      <UiDialog v-model:open="showDialog">
+      <!-- <UiDialog v-model:open="showDialog">
         <UiDialogTrigger as-child>
           <UiButton
             variant="destructive"
@@ -96,13 +96,6 @@
                     <span class="text-xs mt-2 text-[#54310F]">Instagram</span>
                   </div>
 
-                  <!-- <div
-                    class="flex flex-col items-center flex-1 cursor-pointer"
-                  >
-                    <img src="/assets/images/LINE.png" />
-                    <span class="text-xs mt-2 text-[#54310F]">LINE</span>
-                  </div> -->
-
                   <div
                     class="flex flex-col items-center flex-1 cursor-pointer"
                     @click="shareToThreads"
@@ -114,13 +107,8 @@
               </div>
             </UiDialogDescription>
           </UiDialogHeader>
-          <!-- <UiDialogFooter>
-            <UiButton variant="secondary" @click="showDialog = false">
-              關閉
-            </UiButton>
-          </UiDialogFooter> -->
         </UiDialogContent>
-      </UiDialog>
+      </UiDialog> -->
     </div>
     <!-- <div
           class="flex items-center gap-1 cursor-pointer border-1 solid border-gray-300 rounded-md px-2 py-1"
