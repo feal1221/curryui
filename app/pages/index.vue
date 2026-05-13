@@ -25,7 +25,6 @@
         src="/images/top-title.png"
         class="left-1/2 -translate-x-1/2 absolute top-58 sm:top-32 w-[95vw] max-w-[680px] md:w-auto z-30"
         format="webp"
-        quality="80"
       />
       <!-- <img
         src="/assets/images/Rectangle-1.png"
