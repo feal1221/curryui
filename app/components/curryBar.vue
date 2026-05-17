@@ -141,25 +141,25 @@ const gotoIG = () => {
 };
 
 const menu = [
-  {
-    name: "活動測驗",
-    link: "test",
-  },
-  {
-    name: "抽獎獎品資訊",
-    link: "rewards",
-  },
-  {
-    name: "全民咖哩任務",
-    link: "tasks",
-  },
-  {
-    name: "附近超市",
-    link: "supermarkets",
-  },
-  {
-    name: "注意事項",
-    link: "notices",
-  },
+  // {
+  //   name: "活動測驗",
+  //   link: "test",
+  // },
+  // {
+  //   name: "抽獎獎品資訊",
+  //   link: "rewards",
+  // },
+  // {
+  //   name: "全民咖哩任務",
+  //   link: "tasks",
+  // },
+  // {
+  //   name: "附近超市",
+  //   link: "supermarkets",
+  // },
+  // {
+  //   name: "注意事項",
+  //   link: "notices",
+  // },
 ];
 </script>

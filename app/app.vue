@@ -36,7 +36,7 @@ useHead({
     // 這是最核心的設定，確保手機抓到這張「本命咖哩」的分享圖
     { property: 'og:image', content: 'https://housefindyourcurry.tw/images/share.png' },
     { property: 'og:title', content: '本命咖哩大公開！測出你的咖哩人格' },
-    { property: 'og:description', content: '解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！' },
+    { property: 'og:description', content: '最適合你的黃金比例是多少？立刻解鎖你命定的咖哩配方！' },
     { property: 'og:url', content: siteUrl }
   ]
 })

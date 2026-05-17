@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="flex flex-col px-6 gap-10">
-      <a href="https://www.facebook.com/share/p/18933ZwJt3/?mibextid=wwXIfr" target="_blank">
+      <!-- <a href="https://www.facebook.com/share/p/18933ZwJt3/?mibextid=wwXIfr" target="_blank">
          <UiButton
           variant="destructive"
           class="font-bold text-2xl px-4 py-4 sm:px-22 sm:py-4"
@@ -30,8 +30,8 @@
           <Icon name="streamline-sharp:gift-2-remix" />
           立即至好侍FB參加抽獎
         </UiButton>
-      </a>
-      <!-- <UiDialog v-model:open="showDialog">
+      </a> -->
+      <UiDialog v-model:open="showDialog">
         <UiDialogTrigger as-child>
           <UiButton
             variant="destructive"
@@ -62,11 +62,10 @@
                     class="bg-white border-[1px] border-solid border-[var(--primary-brown)] text-[var(--primary-brown)] flex flex-col font-medium p-6 gap-2 w-full"
                   >
                     <div class="text-2xl text-left font-bold">
-                      本命咖哩大公開！
+                      本命咖哩大公開！測出你的咖哩人格
                     </div>
                     <div class="text-base text-left">
-                      測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple
-                      Watch 等大禮！
+                      最適合你的黃金比例是多少？立刻解鎖你命定的咖哩配方！
                     </div>
                   </div>
                 </div>
@@ -108,7 +107,7 @@
             </UiDialogDescription>
           </UiDialogHeader>
         </UiDialogContent>
-      </UiDialog> -->
+      </UiDialog>
     </div>
     <!-- <div
           class="flex items-center gap-1 cursor-pointer border-1 solid border-gray-300 rounded-md px-2 py-1"
@@ -230,12 +229,12 @@ useHead({
     // 這是最核心的設定，確保手機抓到這張「本命咖哩」的分享圖
     { property: 'og:image', content: shareImageUrl },
     { property: 'og:title', content: '咖哩靈魂拌測驗！測出你的咖哩人格' },
-    { property: 'og:description', content: '解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！' },
+    { property: 'og:description', content: '最適合你的黃金比例是多少？立刻解鎖你命定的咖哩配方！' },
     
   ]
 })
 
-const textToCopy = "咖哩靈魂拌測驗！測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！快來測測看你的咖哩人格是什麼吧！";
+const textToCopy = "咖哩靈魂拌測驗！測出你的咖哩人格，解鎖你命定的咖哩配方！快來測測看你的咖哩人格是什麼吧！";
 const shareUrl = 'https://www.housefindyourcurry.tw'
 const isMobile = computed(() => {
   if (import.meta.server) return false;
@@ -284,7 +283,7 @@ const shareToFB = async () => {
         if (navigator.canShare) {
           await navigator.share({
             title: "咖哩靈魂拌測驗！測出你的咖哩人格",
-            text: "測出你的咖哩人格，解鎖你命定的咖哩配方，就有機會獲得 Apple Watch 等大禮！",
+            text: "最適合你的黃金比例是多少？立刻解鎖你命定的咖哩配方！",
             url: shareUrl,
           });
         } else {
