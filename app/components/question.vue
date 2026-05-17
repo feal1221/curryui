@@ -222,13 +222,6 @@ const goBack = () => {
 
 const saveResult = async (result) => {
   isSubmitting.value = true;
-  answerStore.clearAnswer();
-  sessionStorage.setItem("quiz_completed", resultImageMap[result]);
-  await navigateTo({
-    path: "/result",
-  });
-  isSubmitting.value = false;
-  return;
   try {
     const response = await useApi("/results/create", {
       method: "POST",
